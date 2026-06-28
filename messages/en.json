@@ -2,7 +2,8 @@
   "Common": {
     "skipToContent": "Skip to content",
     "viewAll": "View all",
-    "backHome": "Back to home"
+    "backHome": "Back to home",
+    "loading": "Loading"
   },
   "Nav": {
     "about": "About",
@@ -21,11 +22,77 @@
     "headline": "Securing the software supply chain",
     "subheadline": "I build real security tooling — from supply-chain defense to threat detection — backed by tests, CI, and strict typing.",
     "ctaWork": "View my work",
-    "ctaContact": "Get in touch"
+    "ctaContact": "Get in touch",
+    "sceneLabel": "Decorative 3D visualization of a dependency graph being scanned for malicious packages."
+  },
+  "Sections": {
+    "aboutTitle": "About",
+    "workTitle": "Selected work",
+    "workSubtitle": "Security tooling I designed and shipped end to end.",
+    "skillsTitle": "Skills",
+    "experienceTitle": "Experience",
+    "educationTitle": "Education",
+    "certificationsTitle": "Certifications",
+    "role": "Role",
+    "problem": "Problem",
+    "approach": "Approach",
+    "impact": "Impact",
+    "stack": "Stack",
+    "viewRepo": "View repository",
+    "viewProject": "View project",
+    "statusImplemented": "Implemented",
+    "statusDemo": "Demo / backend-ready",
+    "statusSimulated": "Simulated data",
+    "categorySecurity": "Security",
+    "categoryResilience": "Resilience",
+    "categoryUx": "UX"
+  },
+  "Contact": {
+    "title": "Get in touch",
+    "subtitle": "Open to security & engineering roles, remote-first.",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send message",
+    "sending": "Sending…",
+    "successTitle": "Message sent",
+    "successBody": "Thanks — I'll get back to you soon.",
+    "errorGeneric": "Something went wrong. You can also email me directly at",
+    "errorRateLimited": "Too many requests. Please try again in a few minutes.",
+    "errorName": "Please enter your name.",
+    "errorEmail": "Please enter a valid email.",
+    "errorMessage": "Please enter a message (at least 10 characters).",
+    "privacyNote": "Your message is sent via email only and not stored. See the",
+    "privacyLink": "privacy page",
+    "downloadCv": "Download CV"
+  },
+  "Footer": {
+    "rights": "All rights reserved.",
+    "builtWith": "Built with Next.js, React Three Fiber & Tailwind.",
+    "source": "Source"
+  },
+  "A11y": {
+    "navigatedTo": "Navigated to {title}"
+  },
+  "Blog": {
+    "title": "Writeups",
+    "subtitle": "Notes on security engineering and the software supply chain.",
+    "readMore": "Read more",
+    "readingTime": "{minutes} min read",
+    "tags": "Tags",
+    "allPosts": "All posts",
+    "postedOn": "Posted on {date}",
+    "originalLanguageNotice": "This article is only available in its original language.",
+    "backToBlog": "Back to all writeups"
   },
   "Metadata": {
     "title": "Johan Rodriguez — Security & AppSec Engineer",
     "description": "Security & AppSec engineer building supply-chain defense and threat-detection tooling. Python, CI, strict typing. Bilingual EN/ES, remote."
+  },
+  "ThankYou": {
+    "title": "Thank you",
+    "body": "Your message was sent. I'll get back to you soon.",
+    "back": "Back to home"
   },
   "NotFound": {
     "title": "Page not found",

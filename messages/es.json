@@ -2,7 +2,8 @@
   "Common": {
     "skipToContent": "Saltar al contenido",
     "viewAll": "Ver todos",
-    "backHome": "Volver al inicio"
+    "backHome": "Volver al inicio",
+    "loading": "Cargando"
   },
   "Nav": {
     "about": "Perfil",
@@ -21,11 +22,77 @@
     "headline": "Aseguro la cadena de suministro de software",
     "subheadline": "Construyo herramientas de seguridad reales — de la defensa de la cadena de suministro a la detección de amenazas — con tests, CI y tipado estricto.",
     "ctaWork": "Ver mi trabajo",
-    "ctaContact": "Contáctame"
+    "ctaContact": "Contáctame",
+    "sceneLabel": "Visualización 3D decorativa de un grafo de dependencias siendo escaneado en busca de paquetes maliciosos."
+  },
+  "Sections": {
+    "aboutTitle": "Perfil",
+    "workTitle": "Trabajo destacado",
+    "workSubtitle": "Herramientas de seguridad que diseñé y entregué de principio a fin.",
+    "skillsTitle": "Skills",
+    "experienceTitle": "Experiencia",
+    "educationTitle": "Educación",
+    "certificationsTitle": "Certificaciones",
+    "role": "Rol",
+    "problem": "Problema",
+    "approach": "Enfoque",
+    "impact": "Impacto",
+    "stack": "Stack",
+    "viewRepo": "Ver repositorio",
+    "viewProject": "Ver proyecto",
+    "statusImplemented": "Implementado",
+    "statusDemo": "Demo / listo para backend",
+    "statusSimulated": "Datos simulados",
+    "categorySecurity": "Seguridad",
+    "categoryResilience": "Resiliencia",
+    "categoryUx": "UX"
+  },
+  "Contact": {
+    "title": "Contáctame",
+    "subtitle": "Abierto a roles de seguridad e ingeniería, remote-first.",
+    "name": "Nombre",
+    "email": "Email",
+    "message": "Mensaje",
+    "send": "Enviar mensaje",
+    "sending": "Enviando…",
+    "successTitle": "Mensaje enviado",
+    "successBody": "Gracias — te responderé pronto.",
+    "errorGeneric": "Algo salió mal. También puedes escribirme directamente a",
+    "errorRateLimited": "Demasiadas solicitudes. Inténtalo de nuevo en unos minutos.",
+    "errorName": "Por favor ingresa tu nombre.",
+    "errorEmail": "Por favor ingresa un email válido.",
+    "errorMessage": "Por favor ingresa un mensaje (mínimo 10 caracteres).",
+    "privacyNote": "Tu mensaje se envía solo por email y no se almacena. Consulta la",
+    "privacyLink": "página de privacidad",
+    "downloadCv": "Descargar CV"
+  },
+  "Footer": {
+    "rights": "Todos los derechos reservados.",
+    "builtWith": "Hecho con Next.js, React Three Fiber y Tailwind.",
+    "source": "Código"
+  },
+  "A11y": {
+    "navigatedTo": "Navegaste a {title}"
+  },
+  "Blog": {
+    "title": "Writeups",
+    "subtitle": "Notas sobre ingeniería de seguridad y la cadena de suministro de software.",
+    "readMore": "Leer más",
+    "readingTime": "{minutes} min de lectura",
+    "tags": "Etiquetas",
+    "allPosts": "Todos los artículos",
+    "postedOn": "Publicado el {date}",
+    "originalLanguageNotice": "Este artículo solo está disponible en su idioma original.",
+    "backToBlog": "Volver a todos los writeups"
   },
   "Metadata": {
     "title": "Johan Rodriguez — Ingeniero de Seguridad y AppSec",
     "description": "Ingeniero de Seguridad y AppSec: defensa de cadena de suministro y detección de amenazas. Python, CI, tipado estricto. Bilingüe, remoto."
+  },
+  "ThankYou": {
+    "title": "Gracias",
+    "body": "Tu mensaje fue enviado. Te responderé pronto.",
+    "back": "Volver al inicio"
   },
   "NotFound": {
     "title": "Página no encontrada",

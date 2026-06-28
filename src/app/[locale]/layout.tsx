@@ -9,6 +9,11 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { routing } from "@/i18n/routing";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { ThemeScript } from "@/components/theme/theme-script";
+import { SkipLink } from "@/components/ui/skip-link";
+import { MotionProvider } from "@/components/motion/motion-provider";
+import { Nav } from "@/components/nav/nav";
+import { RouteAnnouncer } from "@/components/a11y/route-announcer";
+import { Footer } from "@/components/layout/footer";
 import "../globals.css";
 
 const inter = Inter({
@@ -67,7 +72,15 @@ export default async function LocaleLayout({
       </head>
       <body className="flex min-h-full flex-col">
         <NextIntlClientProvider messages={messages}>
-          <ThemeProvider>{children}</ThemeProvider>
+          <ThemeProvider>
+            <SkipLink />
+            <MotionProvider>
+              <Nav />
+              <RouteAnnouncer />
+              {children}
+              <Footer />
+            </MotionProvider>
+          </ThemeProvider>
         </NextIntlClientProvider>
         <Analytics />
         <SpeedInsights />
