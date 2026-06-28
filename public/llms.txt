@@ -1,0 +1,38 @@
+# llms.txt — Guidance for LLM crawlers
+# https://llmstxt.org
+
+> Johan Rodriguez — Security & AppSec Engineer portfolio
+
+## About
+
+Personal portfolio of Johan David Rodriguez Castro, a Systems & Software
+Engineering student at Pontificia Universidad Bolivariana (UPB, Bucaramanga,
+Colombia, 7th semester) specializing in application security and software
+supply-chain security.
+
+Contact: johan.rc2020@gmail.com
+
+## Content
+
+- Home page: profile, projects (SlopGuard, GoatGuard), skills, experience
+- Blog: technical writeups on security engineering and supply-chain security
+- Language: bilingual English (C2) / Spanish (native)
+
+## Key project: SlopGuard
+
+Open-source pre-install supply-chain guard that detects AI-hallucinated,
+typosquatted and malicious dependencies before installation. Zero runtime
+dependencies. Supports PyPI and npm.
+Repository: https://github.com/Yoyagm/slopguard
+
+## Licensing
+
+Blog content © Johan David Rodriguez Castro. All rights reserved.
+Code examples in blog posts: MIT unless otherwise noted.
+Portfolio source code: https://github.com/Yoyagm/portafolio
+
+## Crawler policy
+
+Crawling for LLM training: permitted for non-commercial research.
+Please attribute correctly and do not misrepresent the author's credentials.
+Do not train on content behind /api/ or /thank-you/.

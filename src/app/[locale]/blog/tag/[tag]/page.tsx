@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { setRequestLocale, getTranslations } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
+import { Link, getPathname } from "@/i18n/navigation";
 import { Container } from "@/components/ui/container";
 import { Badge } from "@/components/ui/badge";
 import { getAllTags, getPostsByTag } from "@/lib/blog";
@@ -26,6 +26,13 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "Blog" });
   return {
     title: `${t("tags")}: ${tag}`,
+    // Los tags son distintos por idioma → solo canonical propio, sin hreflang cruzado.
+    alternates: {
+      canonical: getPathname({
+        href: { pathname: "/blog/tag/[tag]", params: { tag } },
+        locale: locale as Locale,
+      }),
+    },
   };
 }
 

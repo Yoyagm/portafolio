@@ -14,6 +14,8 @@ import { MotionProvider } from "@/components/motion/motion-provider";
 import { Nav } from "@/components/nav/nav";
 import { RouteAnnouncer } from "@/components/a11y/route-announcer";
 import { Footer } from "@/components/layout/footer";
+import { siteConfig } from "@/lib/site";
+import { profile } from "@/content/profile";
 import "../globals.css";
 
 const inter = Inter({
@@ -38,16 +40,56 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Metadata" });
+  const title = t("title");
+  const description = t("description");
+  const ogLocale = locale === "es" ? "es_CO" : "en_US";
+  const ogLocaleAlt = locale === "es" ? "en_US" : "es_CO";
+
   return {
-    title: t("title"),
-    description: t("description"),
-    // Feed RSS por locale (T16, RF8.9)
+    metadataBase: new URL(siteConfig.url),
+    title: { default: title, template: `%s | Johan Rodriguez` },
+    description,
+    // Hreflang EN/ES + x-default (T19, RF11.1)
     alternates: {
-      types: {
-        "application/rss+xml": [
-          { url: `/${locale}/feed.xml`, title: t("title") },
-        ],
+      canonical: `/${locale}`,
+      languages: {
+        en: "/en",
+        es: "/es",
+        "x-default": "/en",
       },
+      types: {
+        "application/rss+xml": [{ url: `/${locale}/feed.xml`, title }],
+      },
+    },
+    // OpenGraph
+    openGraph: {
+      type: "website",
+      locale: ogLocale,
+      alternateLocale: [ogLocaleAlt],
+      url: `${siteConfig.url}/${locale}`,
+      siteName: siteConfig.name,
+      title,
+      description,
+      images: [
+        {
+          url: `/api/og?locale=${locale}`,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+    },
+    // Twitter/X card
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [`/api/og?locale=${locale}`],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true },
     },
   };
 }
@@ -77,6 +119,41 @@ export default async function LocaleLayout({
     >
       <head>
         <ThemeScript nonce={nonce} />
+        {/* JSON-LD Person — nonce requerido por CSP (ADR-004, T19) */}
+        <script
+          type="application/ld+json"
+          nonce={nonce}
+          dangerouslySetInnerHTML={{
+            // .replace(/</g,…) por robustez ante un eventual cierre de </script>
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: profile.name,
+              url: siteConfig.url,
+              email: profile.email,
+              sameAs: [profile.github],
+              jobTitle:
+                locale === "es"
+                  ? "Ingeniero de Seguridad y AppSec"
+                  : "Security & AppSec Engineer",
+              // Postura honesta: estudiante avanzado / early-career (RF4.2).
+              description:
+                locale === "es"
+                  ? "Estudiante avanzado de Ingeniería de Sistemas (UPB), early-career, enfocado en seguridad de la cadena de suministro y detección de amenazas."
+                  : "Advanced Systems Engineering student (UPB), early-career, focused on software supply-chain security and threat detection.",
+              knowsLanguage: ["en", "es"],
+              affiliation: {
+                "@type": "CollegeOrUniversity",
+                name: "Pontificia Universidad Bolivariana",
+                address: {
+                  "@type": "PostalAddress",
+                  addressLocality: "Bucaramanga",
+                  addressCountry: "CO",
+                },
+              },
+            }).replace(/</g, "\\u003c"),
+          }}
+        />
       </head>
       <body className="flex min-h-full flex-col">
         <NextIntlClientProvider messages={messages}>

@@ -6,8 +6,28 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint . --max-warnings 0",
+    "lint:check": "eslint . --max-warnings 0",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx}\"",
+    "test:unit": "playwright test --project=unit",
+    "test:e2e": "playwright test --project=e2e",
+    "test": "playwright test"
   },
+  "size-limit": [
+    {
+      "name": "Initial JS bundle (gzip)",
+      "path": ".next/static/chunks/main-*.js",
+      "limit": "180 KB",
+      "gzip": true
+    },
+    {
+      "name": "Three.js chunk (gzip)",
+      "path": ".next/static/chunks/*.js",
+      "import": "{ WebGLRenderer }",
+      "limit": "160 KB",
+      "gzip": true
+    }
+  ],
   "dependencies": {
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.6.1",

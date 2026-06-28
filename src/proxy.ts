@@ -30,6 +30,13 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  // Excluye api, internos de Next, ingesta de Vercel (_vercel) y archivos con extensión.
-  matcher: ["/", "/((?!api|_next|_vercel|.*\\..*).*)"],
+  // Excluye api, internos de Next, ingesta de Vercel (_vercel), archivos con
+  // extensión (sitemap.xml, robots.txt, manifest.webmanifest, *.png…) y las
+  // rutas de metadatos generadas SIN extensión (opengraph-image, icon,
+  // apple-icon): si pasaran por el middleware i18n las redirigiría a
+  // /en/opengraph-image y romperían los <meta> y el favicon.
+  matcher: [
+    "/",
+    "/((?!api|_next|_vercel|opengraph-image|twitter-image|icon|apple-icon|.*\\..*).*)",
+  ],
 };

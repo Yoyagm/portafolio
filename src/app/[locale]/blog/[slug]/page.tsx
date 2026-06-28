@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { setRequestLocale, getTranslations } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
+import { headers } from "next/headers";
+import { Link, getPathname } from "@/i18n/navigation";
 import { Container } from "@/components/ui/container";
 import { Badge } from "@/components/ui/badge";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
+import { siteConfig } from "@/lib/site";
 import type { Locale } from "@/content/types";
 
-// En App Router, generateStaticParams recibe los params del padre YA resueltos
-// (no es Promise, a diferencia de los props de page/generateMetadata).
 export async function generateStaticParams({
   params,
 }: {
@@ -26,9 +26,35 @@ export async function generateMetadata({
   const { locale, slug } = await params;
   const result = await getPostBySlug(slug, locale as Locale);
   if (!result) return {};
+  const { meta } = result;
+  // canonical/hreflang propios del post (si no, hereda el del home → duplicados).
+  const href = { pathname: "/blog/[slug]" as const, params: { slug } };
   return {
-    title: result.meta.title,
-    description: result.meta.description,
+    title: meta.title,
+    description: meta.description,
+    alternates: {
+      canonical: getPathname({ href, locale: locale as Locale }),
+      languages: {
+        en: getPathname({ href, locale: "en" }),
+        es: getPathname({ href, locale: "es" }),
+        "x-default": getPathname({ href, locale: "en" }),
+      },
+    },
+    openGraph: {
+      type: "article",
+      title: meta.title,
+      description: meta.description,
+      publishedTime: meta.date,
+      tags: meta.tags,
+      images: [
+        {
+          url: `/api/og?locale=${locale}&title=${encodeURIComponent(meta.title)}`,
+          width: 1200,
+          height: 630,
+          alt: meta.title,
+        },
+      ],
+    },
   };
 }
 
@@ -40,14 +66,41 @@ export default async function BlogPostPage({
   const { locale, slug } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("Blog");
+  const nonce = (await headers()).get("x-nonce") ?? undefined;
 
   const result = await getPostBySlug(slug, locale as Locale);
   if (!result) notFound();
 
   const { content, meta } = result;
 
+  // JSON-LD TechArticle (T19, RF11.2)
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    headline: meta.title,
+    description: meta.description,
+    datePublished: meta.date,
+    author: {
+      "@type": "Person",
+      name: "Johan David Rodriguez Castro",
+      url: siteConfig.url,
+    },
+    url: `${siteConfig.url}/${locale}/blog/${slug}`,
+    inLanguage: meta.originalLocale,
+    keywords: meta.tags.join(", "),
+  };
+
   return (
     <main id="main" className="min-h-screen py-20 sm:py-28">
+      {/* JSON-LD con nonce (ADR-004, CSP) */}
+      <script
+        type="application/ld+json"
+        nonce={nonce}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
+
       <Container className="max-w-3xl">
         {/* Aviso de idioma original (SC 3.1.2, RF8.6-8.7) */}
         {meta.isTranslationFallback && (
@@ -102,7 +155,6 @@ export default async function BlogPostPage({
         </header>
 
         {/* Contenido MDX */}
-        {/* Si es fallback, el contenedor tiene lang del locale original (SC 3.1.2) */}
         <div lang={meta.isTranslationFallback ? meta.originalLocale : undefined}>
           {content}
         </div>

@@ -3,6 +3,7 @@ import { Section } from "@/components/ui/section";
 import { Reveal } from "@/components/motion/reveal";
 import { Link } from "@/i18n/navigation";
 import { profile } from "@/content/profile";
+import { ContactForm } from "@/components/contact/contact-form";
 import type { Locale } from "@/content/types";
 
 export async function Contact({ locale }: { locale: Locale }) {
@@ -17,7 +18,9 @@ export async function Contact({ locale }: { locale: Locale }) {
         <p className="mt-2 text-muted">{t("subtitle")}</p>
       </Reveal>
 
-      {/* TODO Ola 5: <ContactForm/> */}
+      <Reveal delay={0.06}>
+        <ContactForm />
+      </Reveal>
 
       <Reveal delay={0.08}>
         <ul
