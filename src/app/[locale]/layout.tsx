@@ -41,6 +41,14 @@ export async function generateMetadata({
   return {
     title: t("title"),
     description: t("description"),
+    // Feed RSS por locale (T16, RF8.9)
+    alternates: {
+      types: {
+        "application/rss+xml": [
+          { url: `/${locale}/feed.xml`, title: t("title") },
+        ],
+      },
+    },
   };
 }
 

@@ -1,0 +1,99 @@
+---
+title: "Cómo SlopGuard detecta el slopsquatting: un motor de 5 capas"
+description: "Un análisis técnico del motor de detección detrás de SlopGuard — el guardián pre-instalación que detecta dependencias alucinadas por IA, typosquatted y maliciosas antes de que lleguen a tu máquina."
+date: 2026-01-15
+tags: [seguridad, supply-chain, python, npm]
+locale: es
+slug: how-slopguard-detects-slopsquatting
+readingMinutes: 9
+---
+
+## La amenaza: el slopsquatting
+
+Los modelos de lenguaje son asistentes de programación productivos, pero tienen un punto ciego: a veces recomiendan paquetes que no existen. Investigadores presentaron en USENIX Security 2025 que aproximadamente el 20 % de los nombres de paquetes sugeridos por IA son alucinados, con alrededor del 38 % siendo near-misses de nombres de paquetes reales. Este fenómeno se llama ahora **slopsquatting**.
+
+El ataque es simple: un adversario monitorea las salidas de los LLMs y pre-registra esos nombres alucinados en PyPI o npm con un payload que exfiltra credenciales, instala una puerta trasera o mina criptomonedas — todo desencadenado con un `pip install` o `npm install` estándar.
+
+Lo que hace al slopsquatting insidioso es que la IA parece segura. El nombre del paquete suena plausible, el fragmento de código parece correcto y no hay ninguna advertencia en el toolchain — hasta que el script `setup.py` o `postinstall` del paquete malicioso se ejecuta.
+
+## Por qué las defensas existentes no son suficientes
+
+Los escáneres de dependencias (Snyk, pip-audit, npm audit) se ejecutan **después** de la instalación. Para entonces, el hook `postinstall` ya se ejecutó. Las puntuaciones de reputación del registro ayudan, pero los paquetes recién registrados para squatting aún no tienen reputación. Los verificadores de errores tipográficos simples dependen de umbrales fijos de distancia de edición que producen demasiados falsos positivos en paquetes legítimos con nombres cortos.
+
+La brecha está en el punto de **interceptación pre-instalación**, antes de que cualquier código del paquete toque tu máquina.
+
+## El motor de detección de 5 capas de SlopGuard
+
+SlopGuard intercepta el comando de instalación y ejecuta cada nombre de paquete a través de cinco capas de análisis secuenciales (numeradas 0–4). Cada capa contribuye una puntuación ponderada; solo el **agregado** determina el veredicto final. Ninguna capa individual — incluida la capa LLM opcional — puede bloquear un paquete por sí sola. Este es un invariante estructural demostrable, no una configuración de política.
+
+### Capa 0 — Existencia en el registro
+
+La primera verificación es la más económica: ¿existe este paquete en el registro de destino? Para PyPI, SlopGuard consulta la API JSON (`pypi.org/pypi/{nombre}/json`). Para npm, consulta el endpoint de metadatos del registro. Si el paquete no existe, la puntuación empieza alta y las capas siguientes refinan el veredicto. Esta capa también detecta paquetes que fueron recientemente **eliminados** — una señal usada en algunos ataques a la cadena de suministro.
+
+### Capa 1 — Distancia de typosquatting (determinista, sin red)
+
+Incluso si un paquete existe, podría ser una variante typosquatted de un paquete popular. SlopGuard calcula dos métricas complementarias contra un conjunto curado de paquetes de alto número de descargas:
+
+- **Distancia Damerau-Levenshtein** — cuenta inserciones, eliminaciones, sustituciones y transposiciones. Detecta `reqeusts` → `requests`.
+- **Similitud Jaro-Winkler** — pondera más el acuerdo de prefijo, que es común en los esquemas de nomenclatura de paquetes. Detecta `urllib4` → `urllib3`.
+
+Esta capa es completamente local y determinista. No añade latencia de red y no puede ser limitada por tasa ni desconectada. La puntuación está ajustada para equilibrar la sensibilidad frente a paquetes populares con grandes ecosistemas (por ejemplo, paquetes npm con scope) para minimizar los falsos positivos.
+
+### Capa 2 — Inteligencia de amenazas de OSV.dev
+
+La [base de datos Open Source Vulnerabilities](https://osv.dev) agrega avisos de seguridad de PyPI, npm y decenas de otros ecosistemas, incluidos reportes de paquetes maliciosos. SlopGuard consulta la API batch de OSV. Si un paquete aparece en OSV con una clasificación `MALICIOUS` o `CRITICAL`, la capa devuelve una puntuación máxima.
+
+Fundamentalmente, esta capa usa **degradación fail-closed**: si la API de OSV no está disponible o devuelve una respuesta inesperada, SlopGuard no pasa el paquete silenciosamente. En cambio, trata la capa como inconclusa y ajusta el agregado en consecuencia, de modo que una interrupción de red no pueda explotarse para eludir esta verificación.
+
+### Capa 3 — Metadatos de publicación
+
+Los paquetes nuevos con patrones de metadatos sospechosos son una fuerte señal de squatting. La capa 3 examina:
+
+- **Antigüedad**: paquetes publicados horas o días antes del escaneo.
+- **Velocidad de descargas**: un pico de descargas poco después de la publicación puede indicar despliegue dirigido a pipelines de CI comprometidos.
+- **Historial del mantenedor**: publicadores primerizos sin paquetes previos en el ecosistema.
+
+Estas señales se normalizan y contribuyen una puntuación proporcional, no un pasa/falla binario, para evitar bloquear paquetes nuevos legítimos.
+
+### Capa 4 — Capa de alucinación LLM opt-in
+
+La capa final es opcional y estructuralmente diferente de las primeras cuatro. Cuando está habilitada, envía el nombre del paquete y contexto a un LLM y pregunta: "¿Este nombre parece algo que un modelo de lenguaje podría alucinar?" La respuesta es una señal entre muchas.
+
+La decisión clave de diseño es el **invariante anti-falso-positivo**: la salida de la capa LLM está acotada de forma que incluso una puntuación máxima de esta capa por sí sola no puede llevar el veredicto agregado a "bloquear". Solo puede contribuir a una decisión de bloqueo cuando se combina con señales de otras capas. Esto significa que un nombre de paquete legítimo pero inusual (por ejemplo, una nueva biblioteca experimental) no será bloqueado solo porque el LLM lo encuentre sospechoso.
+
+Este invariante se aplica estructuralmente en el motor de puntuación, no mediante configuración o política que podría configurarse incorrectamente.
+
+## Cero dependencias en tiempo de ejecución
+
+Una de las restricciones de diseño explícitas de SlopGuard es **cero dependencias en tiempo de ejecución**. El motor de detección está implementado en Python 3.11+ usando solo la biblioteca estándar. Esto significa:
+
+- El `pip install` para instalar el guardián en sí no puede introducir una vulnerabilidad de la cadena de suministro en el guardián.
+- Sin conflictos de versión con el proyecto que se está escaneando.
+- El tiempo de inicio en frío es determinista.
+
+El frontend SaaS (FastAPI + Next.js) y las integraciones de CI (GitHub Action) sí tienen dependencias, pero están aisladas del núcleo de detección.
+
+## Puntos de integración
+
+SlopGuard incluye cuatro frontends dirigidos a diferentes puntos de integración:
+
+| Frontend | Cuándo se ejecuta |
+|----------|------------------|
+| **CLI** | Manual: `slopguard check requests` |
+| **pre-commit hook** | Antes de cada commit que modifica archivos de requerimientos |
+| **GitHub Action** | En cada PR que toca archivos de dependencias |
+| **SaaS auto-hospedable** | Aplicación de políticas para todo el equipo vía API |
+
+Cada frontend invoca el mismo motor de detección subyacente y comparte los mismos invariantes de puntuación.
+
+## Cobertura de tests y contratos de arquitectura
+
+El motor de detección está verificado por una suite de 2687 tests recogidos (2033 funciones `def test_`, el resto parametrizados). El pipeline de CI aplica un gate estricto de ≥ 90 % de cobertura global y ≥ 95 % en rutas críticas. Adicionalmente, ocho contratos de arquitectura con import-linter previenen el acoplamiento entre capas a medida que crece la base de código — una capa de detección no puede depender de un componente frontend, por ejemplo.
+
+Este nivel de verificación es importante para una herramienta de seguridad: los invariantes descritos arriba están validados por tests basados en propiedades y de frontera, no solo con la lectura del código.
+
+## El panorama más amplio
+
+El slopsquatting es un síntoma de un problema más amplio de confianza: los asistentes de código con IA están entrenados para producir salida plausible, no salida verificada. A medida que el desarrollo asistido por LLM se convierte en la norma, la brecha pre-instalación en el toolchain de seguridad se convierte en una superficie de ataque crítica. SlopGuard está diseñado para cerrar esa brecha sin añadir fricción al flujo de trabajo del desarrollador ni introducir nuevas dependencias.
+
+El código fuente está disponible en [GitHub](https://github.com/Yoyagm/slopguard).

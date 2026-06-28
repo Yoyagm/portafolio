@@ -1,0 +1,99 @@
+---
+title: "How SlopGuard Detects Slopsquatting: A 5-Layer Engine"
+description: "A technical deep-dive into the detection engine behind SlopGuard — the pre-install supply-chain guard that catches AI-hallucinated, typosquatted and malicious packages before they reach your machine."
+date: 2026-01-15
+tags: [security, supply-chain, python, npm]
+locale: en
+slug: how-slopguard-detects-slopsquatting
+readingMinutes: 8
+---
+
+## The Threat: Slopsquatting
+
+Large language models are productive coding assistants, but they have a blind spot: they sometimes recommend packages that do not exist. Researchers presented at USENIX Security 2025 found that roughly 20 % of AI-suggested package names are hallucinated, with around 38 % being near-misses on real package names. This phenomenon is now called **slopsquatting**.
+
+The attack is simple: an adversary watches LLM outputs and pre-registers those hallucinated names on PyPI or npm with a payload that exfiltrates secrets, installs a backdoor, or mines cryptocurrency — all triggered on a standard `pip install` or `npm install`.
+
+What makes slopsquatting insidious is that the AI looks confident. The package name sounds plausible, the code snippet looks correct, and there is no warning anywhere in the toolchain — until the malicious package's `setup.py` or `postinstall` script runs.
+
+## Why Existing Defenses Fall Short
+
+Dependency scanners (Snyk, pip-audit, npm audit) run **after** installation. By then, the `postinstall` hook has already executed. Registry reputation scores help, but newly-registered squatted packages have no reputation yet. Simple typo checkers rely on fixed edit-distance thresholds that produce too many false positives on legitimate packages with short names.
+
+The gap is at the **pre-install** interception point, before any code from the package touches your machine.
+
+## SlopGuard's 5-Layer Detection Engine
+
+SlopGuard intercepts the install command and runs every package name through five sequential analysis layers (numbered 0–4). Each layer contributes a weighted score; only the **aggregate** determines the final verdict. No single layer — including the optional LLM layer — can block a package on its own. This is a provable structural invariant, not a policy setting.
+
+### Layer 0 — Registry Existence
+
+The first check is the cheapest: does this package exist in the target registry? For PyPI, SlopGuard queries the JSON API (`pypi.org/pypi/{name}/json`). For npm, it queries the registry metadata endpoint. If the package does not exist, the score starts high and subsequent layers refine the verdict. This layer also surfaces packages that were recently **deleted** — a signal used in some supply-chain attacks.
+
+### Layer 1 — Typosquatting Distance (Deterministic, Network-Free)
+
+Even if a package exists, it might be a typosquatted variant of a popular package. SlopGuard computes two complementary metrics against a curated set of high-download packages:
+
+- **Damerau-Levenshtein distance** — counts insertions, deletions, substitutions and transpositions. Catches `reqeusts` → `requests`.
+- **Jaro-Winkler similarity** — weights prefix agreement more heavily, which is common in package naming schemes. Catches `urllib4` → `urllib3`.
+
+This layer is entirely local and deterministic. It adds no network latency and cannot be rate-limited or taken offline. The scoring is tuned to balance sensitivity against popular packages with large ecosystems (e.g., scoped npm packages) to minimise false positives.
+
+### Layer 2 — OSV.dev Threat Intelligence
+
+The [Open Source Vulnerabilities database](https://osv.dev) aggregates security advisories from PyPI, npm and dozens of other ecosystems, including malicious-package reports. SlopGuard queries the OSV batch API. If a package appears in OSV with a `MALICIOUS` or `CRITICAL` classification, the layer returns a maximum score.
+
+Critically, this layer uses **fail-closed degradation**: if the OSV API is unreachable or returns an unexpected response, SlopGuard does not silently pass the package. Instead, it treats the layer as inconclusive and adjusts the aggregate accordingly, so a network outage cannot be exploited to bypass this check.
+
+### Layer 3 — Publication Metadata
+
+New packages with suspicious metadata patterns are a strong signal of squatting. Layer 3 examines:
+
+- **Age**: packages published hours or days before the scan.
+- **Download velocity**: a spike in downloads shortly after publication can indicate targeted deployment to compromised CI pipelines.
+- **Maintainer history**: first-time publishers with no prior packages in the ecosystem.
+
+These signals are normalized and contribute a proportional score, not a binary pass/fail, to avoid blocking legitimate new packages.
+
+### Layer 4 — Opt-In LLM Hallucination Layer
+
+The final layer is optional and structurally different from the first four. When enabled, it submits the package name and context to an LLM and asks: "Does this name look like something a language model might hallucinate?" The response is one signal among many.
+
+The key design decision is the **anti-false-positive invariant**: the LLM layer's output is bounded so that even a maximum score from this layer alone cannot push the aggregate verdict to "block". It can only contribute to a block decision when combined with signals from other layers. This means a legitimate but unusual package name (say, a new experimental library) will not be blocked just because the LLM finds it suspicious.
+
+This invariant is enforced structurally in the scoring engine, not through configuration or policy that could be misconfigured.
+
+## Zero Runtime Dependencies
+
+One of SlopGuard's explicit design constraints is **zero runtime dependencies**. The detection engine is implemented in Python 3.11+ using the standard library only. This means:
+
+- No `pip install` to install the guard itself cannot introduce a supply-chain vulnerability into the guard.
+- No version conflicts with the project being scanned.
+- Cold-start time is deterministic.
+
+The SaaS frontend (FastAPI + Next.js) and the CI integrations (GitHub Action) do have dependencies, but those are isolated from the detection core.
+
+## Integration Points
+
+SlopGuard ships four frontends targeting different integration points:
+
+| Frontend | When it runs |
+|----------|-------------|
+| **CLI** | Manual: `slopguard check requests` |
+| **pre-commit hook** | Before each commit that modifies requirements files |
+| **GitHub Action** | On every PR that touches dependency files |
+| **Self-hostable SaaS** | Team-wide policy enforcement via API |
+
+Every frontend invokes the same underlying detection engine and shares the same scoring invariants.
+
+## Test Coverage and Architecture Contracts
+
+The detection engine is verified by a suite of 2687 collected tests (2033 `def test_` functions, the rest parametrized). The CI pipeline enforces a hard gate of ≥ 90 % global coverage and ≥ 95 % on critical paths. Additionally, eight import-linter architecture contracts prevent cross-layer coupling as the codebase grows — a detection layer cannot depend on a frontend component, for example.
+
+This level of verification matters for a security tool: the invariants described above are validated by property-based and boundary tests, not just by reading the code.
+
+## The Bigger Picture
+
+Slopsquatting is a symptom of a broader trust problem: AI code assistants are trained to produce plausible output, not verified output. As LLM-assisted development becomes the norm, the pre-install gap in the security toolchain becomes a critical attack surface. SlopGuard is designed to close that gap without adding friction to the developer workflow or introducing new dependencies.
+
+The source code is available on [GitHub](https://github.com/Yoyagm/slopguard).
