@@ -7,7 +7,6 @@ export function ThemeScript({ nonce }: { nonce?: string }) {
   return (
     <script
       nonce={nonce}
-      // eslint-disable-next-line react/no-danger
       dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }}
     />
   );

@@ -37,17 +37,24 @@ function applyTheme(theme: Theme): "light" | "dark" {
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>("system");
-  const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark">("dark");
+  // Inicialización lazy: el estado se deriva de lo que ThemeScript ya aplicó
+  // antes de hidratar (localStorage + clase .dark en <html>), evitando setState
+  // sincrónico en un effect de montaje.
+  const [theme, setThemeState] = useState<Theme>(() =>
+    typeof window === "undefined"
+      ? "system"
+      : ((localStorage.getItem(STORAGE_KEY) as Theme | null) ?? "system"),
+  );
+  const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark">(() =>
+    typeof window === "undefined"
+      ? "dark"
+      : document.documentElement.classList.contains("dark")
+        ? "dark"
+        : "light",
+  );
 
-  // Sincroniza el estado con lo que ThemeScript ya aplicó antes de hidratar.
-  useEffect(() => {
-    const stored = (localStorage.getItem(STORAGE_KEY) as Theme | null) ?? "system";
-    setThemeState(stored);
-    setResolvedTheme(applyTheme(stored));
-  }, []);
-
-  // Reacciona a cambios del SO cuando el modo es "system".
+  // Reacciona a cambios del SO cuando el modo es "system" (setState en callback,
+  // no en el cuerpo del effect).
   useEffect(() => {
     if (theme !== "system") return;
     const mq = window.matchMedia("(prefers-color-scheme: dark)");

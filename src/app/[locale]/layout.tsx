@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
@@ -51,6 +52,9 @@ export default async function LocaleLayout({
   }
   setRequestLocale(locale);
   const messages = await getMessages();
+  // Nonce de la CSP (lo inyecta proxy.ts). Leer headers() hace el render dinámico
+  // (trade-off aceptado en ADR-004 para una CSP estricta sin 'unsafe-inline').
+  const nonce = (await headers()).get("x-nonce") ?? undefined;
 
   return (
     <html
@@ -59,7 +63,7 @@ export default async function LocaleLayout({
       className={`${inter.variable} ${jetbrainsMono.variable} h-full`}
     >
       <head>
-        <ThemeScript />
+        <ThemeScript nonce={nonce} />
       </head>
       <body className="flex min-h-full flex-col">
         <NextIntlClientProvider messages={messages}>
