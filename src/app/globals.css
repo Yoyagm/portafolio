@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+/* Dark mode por clase en <html> (la aplica ThemeScript antes de pintar). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Tokens semánticos → utilidades (bg-bg, text-fg, text-accent, border-border, …) */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-alert: var(--alert);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jbmono), ui-monospace, "JetBrains Mono", monospace;
+}
+
+/* Light (fallback cuando no hay .dark) */
+:root {
+  --bg: #f6f8fa;
+  --surface: #ffffff;
+  --surface-2: #eef2f5;
+  --fg: #0b1117;
+  --muted: #4f5b66;
+  --border: #d7dee4;
+  --accent: #0f8f63;
+  --accent-fg: #ffffff;
+  --alert: #b45309;
+}
+
+/* Dark "security terminal" */
+.dark {
+  --bg: #06090b;
+  --surface: #0c1116;
+  --surface-2: #11181e;
+  --fg: #e6edf3;
+  --muted: #93a1ad;
+  --border: #1b262d;
+  --accent: #36d399;
+  --accent-fg: #04140d;
+  --alert: #f5a524;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light dark;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Indicador de foco visible y consistente (WCAG 2.4.7 / 1.4.11). */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--color-accent) 30%, transparent);
+}
+
+/* Respeta prefers-reduced-motion globalmente (RNF2.2, fuente canónica). */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

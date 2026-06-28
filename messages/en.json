@@ -1,0 +1,40 @@
+{
+  "Common": {
+    "skipToContent": "Skip to content",
+    "viewAll": "View all",
+    "backHome": "Back to home"
+  },
+  "Nav": {
+    "about": "About",
+    "work": "Work",
+    "skills": "Skills",
+    "experience": "Experience",
+    "blog": "Blog",
+    "contact": "Contact",
+    "toggleTheme": "Toggle theme",
+    "toggleLanguage": "Switch language",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "Hero": {
+    "eyebrow": "Security & AppSec Engineer",
+    "headline": "Securing the software supply chain",
+    "subheadline": "I build real security tooling — from supply-chain defense to threat detection — backed by tests, CI, and strict typing.",
+    "ctaWork": "View my work",
+    "ctaContact": "Get in touch"
+  },
+  "Metadata": {
+    "title": "Johan Rodriguez — Security & AppSec Engineer",
+    "description": "Security & AppSec engineer building supply-chain defense and threat-detection tooling. Python, CI, strict typing. Bilingual EN/ES, remote."
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "description": "The page you are looking for doesn't exist.",
+    "back": "Back to home"
+  },
+  "Error": {
+    "title": "Something went wrong",
+    "description": "An unexpected error occurred.",
+    "retry": "Try again"
+  }
+}

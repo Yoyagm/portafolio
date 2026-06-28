@@ -1,0 +1,40 @@
+{
+  "Common": {
+    "skipToContent": "Saltar al contenido",
+    "viewAll": "Ver todos",
+    "backHome": "Volver al inicio"
+  },
+  "Nav": {
+    "about": "Perfil",
+    "work": "Proyectos",
+    "skills": "Skills",
+    "experience": "Experiencia",
+    "blog": "Blog",
+    "contact": "Contacto",
+    "toggleTheme": "Cambiar tema",
+    "toggleLanguage": "Cambiar idioma",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú"
+  },
+  "Hero": {
+    "eyebrow": "Ingeniero de Seguridad y AppSec",
+    "headline": "Aseguro la cadena de suministro de software",
+    "subheadline": "Construyo herramientas de seguridad reales — de la defensa de la cadena de suministro a la detección de amenazas — con tests, CI y tipado estricto.",
+    "ctaWork": "Ver mi trabajo",
+    "ctaContact": "Contáctame"
+  },
+  "Metadata": {
+    "title": "Johan Rodriguez — Ingeniero de Seguridad y AppSec",
+    "description": "Ingeniero de Seguridad y AppSec: defensa de cadena de suministro y detección de amenazas. Python, CI, tipado estricto. Bilingüe, remoto."
+  },
+  "NotFound": {
+    "title": "Página no encontrada",
+    "description": "La página que buscas no existe.",
+    "back": "Volver al inicio"
+  },
+  "Error": {
+    "title": "Algo salió mal",
+    "description": "Ocurrió un error inesperado.",
+    "retry": "Reintentar"
+  }
+}
