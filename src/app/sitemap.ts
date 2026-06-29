@@ -6,7 +6,11 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site";
 import { getAllPosts, getAllTags } from "@/lib/blog";
+import { getPathname } from "@/i18n/navigation";
 import type { Locale } from "@/content/types";
+
+// Rutas de páginas localizadas (href interno → URL real por locale).
+const LOCALIZED_PAGES = ["/projects", "/about", "/contact"] as const;
 
 const locales: Locale[] = ["en", "es"];
 // Fecha de última modificación base (actualizar en cada deploy relevante)
@@ -41,6 +45,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
       alternates: alternates("/blog"),
     })),
+    // Páginas dedicadas localizadas (/projects, /about, /contact)
+    ...LOCALIZED_PAGES.flatMap((href) => {
+      const en = `${baseUrl}${getPathname({ href, locale: "en" })}`;
+      const es = `${baseUrl}${getPathname({ href, locale: "es" })}`;
+      const languages = { en, es };
+      return locales.map((l) => ({
+        url: l === "en" ? en : es,
+        lastModified: lastMod,
+        changeFrequency: "monthly" as const,
+        priority: href === "/projects" ? 0.9 : 0.7,
+        alternates: { languages },
+      }));
+    }),
     // Privacy
     {
       url: `${baseUrl}/en/privacy`,

@@ -10,6 +10,9 @@ export const routing = defineRouting({
   // Pathnames localizados (RF2). Las rutas dinámicas comparten patrón en ambos locales.
   pathnames: {
     "/": "/",
+    "/projects": { en: "/projects", es: "/proyectos" },
+    "/about": { en: "/about", es: "/sobre-mi" },
+    "/contact": { en: "/contact", es: "/contacto" },
     "/blog": "/blog",
     "/blog/[slug]": "/blog/[slug]",
     "/blog/tag/[tag]": "/blog/tag/[tag]",

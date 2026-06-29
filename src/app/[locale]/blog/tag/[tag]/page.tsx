@@ -51,7 +51,7 @@ export default async function TagPage({
   if (posts.length === 0) notFound();
 
   return (
-    <main id="main" className="min-h-screen py-20 sm:py-28">
+    <main id="main" tabIndex={-1} className="min-h-screen py-20 sm:py-28">
       <Container>
         {/* Encabezado */}
         <header className="mb-12">

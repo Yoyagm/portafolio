@@ -6,6 +6,8 @@
     "loading": "Loading"
   },
   "Nav": {
+    "home": "Home",
+    "projects": "Projects",
     "about": "About",
     "work": "Work",
     "skills": "Skills",
@@ -103,5 +105,19 @@
     "title": "Something went wrong",
     "description": "An unexpected error occurred.",
     "retry": "Try again"
+  },
+  "Pages": {
+    "projectsTitle": "Projects",
+    "projectsIntro": "Security tooling I designed and shipped end to end — from supply-chain defense to mobile hardening.",
+    "aboutTitle": "About",
+    "aboutIntro": "Security engineer who builds real tools, not just findings — backed by tests, CI, and strict typing.",
+    "contactTitle": "Get in touch",
+    "contactIntro": "Open to security & engineering roles, remote-first.",
+    "featuredWork": "Featured work",
+    "viewAllProjects": "View all projects",
+    "aboutCta": "More about me",
+    "contactCtaTitle": "Let's work together",
+    "contactCtaBody": "I'm open to security & engineering roles, remote-first. Tell me what you're building.",
+    "contactCtaButton": "Get in touch"
   }
 }

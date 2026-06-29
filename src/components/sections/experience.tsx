@@ -16,34 +16,44 @@ export async function Experience({ locale }: { locale: Locale }) {
         </h2>
       </Reveal>
 
-      {/* Timeline de experiencia */}
-      <ol className="mt-10 space-y-10" role="list" aria-label="Work experience">
-        {experience.map((exp, i) => (
-          <Reveal key={i} delay={i * 0.07}>
-            <li className="relative border-l border-border pl-6">
+      {/* Timeline de experiencia. El Reveal envuelve el <ol> completo (no cada
+          <li>) para no romper la relación ol>li requerida por a11y (axe listitem). */}
+      <Reveal>
+        <ol
+          className="mt-10 space-y-10"
+          role="list"
+          aria-label="Work experience"
+        >
+          {experience.map((exp, i) => (
+            <li key={i} className="relative border-l border-border pl-6">
               {/* Nodo de línea de tiempo */}
               <span
                 aria-hidden="true"
                 className="absolute -left-1.5 top-1 size-3 rounded-full border border-border bg-accent"
               />
               <div className="flex flex-col gap-0.5">
-                <h3 className="font-semibold text-fg">{pick(exp.role, locale)}</h3>
+                <h3 className="font-semibold text-fg">
+                  {pick(exp.role, locale)}
+                </h3>
                 <p className="text-sm text-muted">
-                  {exp.org} · {pick(exp.period, locale)} · {pick(exp.location, locale)}
+                  {exp.org} · {pick(exp.period, locale)} ·{" "}
+                  {pick(exp.location, locale)}
                 </p>
               </div>
               <ul className="mt-3 space-y-1.5" role="list">
                 {exp.bullets.map((bullet, bi) => (
                   <li key={bi} className="flex gap-2 text-sm text-muted">
-                    <span aria-hidden="true" className="mt-0.5 shrink-0 text-accent">›</span>
+                    <span aria-hidden="true" className="mt-0.5 shrink-0 text-accent">
+                      ›
+                    </span>
                     {pick(bullet, locale)}
                   </li>
                 ))}
               </ul>
             </li>
-          </Reveal>
-        ))}
-      </ol>
+          ))}
+        </ol>
+      </Reveal>
 
       {/* Educación */}
       <Reveal delay={0.1}>

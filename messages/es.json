@@ -6,7 +6,9 @@
     "loading": "Cargando"
   },
   "Nav": {
-    "about": "Perfil",
+    "home": "Inicio",
+    "projects": "Proyectos",
+    "about": "Sobre mí",
     "work": "Proyectos",
     "skills": "Skills",
     "experience": "Experiencia",
@@ -103,5 +105,19 @@
     "title": "Algo salió mal",
     "description": "Ocurrió un error inesperado.",
     "retry": "Reintentar"
+  },
+  "Pages": {
+    "projectsTitle": "Proyectos",
+    "projectsIntro": "Herramientas de seguridad que diseñé y entregué de principio a fin — de la defensa de la cadena de suministro al hardening móvil.",
+    "aboutTitle": "Sobre mí",
+    "aboutIntro": "Ingeniero de seguridad que construye herramientas reales, no solo hallazgos — con tests, CI y tipado estricto.",
+    "contactTitle": "Contáctame",
+    "contactIntro": "Abierto a roles de seguridad e ingeniería, remote-first.",
+    "featuredWork": "Trabajo destacado",
+    "viewAllProjects": "Ver todos los proyectos",
+    "aboutCta": "Más sobre mí",
+    "contactCtaTitle": "Trabajemos juntos",
+    "contactCtaBody": "Estoy abierto a roles de seguridad e ingeniería, remote-first. Cuéntame qué estás construyendo.",
+    "contactCtaButton": "Contáctame"
   }
 }

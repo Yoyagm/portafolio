@@ -1,10 +1,8 @@
 import { setRequestLocale } from "next-intl/server";
 import { Hero } from "@/components/sections/hero";
 import { About } from "@/components/sections/about";
-import { CaseStudies } from "@/components/sections/case-studies";
-import { Skills } from "@/components/sections/skills";
-import { Experience } from "@/components/sections/experience";
-import { Contact } from "@/components/sections/contact";
+import { FeaturedProjects } from "@/components/sections/featured-projects";
+import { ContactCta } from "@/components/sections/contact-cta";
 import type { Locale } from "@/content/types";
 
 export default async function HomePage({
@@ -19,14 +17,14 @@ export default async function HomePage({
 
   const loc = locale as Locale;
 
+  // Landing híbrida: cuenta la historia y deriva a las páginas dedicadas
+  // (/projects, /about, /contact) para el detalle.
   return (
-    <main id="main">
+    <main id="main" tabIndex={-1}>
       <Hero locale={loc} />
       <About locale={loc} />
-      <CaseStudies locale={loc} />
-      <Skills locale={loc} />
-      <Experience locale={loc} />
-      <Contact locale={loc} />
+      <FeaturedProjects locale={loc} />
+      <ContactCta locale={loc} />
     </main>
   );
 }

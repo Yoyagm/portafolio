@@ -6,17 +6,26 @@ import { profile } from "@/content/profile";
 import { ContactForm } from "@/components/contact/contact-form";
 import type { Locale } from "@/content/types";
 
-export async function Contact({ locale }: { locale: Locale }) {
+export async function Contact({
+  locale,
+  hideHeading = false,
+}: {
+  locale: Locale;
+  /** Oculta el eyebrow propio cuando la página ya aporta un h1. */
+  hideHeading?: boolean;
+}) {
   const t = await getTranslations({ locale, namespace: "Contact" });
 
   return (
     <Section id="contact">
-      <Reveal>
-        <h2 className="font-mono text-sm uppercase tracking-widest text-accent">
-          {t("title")}
-        </h2>
-        <p className="mt-2 text-muted">{t("subtitle")}</p>
-      </Reveal>
+      {!hideHeading && (
+        <Reveal>
+          <h2 className="font-mono text-sm uppercase tracking-widest text-accent">
+            {t("title")}
+          </h2>
+          <p className="mt-2 text-muted">{t("subtitle")}</p>
+        </Reveal>
+      )}
 
       <Reveal delay={0.06}>
         <ContactForm />

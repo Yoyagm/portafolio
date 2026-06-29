@@ -7,7 +7,14 @@ import { caseStudies } from "@/content/case-studies";
 import { pick } from "@/content/types";
 import type { Locale, FeatureStatus, FeatureCategory } from "@/content/types";
 
-export async function CaseStudies({ locale }: { locale: Locale }) {
+export async function CaseStudies({
+  locale,
+  hideHeading = false,
+}: {
+  locale: Locale;
+  /** Oculta el eyebrow propio cuando la página ya aporta un h1. */
+  hideHeading?: boolean;
+}) {
   const t = await getTranslations({ locale, namespace: "Sections" });
 
   const statusLabel: Record<FeatureStatus, string> = {
@@ -26,12 +33,14 @@ export async function CaseStudies({ locale }: { locale: Locale }) {
 
   return (
     <Section id="work">
-      <Reveal>
-        <h2 className="font-mono text-sm uppercase tracking-widest text-accent">
-          {t("workTitle")}
-        </h2>
-        <p className="mt-2 text-muted">{t("workSubtitle")}</p>
-      </Reveal>
+      {!hideHeading && (
+        <Reveal>
+          <h2 className="font-mono text-sm uppercase tracking-widest text-accent">
+            {t("workTitle")}
+          </h2>
+          <p className="mt-2 text-muted">{t("workSubtitle")}</p>
+        </Reveal>
+      )}
 
       <div className="mt-16 flex flex-col gap-20">
         {sorted.map((cs) => (

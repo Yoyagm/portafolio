@@ -3,20 +3,28 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import type { AppPathnames } from "@/i18n/routing";
 import { cn } from "@/lib/cn";
 
-export type AnchorLink = {
-  id: string;
+// Solo rutas estáticas (sin params) son válidas como href directo de nav.
+export type StaticPathname = Exclude<
+  AppPathnames,
+  "/blog/[slug]" | "/blog/tag/[tag]"
+>;
+
+export type NavLink = {
+  href: StaticPathname;
   label: string;
+  active: boolean;
 };
 
 interface MobileMenuProps {
-  anchorLinks: AnchorLink[];
+  links: NavLink[];
 }
 
 const PANEL_ID = "mobile-menu-panel";
 
-export function MobileMenu({ anchorLinks }: MobileMenuProps) {
+export function MobileMenu({ links }: MobileMenuProps) {
   const t = useTranslations("Nav");
   const [isOpen, setIsOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
@@ -40,11 +48,9 @@ export function MobileMenu({ anchorLinks }: MobileMenuProps) {
     const panel = panelRef.current;
     if (!panel) return;
 
-    // Hace inert el contenido principal para que AT no lo lean
     const mainEl = document.getElementById("main");
     if (mainEl) mainEl.inert = true;
 
-    // Foco inicial al primer elemento del panel
     const getFocusable = () =>
       Array.from(
         panel.querySelectorAll<HTMLElement>(
@@ -84,18 +90,6 @@ export function MobileMenu({ anchorLinks }: MobileMenuProps) {
     };
   }, [isOpen]);
 
-  const handleAnchorClick = (id: string) => () => {
-    close();
-    requestAnimationFrame(() => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const prefersReduced = window.matchMedia(
-        "(prefers-reduced-motion: reduce)",
-      ).matches;
-      el.scrollIntoView({ behavior: prefersReduced ? "auto" : "smooth" });
-    });
-  };
-
   return (
     <>
       {/* Botón toggle (visible solo en móvil, controlado desde Nav) */}
@@ -120,13 +114,11 @@ export function MobileMenu({ anchorLinks }: MobileMenuProps) {
           aria-hidden="true"
         >
           {isOpen ? (
-            // X
             <>
               <line x1="18" y1="6" x2="6" y2="18" />
               <line x1="6" y1="6" x2="18" y2="18" />
             </>
           ) : (
-            // Hamburger
             <>
               <line x1="3" y1="6" x2="21" y2="6" />
               <line x1="3" y1="12" x2="21" y2="12" />
@@ -146,7 +138,6 @@ export function MobileMenu({ anchorLinks }: MobileMenuProps) {
           aria-label={t("openMenu")}
           className="fixed inset-0 z-50 flex flex-col bg-bg/95 backdrop-blur-sm"
         >
-          {/* Barra superior con botón de cierre */}
           <div className="flex h-14 shrink-0 items-center justify-end border-b border-border px-6">
             <button
               aria-label={t("closeMenu")}
@@ -171,34 +162,22 @@ export function MobileMenu({ anchorLinks }: MobileMenuProps) {
             </button>
           </div>
 
-          {/* Listado de enlaces */}
           <ul className="flex flex-col px-6 pt-4" role="list">
-            {anchorLinks.map(({ id, label }) => (
-              <li key={id}>
-                <a
-                  href={`#${id}`}
-                  onClick={handleAnchorClick(id)}
+            {links.map(({ href, label, active }) => (
+              <li key={href}>
+                <Link
+                  href={href}
+                  onClick={close}
+                  aria-current={active ? "page" : undefined}
                   className={cn(
-                    "block border-b border-border py-4 font-mono text-lg text-muted",
-                    "transition-colors hover:text-fg",
+                    "block border-b border-border py-4 font-mono text-lg transition-colors",
+                    active ? "text-accent" : "text-muted hover:text-fg",
                   )}
                 >
                   {label}
-                </a>
+                </Link>
               </li>
             ))}
-            <li>
-              <Link
-                href="/blog"
-                onClick={close}
-                className={cn(
-                  "block border-b border-border py-4 font-mono text-lg text-muted",
-                  "transition-colors hover:text-fg",
-                )}
-              >
-                {t("blog")}
-              </Link>
-            </li>
           </ul>
         </div>
       )}

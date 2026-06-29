@@ -91,7 +91,7 @@ export default async function BlogPostPage({
   };
 
   return (
-    <main id="main" className="min-h-screen py-20 sm:py-28">
+    <main id="main" tabIndex={-1} className="min-h-screen py-20 sm:py-28">
       {/* JSON-LD con nonce (ADR-004, CSP) */}
       <script
         type="application/ld+json"

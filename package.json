@@ -11,7 +11,8 @@
     "format:check": "prettier --check \"src/**/*.{ts,tsx}\"",
     "test:unit": "playwright test --project=unit",
     "test:e2e": "playwright test --project=e2e",
-    "test": "playwright test"
+    "test:smoke": "playwright test --project=smoke",
+    "test": "playwright test --project=unit --project=e2e"
   },
   "size-limit": [
     {

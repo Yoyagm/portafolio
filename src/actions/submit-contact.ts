@@ -4,10 +4,10 @@
  * Server Action: submitContact (T17, RF9).
  *
  * Seguridad (endurecido tras revisión):
- * - Anti-bot (honeypot + tiempo mínimo) ANTES de validar: descarte silencioso
- *   simulando éxito, sin revelar la defensa (RF9.7).
- * - Rate-limit sliding-window 5/10min por IP de confianza (@vercel/functions,
- *   ADR-006). FALLA CERRADO en producción si KV no responde (RF9.8).
+ * - Anti-bot (honeypot) ANTES de validar: descarte silencioso simulando éxito,
+ *   sin revelar la defensa (RF9.7). Sin timing (clock-skew → falsos positivos).
+ * - Rate-limit sliding-window 5/10min por IP de confianza (x-forwarded-for fijada
+ *   por Vercel, ADR-006). FALLA CERRADO en producción si KV no responde (RF9.8).
  * - Validación Zod 4 en servidor solo de campos reales (RF9.5-9.6).
  * - replyTo = email Zod-validado (sin CRLF); subject = literal de servidor;
  *   body = text: plano (RF9.10). Sin inyección de cabeceras.
@@ -17,11 +17,10 @@
 
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { ipAddress } from "@vercel/functions";
 import { Resend } from "resend";
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
-import { contactSchema, MIN_SUBMIT_MS } from "@/lib/contact-schema";
+import { contactSchema } from "@/lib/contact-schema";
 import { getPathname } from "@/i18n/navigation";
 import type { Locale } from "@/content/types";
 import {
@@ -50,18 +49,48 @@ function resolveLocale(value: FormDataEntryValue | null): Locale {
   return value === "es" ? "es" : "en";
 }
 
+// IP del cliente desde cabeceras (Server Action: no hay Request para
+// @vercel/functions ipAddress, cuyo check instanceof Headers falla con el
+// ReadonlyHeaders de Next). En Vercel, x-forwarded-for la fija la plataforma con
+// la IP real del cliente (primer valor); fuera de Vercel cae a x-real-ip.
+function getClientIp(h: Headers): string {
+  const xff = h.get("x-forwarded-for");
+  if (xff) {
+    const first = xff.split(",")[0]?.trim();
+    if (first) return first;
+  }
+  return h.get("x-real-ip") ?? "anonymous";
+}
+
 // Redirección PRG localizada (/en/thank-you ó /es/gracias). Lanza NEXT_REDIRECT.
 function redirectToThankYou(locale: Locale): never {
   redirect(getPathname({ href: "/thank-you", locale }));
 }
 
 // ── Rate-limiter ────────────────────────────────────────────────────────────────
-// Falla CERRADO en producción (única barrera dura contra flood/abuso de Resend);
-// en dev permite para no estorbar el trabajo local sin KV.
+// Distingue dos modos de fallo:
+//  - KV NO configurado (sin env): rate-limit deshabilitado a propósito
+//    (tests/preview/local). Se permite; el honeypot sigue activo. Avisa en prod.
+//  - KV configurado pero INALCANZABLE (outage): falla CERRADO en producción para
+//    no desactivar silenciosamente la única barrera dura contra flood.
 async function checkRateLimit(ip: string): Promise<boolean> {
+  let url: string;
+  let token: string;
+  try {
+    url = getKvRestApiUrl();
+    token = getKvRestApiToken();
+  } catch {
+    if (isProd) {
+      console.warn(
+        "[contact] Rate-limit DESHABILITADO: KV no configurado en producción.",
+      );
+    }
+    return true; // no configurado → no se aplica límite
+  }
+
   try {
     const rl = new Ratelimit({
-      redis: new Redis({ url: getKvRestApiUrl(), token: getKvRestApiToken() }),
+      redis: new Redis({ url, token }),
       limiter: Ratelimit.slidingWindow(5, "10 m"),
       prefix: "contact:rl",
     });
@@ -72,7 +101,7 @@ async function checkRateLimit(ip: string): Promise<boolean> {
       "[contact] Rate-limit backend unreachable:",
       err instanceof Error ? err.message : err,
     );
-    return !isProd; // prod: bloquea (fail-closed); dev: permite
+    return !isProd; // configurado pero caído → prod: bloquea; dev: permite
   }
 }
 
@@ -129,22 +158,14 @@ export async function submitContact(
 ): Promise<ContactActionState> {
   const locale = resolveLocale(formData.get("locale"));
 
-  // 1. Anti-bot best-effort ANTES de validar (descarte silencioso = éxito simulado).
+  // 1. Honeypot ANTES de validar: descarte silencioso (éxito simulado) para no
+  //    revelar la defensa. Sin heurística de tiempo (poco fiable por clock-skew).
   const honeypot = (formData.get("website") ?? "").toString();
   if (honeypot.trim() !== "") redirectToThankYou(locale);
 
-  const startedAt = Number(formData.get("_startTime"));
-  if (
-    Number.isFinite(startedAt) &&
-    startedAt > 0 &&
-    Date.now() - startedAt < MIN_SUBMIT_MS
-  ) {
-    redirectToThankYou(locale);
-  }
-
   // 2. Rate-limit por IP de confianza (ADR-006, RF9.8).
   const headersList = await headers();
-  const ip = ipAddress(headersList) ?? "anonymous";
+  const ip = getClientIp(headersList);
   if (!(await checkRateLimit(ip))) {
     return { ok: false, error: "rate_limit" };
   }

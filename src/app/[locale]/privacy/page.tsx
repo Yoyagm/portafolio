@@ -35,7 +35,7 @@ export default async function PrivacyPage({
   const isEs = locale === "es";
 
   return (
-    <main id="main" className="py-20 sm:py-28">
+    <main id="main" tabIndex={-1} className="py-20 sm:py-28">
       <Container className="max-w-3xl">
         {isEs ? <PrivacyEs /> : <PrivacyEn />}
       </Container>

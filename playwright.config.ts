@@ -1,12 +1,14 @@
 import { defineConfig, devices } from "@playwright/test";
 
 /**
- * Playwright config (T22).
- * - Proyecto "unit": tests sin browser (contactSchema, i18n utils).
- * - Proyecto "e2e": chromium, arranca Next.js si no está corriendo.
+ * Playwright config (T22-T24).
+ * - Proyecto "unit":  tests sin browser (contactSchema, i18n utils).
+ * - Proyecto "e2e":   chromium, arranca Next.js si no está corriendo.
+ * - Proyecto "smoke": smoke test de cabeceras contra SMOKE_URL (prod/preview).
  */
 
 const BASE_URL = process.env.PLAYWRIGHT_BASE_URL ?? "http://localhost:3000";
+const SMOKE_URL = process.env.SMOKE_URL ?? BASE_URL;
 
 export default defineConfig({
   testDir: "./tests",
@@ -25,16 +27,26 @@ export default defineConfig({
       name: "unit",
       testMatch: /tests\/unit\/.*\.test\.ts/,
     },
-    // E2E: chromium desktop
+    // E2E: chromium desktop (excluye security-headers, que usa SMOKE_URL)
     {
       name: "e2e",
-      testMatch: /tests\/e2e\/.*\.spec\.ts/,
+      testMatch: /tests\/e2e\/(?!security-headers).*\.spec\.ts/,
       use: {
         ...devices["Desktop Chrome"],
         baseURL: BASE_URL,
         // Captura de video solo en fallo
         video: "on-first-retry",
         trace: "on-first-retry",
+      },
+    },
+    // Smoke test de cabeceras de seguridad contra SMOKE_URL (T24, RNF3.3)
+    // Requiere: SMOKE_URL=https://portafolio.vercel.app pnpm run test:smoke
+    {
+      name: "smoke",
+      testMatch: /tests\/e2e\/security-headers\.spec\.ts/,
+      use: {
+        ...devices["Desktop Chrome"],
+        baseURL: SMOKE_URL,
       },
     },
   ],

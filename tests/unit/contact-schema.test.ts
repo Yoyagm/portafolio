@@ -7,7 +7,7 @@
  * de forma silenciosa). Aquí se prueba solo la validación de campos reales.
  */
 import { test, expect } from "@playwright/test";
-import { contactSchema, MIN_SUBMIT_MS } from "@/lib/contact-schema";
+import { contactSchema } from "@/lib/contact-schema";
 
 test.describe("contactSchema — validación Zod 4", () => {
   const validBase = {
@@ -87,9 +87,5 @@ test.describe("contactSchema — validación Zod 4", () => {
     const result = contactSchema.safeParse(noLocale);
     expect(result.success).toBe(true);
     if (result.success) expect(result.data.locale).toBe("en");
-  });
-
-  test("MIN_SUBMIT_MS es un número positivo", () => {
-    expect(MIN_SUBMIT_MS).toBeGreaterThan(0);
   });
 });

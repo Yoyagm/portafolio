@@ -1,79 +1,40 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/cn";
 import { Container } from "@/components/ui/container";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { LanguageSwitcher } from "@/components/nav/language-switcher";
-import { MobileMenu, type AnchorLink } from "@/components/nav/mobile-menu";
+import {
+  MobileMenu,
+  type NavLink,
+  type StaticPathname,
+} from "@/components/nav/mobile-menu";
 import { siteConfig } from "@/lib/site";
 
-const SECTION_IDS = [
-  "about",
-  "work",
-  "skills",
-  "experience",
-  "contact",
-] as const;
-
-type SectionId = (typeof SECTION_IDS)[number];
+// Enlaces de navegación por RUTA (arquitectura multi-página/híbrida).
+const NAV_LINKS: { href: StaticPathname; key: string }[] = [
+  { href: "/", key: "home" },
+  { href: "/projects", key: "projects" },
+  { href: "/about", key: "about" },
+  { href: "/blog", key: "blog" },
+  { href: "/contact", key: "contact" },
+];
 
 export function Nav() {
   const t = useTranslations("Nav");
   const pathname = usePathname();
-  const [activeSection, setActiveSection] = useState<SectionId | null>(null);
-  const prefersReduced = useRef(false);
 
-  useEffect(() => {
-    prefersReduced.current = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-  }, []);
+  // Activo: home solo en "/"; el resto con startsWith para cubrir subrutas
+  // (p. ej. /blog activo en /blog/[slug]).
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
-  // Scroll-spy con IntersectionObserver
-  useEffect(() => {
-    const observers: IntersectionObserver[] = [];
-
-    SECTION_IDS.forEach((id) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) setActiveSection(id);
-          });
-        },
-        { rootMargin: "-20% 0px -60% 0px", threshold: 0 },
-      );
-      observer.observe(el);
-      observers.push(observer);
-    });
-
-    return () => observers.forEach((o) => o.disconnect());
-  }, [pathname]);
-
-  const handleAnchorClick =
-    (id: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      e.preventDefault();
-      el.scrollIntoView({
-        behavior: prefersReduced.current ? "auto" : "smooth",
-      });
-      // Mueve foco al encabezado de la sección para SR
-      const heading = el.querySelector<HTMLElement>("h2, h3, [tabindex]") ?? el;
-      if (!heading.hasAttribute("tabindex")) {
-        heading.setAttribute("tabindex", "-1");
-      }
-      heading.focus({ preventScroll: true });
-    };
-
-  const anchorLinks: AnchorLink[] = SECTION_IDS.map((id) => ({
-    id,
-    label: t(id),
+  const links: NavLink[] = NAV_LINKS.map(({ href, key }) => ({
+    href,
+    label: t(key),
+    active: isActive(href),
   }));
 
   return (
@@ -83,7 +44,7 @@ export function Nav() {
           aria-label="Main navigation"
           className="flex h-14 items-center gap-4"
         >
-          {/* Logo */}
+          {/* Logo → inicio */}
           <Link
             href="/"
             className="shrink-0 font-mono text-sm font-semibold text-fg transition-colors hover:text-accent"
@@ -91,44 +52,30 @@ export function Nav() {
             {siteConfig.shortName}
           </Link>
 
-          {/* Enlace de ancla: desktop */}
+          {/* Enlaces de ruta: desktop */}
           <ul className="hidden flex-1 items-center gap-1 md:flex" role="list">
-            {anchorLinks.map(({ id, label }) => (
-              <li key={id}>
-                <a
-                  href={`#${id}`}
-                  onClick={handleAnchorClick(id)}
-                  aria-current={
-                    activeSection === id ? ("true" as const) : undefined
-                  }
+            {links.map(({ href, label, active }) => (
+              <li key={href}>
+                <Link
+                  href={href}
+                  aria-current={active ? "page" : undefined}
                   className={cn(
                     "rounded px-3 py-1.5 font-mono text-sm transition-colors",
-                    activeSection === id
-                      ? "text-accent"
-                      : "text-muted hover:text-fg",
+                    active ? "text-accent" : "text-muted hover:text-fg",
                   )}
                 >
                   {label}
-                </a>
+                </Link>
               </li>
             ))}
-            <li>
-              <Link
-                href="/blog"
-                className="rounded px-3 py-1.5 font-mono text-sm text-muted transition-colors hover:text-fg"
-              >
-                {t("blog")}
-              </Link>
-            </li>
           </ul>
 
           {/* Acciones */}
           <div className="ml-auto flex items-center gap-1">
             <ThemeToggle />
             <LanguageSwitcher />
-            {/* Menú móvil: solo <768px */}
             <div className="md:hidden">
-              <MobileMenu anchorLinks={anchorLinks} />
+              <MobileMenu links={links} />
             </div>
           </div>
         </nav>

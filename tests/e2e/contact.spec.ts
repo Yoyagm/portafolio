@@ -8,9 +8,10 @@ import AxeBuilder from "@axe-core/playwright";
 
 test.describe("ContactForm /en", () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto("/en");
-    // Scroll hasta la sección de contacto
-    await page.locator("#contact").scrollIntoViewIfNeeded();
+    // Reduce-motion: Reveal estático → axe mide colores finales (sin fade-in).
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    // El formulario vive en su página dedicada (arquitectura híbrida).
+    await page.goto("/en/contact");
   });
 
   // ── Validación de campos ────────────────────────────────────────────────────
@@ -54,13 +55,19 @@ test.describe("ContactForm /en", () => {
 
   // ── Honeypot oculto ────────────────────────────────────────────────────────
 
-  test("campo honeypot no es visible ni enfocable", async ({ page }) => {
+  test("campo honeypot está oculto y fuera del tab order", async ({ page }) => {
     const honeypot = page.locator('[name="website"]');
-    // No debe ser visible para el usuario
-    await expect(honeypot).not.toBeVisible();
     // tabIndex = -1 (no se alcanza con Tab)
-    const tabIndex = await honeypot.getAttribute("tabindex");
-    expect(tabIndex).toBe("-1");
+    await expect(honeypot).toHaveAttribute("tabindex", "-1");
+    // Su contenedor está marcado aria-hidden (lectores de pantalla lo ignoran)
+    const ariaHidden = await honeypot.evaluate(
+      (el) => el.closest('[aria-hidden="true"]') !== null,
+    );
+    expect(ariaHidden).toBe(true);
+    // Posicionado fuera de pantalla (no visible para usuarios videntes). El
+    // honeypot usa offscreen en vez de display:none para que los bots lo rellenen.
+    const box = await honeypot.boundingBox();
+    if (box) expect(box.x < 0 || box.y < 0).toBe(true);
   });
 
   // ── Accesibilidad ─────────────────────────────────────────────────────────
@@ -76,12 +83,19 @@ test.describe("ContactForm /en", () => {
   // ── estado aria-live ────────────────────────────────────────────────────────
 
   test("área de status tiene role=status y aria-live=polite", async ({ page }) => {
-    const statusArea = page.locator('[role="status"][aria-live="polite"]');
+    // Scoped a #contact: el RouteAnnouncer global también es role=status.
+    const statusArea = page.locator(
+      '#contact [role="status"][aria-live="polite"]',
+    );
     await expect(statusArea).toBeAttached();
   });
 });
 
 test.describe("Blog /en/blog", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: "reduce" });
+  });
+
   test("sin violaciones axe en índice del blog", async ({ page }) => {
     await page.goto("/en/blog");
     const results = await new AxeBuilder({ page })
@@ -100,11 +114,13 @@ test.describe("Blog /en/blog", () => {
 
   test("writeup en ES tiene JSON-LD con inLanguage=es", async ({ page }) => {
     await page.goto("/es/blog/how-slopguard-detects-slopsquatting");
-    const jsonLd = await page.$eval(
+    // Hay varios ld+json (Person del layout + TechArticle del post): elige el del artículo.
+    const all = await page.$$eval(
       'script[type="application/ld+json"]',
-      (el) => JSON.parse(el.textContent ?? "{}"),
+      (els) => els.map((el) => JSON.parse(el.textContent ?? "{}")),
     );
-    expect(jsonLd["@type"]).toBe("TechArticle");
-    expect(jsonLd.inLanguage).toBe("es");
+    const article = all.find((j) => j["@type"] === "TechArticle");
+    expect(article).toBeTruthy();
+    expect(article.inLanguage).toBe("es");
   });
 });

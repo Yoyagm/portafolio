@@ -7,6 +7,8 @@ import AxeBuilder from "@axe-core/playwright";
 
 test.describe("Home /en", () => {
   test.beforeEach(async ({ page }) => {
+    // Reduce-motion: Reveal se renderiza estático → axe mide colores finales.
+    await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto("/en");
   });
 
@@ -24,27 +26,25 @@ test.describe("Home /en", () => {
   // ── CSP nonce (RF3.1, ADR-004) ─────────────────────────────────────────────
 
   test("script anti-FOUC tiene atributo nonce no vacío", async ({ page }) => {
-    // ThemeScript inyecta un <script nonce=...> antes del <body>
-    const src = await page.content();
-    // Busca al menos un nonce no vacío en cualquier script
-    expect(src).toMatch(/nonce="[A-Za-z0-9+/=]{8,}"/);
+    // El navegador OCULTA el atributo nonce del DOM tras aplicar la CSP, así que
+    // se verifica contra el HTML CRUDO del servidor (donde el nonce sí aparece).
+    const res = await page.request.get("/en");
+    const html = await res.text();
+    expect(html).toMatch(/nonce="[A-Za-z0-9+/=_-]{8,}"/);
   });
 
   test("JSON-LD Person tiene nonce", async ({ page }) => {
-    const jsonLdScripts = await page.$$eval(
-      'script[type="application/ld+json"]',
-      (els) =>
-        els.map((el) => ({
-          nonce: el.getAttribute("nonce"),
-          content: el.textContent ?? "",
-        })),
-    );
-    const personScript = jsonLdScripts.find((s) =>
-      s.content.includes('"@type":"Person"'),
-    );
-    expect(personScript).toBeTruthy();
-    expect(personScript?.nonce).toBeTruthy();
-    expect((personScript?.nonce ?? "").length).toBeGreaterThan(4);
+    const res = await page.request.get("/en");
+    const html = await res.text();
+    // Bloques <script type="application/ld+json" ...>...</script>
+    const blocks = [
+      ...html.matchAll(
+        /<script type="application\/ld\+json"([^>]*)>([\s\S]*?)<\/script>/g,
+      ),
+    ];
+    const person = blocks.find(([, , content]) => content.includes('"Person"'));
+    expect(person).toBeTruthy();
+    expect(person?.[1]).toMatch(/nonce="[A-Za-z0-9+/=_-]{8,}"/);
   });
 
   // ── LCP (RF3.2-3.3, RNF1.1) ────────────────────────────────────────────────

@@ -2,10 +2,14 @@
  * Esquema de validación del formulario de contacto (T17, RF9.5-9.6).
  *
  * Valida SOLO los campos reales del usuario (name/email/message) + locale.
- * El honeypot (`website`) y el tiempo mínimo (`_startTime`) NO viven aquí: se
- * evalúan en la Server Action ANTES de validar, para poder descartar bots de
- * forma silenciosa (éxito simulado) sin revelar la defensa con un error de
- * validación distinguible (hallazgo de la revisión de seguridad).
+ * El honeypot (`website`) NO vive aquí: se evalúa en la Server Action antes de
+ * validar, para descartar bots de forma silenciosa (éxito simulado) sin revelar
+ * la defensa con un error de validación distinguible (revisión de seguridad).
+ *
+ * No usamos heurística de tiempo: comparar reloj-cliente (mount) contra
+ * reloj-servidor (submit) es poco fiable por skew y arriesga descartar mensajes
+ * legítimos. La barrera dura es el rate-limit por IP; el honeypot filtra bots
+ * ingenuos sin falsos positivos.
  */
 import { z } from "zod";
 
@@ -21,10 +25,3 @@ export const contactSchema = z.object({
 });
 
 export type ContactInput = z.infer<typeof contactSchema>;
-
-/**
- * Mínimo de tiempo (ms) entre apertura y envío para no tratar como bot.
- * Best-effort: ningún humano completa 3 campos en menos de 1s. El rate-limit
- * por IP es la barrera dura; el timing solo filtra bots ingenuos.
- */
-export const MIN_SUBMIT_MS = 1000;

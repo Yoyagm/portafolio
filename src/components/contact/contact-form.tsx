@@ -30,13 +30,6 @@ export function ContactForm() {
   );
   // Referencia al primer campo con error para enfocar (SC 2.4.3)
   const firstErrorRef = useRef<HTMLElement | null>(null);
-  // Sella el timestamp de apertura en cliente (evita mismatch de hidratación:
-  // el tiempo de SSR ≠ tiempo de mount). Sin JS queda vacío → check omitido.
-  const startTimeRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    if (startTimeRef.current) startTimeRef.current.value = String(Date.now());
-  }, []);
 
   useEffect(() => {
     if (state && !state.ok && firstErrorRef.current) {
@@ -66,9 +59,6 @@ export function ContactForm() {
 
       {/* Locale: para el asunto del correo y el redirect PRG localizado */}
       <input type="hidden" name="locale" value={locale} />
-
-      {/* Timestamp de apertura (se sella en cliente vía effect; vacío sin JS) */}
-      <input ref={startTimeRef} type="hidden" name="_startTime" defaultValue="" />
 
       {/* Área de estado global (aria-live, SC 4.1.3) */}
       <div role="status" aria-live="polite" aria-atomic="true">

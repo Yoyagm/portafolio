@@ -27,9 +27,11 @@
   --fg: #0b1117;
   --muted: #4f5b66;
   --border: #d7dee4;
-  --accent: #0f8f63;
+  /* Verde oscurecido para cumplir WCAG AA (≥4.5:1) como texto sobre fondo claro
+     y como fondo con texto blanco (axe color-contrast). */
+  --accent: #0a7a52;
   --accent-fg: #ffffff;
-  --alert: #b45309;
+  --alert: #a1430a;
 }
 
 /* Dark "security terminal" */

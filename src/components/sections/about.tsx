@@ -5,7 +5,14 @@ import { profile } from "@/content/profile";
 import { pick } from "@/content/types";
 import type { Locale } from "@/content/types";
 
-export async function About({ locale }: { locale: Locale }) {
+export async function About({
+  locale,
+  hideHeading = false,
+}: {
+  locale: Locale;
+  /** Oculta el eyebrow propio cuando la página ya aporta un h1. */
+  hideHeading?: boolean;
+}) {
   const t = await getTranslations({ locale, namespace: "Sections" });
   const role = pick(profile.role, locale);
   const stage = pick(profile.stage, locale);
@@ -13,11 +20,13 @@ export async function About({ locale }: { locale: Locale }) {
 
   return (
     <Section id="about">
-      <Reveal>
-        <h2 className="font-mono text-sm uppercase tracking-widest text-accent">
-          {t("aboutTitle")}
-        </h2>
-      </Reveal>
+      {!hideHeading && (
+        <Reveal>
+          <h2 className="font-mono text-sm uppercase tracking-widest text-accent">
+            {t("aboutTitle")}
+          </h2>
+        </Reveal>
+      )}
 
       <Reveal delay={0.05}>
         <p className="mt-3 text-2xl font-semibold text-fg sm:text-3xl">{role}</p>

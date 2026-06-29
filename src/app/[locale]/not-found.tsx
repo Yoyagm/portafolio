@@ -9,6 +9,7 @@ export default function NotFound() {
   return (
     <main
       id="main"
+      tabIndex={-1}
       className="flex flex-1 flex-col items-center justify-center p-8"
     >
       <div className="max-w-md space-y-4 text-center font-mono">
