@@ -97,8 +97,9 @@ test.describe("Security headers smoke test", () => {
     await ctx.dispose();
 
     expect(response.status()).toBe(200);
-    expect(text).toContain("User-agent:");
-    expect(text).toContain("Sitemap:");
+    // Next emite "User-Agent:" (mayúscula); comparamos sin distinguir caso.
+    expect(text.toLowerCase()).toContain("user-agent:");
+    expect(text.toLowerCase()).toContain("sitemap:");
   });
 
   test("sitemap.xml accesible", async () => {
