@@ -60,62 +60,6 @@ export const experience: Experience[] = [
       },
     ],
   },
-
-  {
-    role: {
-      en: "Bilingual Customer Support & Community Manager",
-      es: "Soporte al Cliente Bilingüe y Community Manager",
-    },
-    org: "Negocios en Autopiloto (Hotmart)",
-    period: {
-      en: "May 2025 – Present",
-      es: "May 2025 – Presente",
-    },
-    location: {
-      en: "Remote",
-      es: "Remoto",
-    },
-    bullets: [
-      {
-        en: "Bilingual (EN/ES) customer support via WhatsApp and Telegram.",
-        es: "Soporte al cliente bilingüe (EN/ES) vía WhatsApp y Telegram.",
-      },
-      {
-        en: "Handled 3–5 simultaneous conversations with a <10-minute response commitment.",
-        es: "Gestión de 3–5 conversaciones simultáneas con compromiso de respuesta de <10 minutos.",
-      },
-      {
-        en: "Community management and member engagement across digital channels.",
-        es: "Gestión de comunidad y engagement de miembros en canales digitales.",
-      },
-    ],
-  },
-
-  {
-    role: {
-      en: "Assistant & Public Coordinator",
-      es: "Asistente y Coordinador Público",
-    },
-    org: "EM Tournaments and Competitions",
-    period: {
-      en: "May 2025 – Present",
-      es: "May 2025 – Presente",
-    },
-    location: {
-      en: "Bucaramanga, Colombia",
-      es: "Bucaramanga, Colombia",
-    },
-    bullets: [
-      {
-        en: "First point of contact for participants and attendees at live events.",
-        es: "Primer punto de contacto para participantes y asistentes en eventos en vivo.",
-      },
-      {
-        en: "Coordination between participants, organizers and staff to ensure smooth event operations.",
-        es: "Coordinación entre participantes, organizadores y staff para garantizar el buen desarrollo de los eventos.",
-      },
-    ],
-  },
 ];
 
 export const education: Education[] = [

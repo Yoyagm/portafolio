@@ -32,6 +32,7 @@ export const profile: Profile = {
   phone: "+57 313 878 4948",
   github: "https://github.com/Yoyagm",
   cvHref: "/cv/Johan-Rodriguez-Security-Engineer.pdf",
+  photo: "/me.jpg",
 
   english: {
     level: "C2",

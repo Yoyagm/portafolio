@@ -40,6 +40,12 @@ export type Profile = {
   /** Opcional: solo se renderiza si está presente (RF4.5). */
   linkedin?: string;
   cvHref: string;
+  /**
+   * Retrato del autor (RF4). Ruta a un archivo en /public; se sirve vía
+   * next/image (img-src 'self' lo permite). Reemplaza public/me.jpg por tu foto
+   * manteniendo el mismo nombre para no tocar código.
+   */
+  photo: string;
   english: {
     level: "C2";
     /** Puntaje EF SET verificado (RF4.3). */
