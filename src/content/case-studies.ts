@@ -157,6 +157,29 @@ export const caseStudies: CaseStudy[] = [
       en: "Sole author — architecture, detection engine, CLI, CI integrations and SaaS.",
       es: "Único autor — arquitectura, motor de detección, CLI, integraciones CI y SaaS.",
     },
+
+    media: [
+      {
+        type: "image",
+        src: "/projects/slopguard/slopguard-cli-block.png",
+        alt: {
+          en: "SlopGuard CLI blocking four typosquatted PyPI packages, showing Damerau-Levenshtein matches and a suggested exit code 2.",
+          es: "CLI de SlopGuard bloqueando cuatro paquetes typosquat de PyPI, mostrando coincidencias Damerau-Levenshtein y exit code 2 sugerido.",
+        },
+        width: 880,
+        height: 960,
+      },
+      {
+        type: "image",
+        src: "/projects/slopguard/slopguard-cli-clean.png",
+        alt: {
+          en: "SlopGuard CLI scanning a clean manifest — all four dependencies allowed, exit code 0 (no false positives).",
+          es: "CLI de SlopGuard escaneando un manifiesto limpio — las cuatro dependencias permitidas, exit code 0 (sin falsos positivos).",
+        },
+        width: 880,
+        height: 670,
+      },
+    ],
   },
 
   {

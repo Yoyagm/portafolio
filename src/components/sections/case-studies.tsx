@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Section } from "@/components/ui/section";
 import { Badge } from "@/components/ui/badge";
@@ -99,6 +100,45 @@ export async function CaseStudies({
                 </div>
               </div>
             </Reveal>
+
+            {/* Media: capturas / videos del proyecto */}
+            {cs.media && cs.media.length > 0 && (
+              <Reveal delay={0.11}>
+                <ul
+                  className="mt-8 grid gap-4 sm:grid-cols-2"
+                  role="list"
+                  aria-label={`${cs.name} screenshots`}
+                >
+                  {cs.media.map((m) => (
+                    <li
+                      key={m.src}
+                      className="overflow-hidden rounded-lg border border-border bg-surface-2"
+                    >
+                      {m.type === "video" ? (
+                        <video
+                          controls
+                          preload="metadata"
+                          poster={m.poster}
+                          className="h-auto w-full"
+                          aria-label={pick(m.alt, locale)}
+                        >
+                          <source src={m.src} type="video/mp4" />
+                        </video>
+                      ) : (
+                        <Image
+                          src={m.src}
+                          alt={pick(m.alt, locale)}
+                          width={m.width}
+                          height={m.height}
+                          className="h-auto w-full"
+                          sizes="(min-width: 640px) 50vw, 100vw"
+                        />
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
+            )}
 
             {/* Métricas */}
             <Reveal delay={0.12}>
