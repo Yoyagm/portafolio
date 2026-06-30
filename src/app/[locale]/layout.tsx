@@ -123,6 +123,8 @@ export default async function LocaleLayout({
         <script
           type="application/ld+json"
           nonce={nonce}
+          // React elimina el nonce del payload de hidratación; el mismatch server/cliente es esperado.
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{
             // .replace(/</g,…) por robustez ante un eventual cierre de </script>
             __html: JSON.stringify({

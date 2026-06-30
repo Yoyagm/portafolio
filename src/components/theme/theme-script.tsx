@@ -7,6 +7,9 @@ export function ThemeScript({ nonce }: { nonce?: string }) {
   return (
     <script
       nonce={nonce}
+      // React elimina el nonce del payload de hidratación (seguridad), así que el valor
+      // del servidor no coincide con el del cliente. El mismatch es esperado e inofensivo.
+      suppressHydrationWarning
       dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }}
     />
   );
