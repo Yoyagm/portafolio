@@ -179,6 +179,46 @@ export const caseStudies: CaseStudy[] = [
         width: 880,
         height: 670,
       },
+      {
+        type: "image",
+        src: "/projects/slopguard/slopguard-ui-scan-report.png",
+        alt: {
+          en: "SlopGuard SaaS scan report for a PyPI manifest — global verdict Blocked (exit 2): 5 dependencies allowed and 2 blocked (a nonexistent/hallucinated package and the 'reqursts' typosquat of requests).",
+          es: "Reporte de escaneo del SaaS de SlopGuard para un manifiesto PyPI — veredicto global Bloqueado (exit 2): 5 dependencias permitidas y 2 bloqueadas (un paquete inexistente/alucinado y el typosquat 'reqursts' de requests).",
+        },
+        width: 1440,
+        height: 900,
+      },
+      {
+        type: "image",
+        src: "/projects/slopguard/slopguard-ui-report-detail.png",
+        alt: {
+          en: "SlopGuard scan detail with expanded detection signals — Layer 0 (package absent from PyPI, possible hallucination) and Layer 1 typosquatting (Damerau-Levenshtein distance 1 to 'requests').",
+          es: "Detalle de escaneo de SlopGuard con señales de detección expandidas — Capa 0 (paquete ausente de PyPI, posible alucinación) y Capa 1 typosquatting (distancia Damerau-Levenshtein 1 respecto a 'requests').",
+        },
+        width: 1104,
+        height: 978,
+      },
+      {
+        type: "image",
+        src: "/projects/slopguard/slopguard-ui-history.png",
+        alt: {
+          en: "SlopGuard SaaS scan history — six on-demand scans across PyPI and npm, each with an allow/block summary, total dependency count and ecosystem filtering.",
+          es: "Historial de escaneos del SaaS de SlopGuard — seis escaneos on-demand en PyPI y npm, cada uno con resumen de permitidos/bloqueados, total de dependencias y filtro por ecosistema.",
+        },
+        width: 1440,
+        height: 900,
+      },
+      {
+        type: "image",
+        src: "/projects/slopguard/slopguard-ui-dashboard.png",
+        alt: {
+          en: "SlopGuard SaaS dashboard — quick actions (new scan, history) and an explainer of slopsquatting and the allow / warn / block verdict model for PyPI and npm.",
+          es: "Dashboard del SaaS de SlopGuard — acciones rápidas (nuevo escaneo, historial) y una explicación del slopsquatting y el modelo de veredictos allow / warn / block para PyPI y npm.",
+        },
+        width: 1440,
+        height: 900,
+      },
     ],
   },
 
