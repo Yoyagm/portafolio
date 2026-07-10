@@ -380,5 +380,109 @@ export const caseStudies: CaseStudy[] = [
       en: "Author — mobile client architecture, auth/2FA flows, state & services.",
       es: "Único autor — arquitectura del cliente móvil, flujos de auth/2FA, estado y servicios.",
     },
+
+    media: [
+      {
+        type: "video",
+        src: "/projects/goatguard/goatguard-demo.mp4",
+        poster: "/projects/goatguard/goatguard-demo-poster.webp",
+        alt: {
+          en: "Live demo in a computer lab: a dozen machines run the monitoring agent in terminals while the GoatGuard app shows their status in real time on a phone.",
+          es: "Demo en vivo en un laboratorio de cómputo: una docena de máquinas corren el agente de monitoreo en terminal mientras la app GoatGuard muestra su estado en tiempo real desde el teléfono.",
+        },
+        width: 832,
+        height: 464,
+      },
+      {
+        type: "image",
+        src: "/projects/goatguard/goatguard-dashboard.webp",
+        alt: {
+          en: "Home dashboard: network health score 85/100 with ISP latency, packet loss, jitter and DNS response cards, plus the agent list with live CPU/RAM per device.",
+          es: "Dashboard principal: salud de red 85/100 con tarjetas de latencia ISP, pérdida de paquetes, jitter y respuesta DNS, más la lista de agentes con CPU/RAM en vivo por equipo.",
+        },
+        width: 718,
+        height: 1600,
+      },
+      {
+        type: "image",
+        src: "/projects/goatguard/goatguard-consumers.webp",
+        alt: {
+          en: "Top network consumers ranked by bandwidth (Mbps) alongside agent status, updated every 30 seconds over WebSocket.",
+          es: "Top de consumidores de red ordenados por ancho de banda (Mbps) junto al estado de los agentes, actualizado cada 30 segundos vía WebSocket.",
+        },
+        width: 733,
+        height: 1600,
+      },
+      {
+        type: "image",
+        src: "/projects/goatguard/goatguard-inventory.webp",
+        alt: {
+          en: "Device inventory with search and filters, split between devices with an installed agent and ARP-only discoveries; sensitive addresses redacted.",
+          es: "Inventario de dispositivos con búsqueda y filtros, separado entre equipos con agente instalado y descubrimientos solo-ARP; direcciones sensibles censuradas.",
+        },
+        width: 713,
+        height: 1600,
+      },
+      {
+        type: "image",
+        src: "/projects/goatguard/goatguard-device-detail.webp",
+        alt: {
+          en: "Device detail: identity (IP/MAC redacted), OS, live CPU and RAM gauges, and network KPIs like speed, latency and TCP retransmissions.",
+          es: "Detalle de dispositivo: identidad (IP/MAC censuradas), SO, medidores de CPU y RAM en vivo, y KPIs de red como velocidad, latencia y retransmisiones TCP.",
+        },
+        width: 744,
+        height: 1600,
+      },
+      {
+        type: "image",
+        src: "/projects/goatguard/goatguard-device-charts.webp",
+        alt: {
+          en: "Per-device time-series charts (fl_chart): TCP retransmissions with thresholds and hourly bandwidth usage, plus a critical retransmission-spike alert.",
+          es: "Series de tiempo por dispositivo (fl_chart): retransmisiones TCP con umbrales y uso de ancho de banda por hora, más una alerta crítica de pico de retransmisiones.",
+        },
+        width: 720,
+        height: 1600,
+      },
+      {
+        type: "image",
+        src: "/projects/goatguard/goatguard-alerts.webp",
+        alt: {
+          en: "Security alert feed with severity filters: port-scan detection, unknown device joins, heartbeat loss and unusual outbound connections.",
+          es: "Feed de alertas de seguridad con filtros por severidad: detección de port scan, ingreso de dispositivos desconocidos, pérdida de heartbeat y conexiones salientes inusuales.",
+        },
+        width: 722,
+        height: 1600,
+      },
+      {
+        type: "image",
+        src: "/projects/goatguard/goatguard-2fa-recovery.webp",
+        alt: {
+          en: "2FA enrolment: one-time recovery code screen (code redacted) shown before TOTP setup, with explicit save confirmation required to continue.",
+          es: "Enrolamiento 2FA: pantalla del código de recuperación de un solo uso (código censurado) previa al setup TOTP, con confirmación explícita de guardado para continuar.",
+        },
+        width: 656,
+        height: 1474,
+      },
+      {
+        type: "image",
+        src: "/projects/goatguard/goatguard-2fa-backup-codes.webp",
+        alt: {
+          en: "Ten single-use backup codes (redacted) generated after TOTP setup, with copy-all action and save confirmation gating access to the dashboard.",
+          es: "Diez backup codes de un solo uso (censurados) generados tras el setup TOTP, con acción de copiar todos y confirmación de guardado antes de entrar al dashboard.",
+        },
+        width: 718,
+        height: 1555,
+      },
+      {
+        type: "image",
+        src: "/projects/goatguard/goatguard-settings.webp",
+        alt: {
+          en: "Settings: notification preferences and security section showing the active JWT session, with sign-out.",
+          es: "Ajustes: preferencias de notificaciones y sección de seguridad mostrando la sesión JWT activa, con cierre de sesión.",
+        },
+        width: 930,
+        height: 1314,
+      },
+    ],
   },
 ];
