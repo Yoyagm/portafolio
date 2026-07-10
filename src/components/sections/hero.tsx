@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { Hero3D } from "@/components/hero/hero-3d";
+import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/content/types";
 
 export async function Hero({ locale }: { locale: Locale }) {
@@ -43,12 +44,12 @@ export async function Hero({ locale }: { locale: Locale }) {
           >
             {t("ctaWork")}
           </a>
-          <a
-            href="#contact"
+          <Link
+            href="/contact"
             className="rounded-md border border-border px-5 py-2.5 font-medium text-fg transition-colors hover:bg-surface-2"
           >
             {t("ctaContact")}
-          </a>
+          </Link>
         </div>
       </div>
     </section>
