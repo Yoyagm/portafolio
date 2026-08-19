@@ -2,7 +2,7 @@
 
 Portafolio personal en Next.js 16 (App Router), bilingüe EN/ES, con seis casos de
 estudio de seguridad y ML aplicado. En producción:
-**<https://johan-rodriguez.vercel.app>**
+**<https://johanrodriguez.is-a.dev>**
 
 ## Cómo está organizado
 

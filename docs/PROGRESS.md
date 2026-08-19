@@ -2,7 +2,7 @@
 
 ## Estado actual
 
-El portafolio está publicado en <https://johan-rodriguez.vercel.app> con seis casos
+El portafolio está publicado en <https://johanrodriguez.is-a.dev> con seis casos
 de estudio, 16 certificaciones verificables y el CV en LaTeX versionado en `cv/`.
 Siguiente paso: desplegar el dashboard de vulnerabilidades en Streamlit Community
 Cloud y enlazar la demo viva desde su caso de estudio — es el único de los seis que
