@@ -39,11 +39,11 @@ export default async function ThankYouPage({
         <p className="text-5xl" aria-hidden="true">
           ✓
         </p>
-        <h1 className="text-2xl font-bold text-fg">{t("title")}</h1>
+        <h1 className="text-fg text-2xl font-bold">{t("title")}</h1>
         <p className="text-muted">{t("body")}</p>
         <Link
           href="/"
-          className="mt-4 inline-block rounded border border-border px-5 py-2.5 font-mono text-sm text-muted transition-colors hover:border-accent hover:text-fg"
+          className="border-border text-muted hover:border-accent hover:text-fg mt-4 inline-block rounded border px-5 py-2.5 font-mono text-sm transition-colors"
         >
           {t("back")}
         </Link>

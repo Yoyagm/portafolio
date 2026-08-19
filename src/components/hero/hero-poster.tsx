@@ -57,7 +57,7 @@ export function HeroPoster() {
       <div className="absolute inset-0 bg-[radial-gradient(120%_120%_at_50%_-10%,color-mix(in_oklab,var(--color-accent)_12%,transparent),transparent_55%)]" />
 
       <svg
-        className="absolute inset-0 h-full w-full text-accent"
+        className="text-accent absolute inset-0 h-full w-full"
         viewBox="0 0 560 420"
         preserveAspectRatio="xMidYMid slice"
         role="presentation"

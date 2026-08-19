@@ -49,10 +49,10 @@ export default async function BlogIndexPage({
       <Container>
         {/* Encabezado */}
         <header className="mb-12">
-          <h1 className="text-3xl font-bold tracking-tight text-fg sm:text-4xl">
+          <h1 className="text-fg text-3xl font-bold tracking-tight sm:text-4xl">
             {t("title")}
           </h1>
-          <p className="mt-3 text-muted">{t("subtitle")}</p>
+          <p className="text-muted mt-3">{t("subtitle")}</p>
         </header>
 
         {/* Lista de posts */}
@@ -63,10 +63,10 @@ export default async function BlogIndexPage({
             {posts.map((post) => (
               <li
                 key={post.slug}
-                className="rounded-lg border border-border bg-surface p-6 transition-colors hover:border-accent/40"
+                className="border-border bg-surface hover:border-accent/40 rounded-lg border p-6 transition-colors"
               >
                 <article>
-                  <div className="mb-2 flex flex-wrap items-center gap-2 text-xs text-muted">
+                  <div className="text-muted mb-2 flex flex-wrap items-center gap-2 text-xs">
                     <time dateTime={post.date}>
                       {t("postedOn", {
                         date: new Date(post.date).toLocaleDateString(
@@ -91,7 +91,7 @@ export default async function BlogIndexPage({
                     )}
                   </div>
 
-                  <h2 className="text-xl font-semibold text-fg">
+                  <h2 className="text-fg text-xl font-semibold">
                     <Link
                       href={{
                         pathname: "/blog/[slug]",
@@ -103,7 +103,7 @@ export default async function BlogIndexPage({
                     </Link>
                   </h2>
 
-                  <p className="mt-2 text-sm text-muted line-clamp-2">
+                  <p className="text-muted mt-2 line-clamp-2 text-sm">
                     {post.description}
                   </p>
 
@@ -147,8 +147,8 @@ export default async function BlogIndexPage({
                 aria-current={p === currentPage ? "page" : undefined}
                 className={
                   p === currentPage
-                    ? "rounded border border-accent bg-accent/10 px-3 py-1.5 font-mono text-sm text-accent"
-                    : "rounded border border-border px-3 py-1.5 font-mono text-sm text-muted hover:text-fg transition-colors"
+                    ? "border-accent bg-accent/10 text-accent rounded border px-3 py-1.5 font-mono text-sm"
+                    : "border-border text-muted hover:text-fg rounded border px-3 py-1.5 font-mono text-sm transition-colors"
                 }
               >
                 {p}

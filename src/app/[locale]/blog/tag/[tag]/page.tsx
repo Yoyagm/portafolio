@@ -55,8 +55,8 @@ export default async function TagPage({
       <Container>
         {/* Encabezado */}
         <header className="mb-12">
-          <p className="mb-2 font-mono text-sm text-muted">{t("tags")}</p>
-          <h1 className="text-3xl font-bold tracking-tight text-fg sm:text-4xl">
+          <p className="text-muted mb-2 font-mono text-sm">{t("tags")}</p>
+          <h1 className="text-fg text-3xl font-bold tracking-tight sm:text-4xl">
             {tag}
           </h1>
         </header>
@@ -66,10 +66,10 @@ export default async function TagPage({
           {posts.map((post) => (
             <li
               key={post.slug}
-              className="rounded-lg border border-border bg-surface p-6 transition-colors hover:border-accent/40"
+              className="border-border bg-surface hover:border-accent/40 rounded-lg border p-6 transition-colors"
             >
               <article>
-                <div className="mb-2 flex flex-wrap items-center gap-2 text-xs text-muted">
+                <div className="text-muted mb-2 flex flex-wrap items-center gap-2 text-xs">
                   <time dateTime={post.date}>
                     {t("postedOn", {
                       date: new Date(post.date).toLocaleDateString(
@@ -88,7 +88,7 @@ export default async function TagPage({
                   )}
                 </div>
 
-                <h2 className="text-xl font-semibold text-fg">
+                <h2 className="text-fg text-xl font-semibold">
                   <Link
                     href={{
                       pathname: "/blog/[slug]",
@@ -100,7 +100,7 @@ export default async function TagPage({
                   </Link>
                 </h2>
 
-                <p className="mt-2 text-sm text-muted line-clamp-2">
+                <p className="text-muted mt-2 line-clamp-2 text-sm">
                   {post.description}
                 </p>
 
@@ -133,7 +133,7 @@ export default async function TagPage({
         <div className="mt-12">
           <Link
             href="/blog"
-            className="font-mono text-sm text-muted hover:text-accent transition-colors"
+            className="text-muted hover:text-accent font-mono text-sm transition-colors"
           >
             ← {t("backToBlog")}
           </Link>

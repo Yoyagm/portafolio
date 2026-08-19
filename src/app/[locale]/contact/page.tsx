@@ -40,10 +40,10 @@ export default async function ContactPage({
     <main id="main" tabIndex={-1}>
       <Container className="pt-20 sm:pt-28">
         <header>
-          <h1 className="text-4xl font-bold tracking-tight text-fg sm:text-5xl">
+          <h1 className="text-fg text-4xl font-bold tracking-tight sm:text-5xl">
             {t("contactTitle")}
           </h1>
-          <p className="mt-4 max-w-2xl text-pretty text-lg text-muted">
+          <p className="text-muted mt-4 max-w-2xl text-lg text-pretty">
             {t("contactIntro")}
           </p>
         </header>

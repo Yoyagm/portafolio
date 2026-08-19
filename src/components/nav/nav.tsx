@@ -38,7 +38,7 @@ export function Nav() {
   }));
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-bg/80 backdrop-blur-sm">
+    <header className="border-border bg-bg/80 sticky top-0 z-40 border-b backdrop-blur-sm">
       <Container>
         <nav
           aria-label="Main navigation"
@@ -47,7 +47,7 @@ export function Nav() {
           {/* Logo → inicio */}
           <Link
             href="/"
-            className="shrink-0 font-mono text-sm font-semibold text-fg transition-colors hover:text-accent"
+            className="text-fg hover:text-accent shrink-0 font-mono text-sm font-semibold transition-colors"
           >
             {siteConfig.shortName}
           </Link>

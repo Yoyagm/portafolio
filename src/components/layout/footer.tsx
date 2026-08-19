@@ -12,12 +12,11 @@ export function Footer() {
   const t = useTranslations("Footer");
 
   return (
-    <footer className="mt-auto border-t border-border py-8">
+    <footer className="border-border mt-auto border-t py-8">
       <Container>
-        <div className="flex flex-col gap-3 font-mono text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
+        <div className="text-muted flex flex-col gap-3 font-mono text-sm sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {CURRENT_YEAR} {siteConfig.name}.{" "}
-            <span>{t("rights")}</span>
+            © {CURRENT_YEAR} {siteConfig.name}. <span>{t("rights")}</span>
           </p>
           <p className="text-xs">{t("builtWith")}</p>
           <a
@@ -27,7 +26,7 @@ export function Footer() {
             onClick={() =>
               trackEvent("outbound_click", { destination: "github_profile" })
             }
-            className="transition-colors hover:text-fg"
+            className="hover:text-fg transition-colors"
           >
             {t("source")}
           </a>

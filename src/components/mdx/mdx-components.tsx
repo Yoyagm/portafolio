@@ -19,8 +19,7 @@ const prose = {
   blockquote: "my-6 border-l-4 border-accent pl-4 italic text-muted",
   hr: "my-8 border-border",
   a: "text-accent underline underline-offset-2 hover:text-accent/80 transition-colors",
-  inlineCode:
-    "rounded bg-surface-2 px-1.5 py-0.5 font-mono text-sm text-fg",
+  inlineCode: "rounded bg-surface-2 px-1.5 py-0.5 font-mono text-sm text-fg",
   pre: "my-6 overflow-x-auto rounded-lg border border-border bg-surface p-4",
   table: "my-6 w-full border-collapse text-sm",
   th: "border border-border bg-surface-2 px-4 py-2 text-left font-semibold text-fg",
@@ -52,7 +51,10 @@ export const MdxComponents = {
   li: ({ className, ...props }: ComponentPropsWithoutRef<"li">) => (
     <li className={cn(prose.li, className)} {...props} />
   ),
-  blockquote: ({ className, ...props }: ComponentPropsWithoutRef<"blockquote">) => (
+  blockquote: ({
+    className,
+    ...props
+  }: ComponentPropsWithoutRef<"blockquote">) => (
     <blockquote className={cn(prose.blockquote, className)} {...props} />
   ),
   hr: ({ className, ...props }: ComponentPropsWithoutRef<"hr">) => (
@@ -94,7 +96,7 @@ export const MdxComponents = {
     <td className={cn(prose.td, className)} {...props} />
   ),
   strong: ({ className, ...props }: ComponentPropsWithoutRef<"strong">) => (
-    <strong className={cn("font-semibold text-fg", className)} {...props} />
+    <strong className={cn("text-fg font-semibold", className)} {...props} />
   ),
   em: ({ className, ...props }: ComponentPropsWithoutRef<"em">) => (
     <em className={cn("italic", className)} {...props} />

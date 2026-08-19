@@ -36,7 +36,11 @@ export class WebGLBoundary extends Component<
   componentDidCatch(error: Error, info: ErrorInfo): void {
     // Log explícito (sin tragar el error en silencio) + señal de degradado.
     if (process.env.NODE_ENV !== "production") {
-      console.error("[Hero3D] WebGL scene crashed:", error, info.componentStack);
+      console.error(
+        "[Hero3D] WebGL scene crashed:",
+        error,
+        info.componentStack,
+      );
     }
     this.props.onError?.();
   }

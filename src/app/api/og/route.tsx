@@ -30,81 +30,79 @@ export function GET(request: Request): ImageResponse {
   const displayTitle = customTitle || role;
 
   return new ImageResponse(
-    (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        width: WIDTH,
+        height: HEIGHT,
+        background: "#06090b",
+        padding: "64px 72px",
+        fontFamily: "monospace",
+      }}
+    >
+      {/* Accent line superior */}
       <div
         style={{
           display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          width: WIDTH,
-          height: HEIGHT,
-          background: "#06090b",
-          padding: "64px 72px",
+          width: 64,
+          height: 4,
+          background: "#36d399",
+          borderRadius: 2,
+        }}
+      />
+
+      {/* Contenido central */}
+      <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+        <p
+          style={{
+            fontSize: 18,
+            color: "#36d399",
+            margin: 0,
+            fontFamily: "monospace",
+            letterSpacing: "0.1em",
+            textTransform: "uppercase",
+          }}
+        >
+          {name}
+        </p>
+        <h1
+          style={{
+            fontSize: customTitle ? 48 : 54,
+            fontWeight: 700,
+            color: "#e6edf3",
+            margin: 0,
+            lineHeight: 1.15,
+            maxWidth: 900,
+          }}
+        >
+          {displayTitle}
+        </h1>
+        <p
+          style={{
+            fontSize: 22,
+            color: "#93a1ad",
+            margin: 0,
+            marginTop: 8,
+          }}
+        >
+          {tagline}
+        </p>
+      </div>
+
+      {/* Footer */}
+      <p
+        style={{
+          fontSize: 16,
+          color: "#1b262d",
+          margin: 0,
           fontFamily: "monospace",
         }}
       >
-        {/* Accent line superior */}
-        <div
-          style={{
-            display: "flex",
-            width: 64,
-            height: 4,
-            background: "#36d399",
-            borderRadius: 2,
-          }}
-        />
-
-        {/* Contenido central */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-          <p
-            style={{
-              fontSize: 18,
-              color: "#36d399",
-              margin: 0,
-              fontFamily: "monospace",
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-            }}
-          >
-            {name}
-          </p>
-          <h1
-            style={{
-              fontSize: customTitle ? 48 : 54,
-              fontWeight: 700,
-              color: "#e6edf3",
-              margin: 0,
-              lineHeight: 1.15,
-              maxWidth: 900,
-            }}
-          >
-            {displayTitle}
-          </h1>
-          <p
-            style={{
-              fontSize: 22,
-              color: "#93a1ad",
-              margin: 0,
-              marginTop: 8,
-            }}
-          >
-            {tagline}
-          </p>
-        </div>
-
-        {/* Footer */}
-        <p
-          style={{
-            fontSize: 16,
-            color: "#1b262d",
-            margin: 0,
-            fontFamily: "monospace",
-          }}
-        >
-          {new URL(siteConfig.url).hostname}
-        </p>
-      </div>
-    ),
+        {new URL(siteConfig.url).hostname}
+      </p>
+    </div>,
     {
       width: WIDTH,
       height: HEIGHT,

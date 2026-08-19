@@ -21,12 +21,12 @@ export async function FeaturedProjects({ locale }: { locale: Locale }) {
     <Section id="work">
       <Reveal>
         <div className="flex items-baseline justify-between gap-4">
-          <h2 className="font-mono text-sm uppercase tracking-widest text-accent">
+          <h2 className="text-accent font-mono text-sm tracking-widest uppercase">
             {t("featuredWork")}
           </h2>
           <Link
             href="/projects"
-            className="shrink-0 font-mono text-sm text-muted underline underline-offset-4 transition-colors hover:text-fg"
+            className="text-muted hover:text-fg shrink-0 font-mono text-sm underline underline-offset-4 transition-colors"
           >
             {t("viewAllProjects")} →
           </Link>
@@ -39,12 +39,12 @@ export async function FeaturedProjects({ locale }: { locale: Locale }) {
             <Reveal delay={i * 0.06}>
               <Link
                 href="/projects"
-                className="group flex h-full flex-col rounded-xl border border-border bg-surface p-6 transition-colors hover:border-accent/40"
+                className="group border-border bg-surface hover:border-accent/40 flex h-full flex-col rounded-xl border p-6 transition-colors"
               >
-                <h3 className="text-xl font-bold text-fg transition-colors group-hover:text-accent">
+                <h3 className="text-fg group-hover:text-accent text-xl font-bold transition-colors">
                   {cs.name}
                 </h3>
-                <p className="mt-2 flex-1 text-pretty text-sm text-muted">
+                <p className="text-muted mt-2 flex-1 text-sm text-pretty">
                   {pick(cs.tagline, locale)}
                 </p>
                 <ul
@@ -55,7 +55,7 @@ export async function FeaturedProjects({ locale }: { locale: Locale }) {
                   {cs.stack.slice(0, 5).map((tech) => (
                     <li
                       key={tech}
-                      className="rounded border border-border bg-surface-2 px-2 py-0.5 font-mono text-xs text-fg"
+                      className="border-border bg-surface-2 text-fg rounded border px-2 py-0.5 font-mono text-xs"
                     >
                       {tech}
                     </li>

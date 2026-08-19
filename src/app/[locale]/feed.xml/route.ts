@@ -19,18 +19,23 @@ function escapeXml(str: string): string {
     .replace(/'/g, "&apos;");
 }
 
-function buildRss(locale: Locale, posts: Awaited<ReturnType<typeof getAllPosts>>): string {
+function buildRss(
+  locale: Locale,
+  posts: Awaited<ReturnType<typeof getAllPosts>>,
+): string {
   const siteUrl = siteConfig.url;
   const blogUrl = `${siteUrl}/${locale}/blog`;
   const feedUrl = `${siteUrl}/${locale}/feed.xml`;
 
-  const title = locale === "en"
-    ? "Johan Rodriguez — Security Writeups"
-    : "Johan Rodriguez — Writeups de Seguridad";
+  const title =
+    locale === "en"
+      ? "Johan Rodriguez — Security Writeups"
+      : "Johan Rodriguez — Writeups de Seguridad";
 
-  const description = locale === "en"
-    ? "Notes on security engineering and the software supply chain."
-    : "Notas sobre ingeniería de seguridad y la cadena de suministro de software.";
+  const description =
+    locale === "en"
+      ? "Notes on security engineering and the software supply chain."
+      : "Notas sobre ingeniería de seguridad y la cadena de suministro de software.";
 
   const items = posts
     .filter((p) => !p.isTranslationFallback) // solo posts nativos del locale en su feed

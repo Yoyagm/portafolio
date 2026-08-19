@@ -13,8 +13,7 @@ export function LanguageSwitcher() {
   const nextLocale: Locale = locale === "en" ? "es" : "en";
 
   const handleSwitch = () => {
-    const hash =
-      typeof window !== "undefined" ? window.location.hash : "";
+    const hash = typeof window !== "undefined" ? window.location.hash : "";
 
     router.replace(
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -34,7 +33,7 @@ export function LanguageSwitcher() {
     <button
       onClick={handleSwitch}
       aria-label={t("toggleLanguage")}
-      className="flex h-9 w-12 items-center justify-center rounded font-mono text-xs font-medium text-muted transition-colors hover:text-fg"
+      className="text-muted hover:text-fg flex h-9 w-12 items-center justify-center rounded font-mono text-xs font-medium transition-colors"
     >
       {nextLocale.toUpperCase()}
     </button>

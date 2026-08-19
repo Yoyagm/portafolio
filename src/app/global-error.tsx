@@ -34,7 +34,13 @@ export default function GlobalError({ reset }: GlobalErrorProps) {
         >
           error
         </p>
-        <h1 style={{ fontSize: "1.5rem", fontWeight: "bold", marginBottom: "0.75rem" }}>
+        <h1
+          style={{
+            fontSize: "1.5rem",
+            fontWeight: "bold",
+            marginBottom: "0.75rem",
+          }}
+        >
           Something went wrong
         </h1>
         <p style={{ color: "#93a1ad", marginBottom: "1.5rem" }}>

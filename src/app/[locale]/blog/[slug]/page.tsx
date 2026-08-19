@@ -107,7 +107,7 @@ export default async function BlogPostPage({
           <div
             role="note"
             lang={meta.originalLocale}
-            className="mb-8 rounded-lg border border-alert/40 bg-alert/5 px-4 py-3 text-sm text-alert"
+            className="border-alert/40 bg-alert/5 text-alert mb-8 rounded-lg border px-4 py-3 text-sm"
           >
             {t("originalLanguageNotice")}
           </div>
@@ -115,7 +115,7 @@ export default async function BlogPostPage({
 
         {/* Cabecera del artículo */}
         <header className="mb-10">
-          <div className="mb-4 flex flex-wrap items-center gap-3 text-xs text-muted">
+          <div className="text-muted mb-4 flex flex-wrap items-center gap-3 text-xs">
             <time dateTime={meta.date}>
               {t("postedOn", {
                 date: new Date(meta.date).toLocaleDateString(
@@ -127,16 +127,18 @@ export default async function BlogPostPage({
             {meta.readingMinutes && (
               <>
                 <span aria-hidden="true">·</span>
-                <span>{t("readingTime", { minutes: meta.readingMinutes })}</span>
+                <span>
+                  {t("readingTime", { minutes: meta.readingMinutes })}
+                </span>
               </>
             )}
           </div>
 
-          <h1 className="text-3xl font-bold tracking-tight text-fg sm:text-4xl">
+          <h1 className="text-fg text-3xl font-bold tracking-tight sm:text-4xl">
             {meta.title}
           </h1>
 
-          <p className="mt-3 text-lg text-muted">{meta.description}</p>
+          <p className="text-muted mt-3 text-lg">{meta.description}</p>
 
           {meta.tags.length > 0 && (
             <div className="mt-5 flex flex-wrap gap-2">
@@ -155,15 +157,17 @@ export default async function BlogPostPage({
         </header>
 
         {/* Contenido MDX */}
-        <div lang={meta.isTranslationFallback ? meta.originalLocale : undefined}>
+        <div
+          lang={meta.isTranslationFallback ? meta.originalLocale : undefined}
+        >
           {content}
         </div>
 
         {/* Navegación de vuelta */}
-        <footer className="mt-16 border-t border-border pt-8">
+        <footer className="border-border mt-16 border-t pt-8">
           <Link
             href="/blog"
-            className="font-mono text-sm text-muted hover:text-accent transition-colors"
+            className="text-muted hover:text-accent font-mono text-sm transition-colors"
           >
             ← {t("backToBlog")}
           </Link>

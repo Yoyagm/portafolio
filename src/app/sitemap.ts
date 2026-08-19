@@ -64,13 +64,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: lastMod,
       changeFrequency: "yearly" as const,
       priority: 0.3,
-      alternates: { languages: { en: `${baseUrl}/en/privacy`, es: `${baseUrl}/es/privacidad` } },
+      alternates: {
+        languages: {
+          en: `${baseUrl}/en/privacy`,
+          es: `${baseUrl}/es/privacidad`,
+        },
+      },
     },
   ];
 
   // Páginas de blog (slugs únicos)
   const enPosts = await getAllPosts("en");
-  const nativeSlugs = new Set(enPosts.filter((p) => !p.isTranslationFallback).map((p) => p.slug));
+  const nativeSlugs = new Set(
+    enPosts.filter((p) => !p.isTranslationFallback).map((p) => p.slug),
+  );
   const allSlugs = [...new Set(enPosts.map((p) => p.slug))];
 
   const blogRoutes: MetadataRoute.Sitemap = allSlugs.map((slug) => ({

@@ -37,13 +37,11 @@ export type ContactFieldErrors = Partial<
   Record<"name" | "email" | "message", string>
 >;
 
-export type ContactActionState =
-  | null
-  | {
-      ok: false;
-      error: "rate_limit" | "validation" | "send_failed";
-      fieldErrors?: ContactFieldErrors;
-    };
+export type ContactActionState = null | {
+  ok: false;
+  error: "rate_limit" | "validation" | "send_failed";
+  fieldErrors?: ContactFieldErrors;
+};
 
 function resolveLocale(value: FormDataEntryValue | null): Locale {
   return value === "es" ? "es" : "en";

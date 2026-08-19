@@ -99,7 +99,7 @@ export function MobileMenu({ links }: MobileMenuProps) {
         aria-controls={PANEL_ID}
         aria-label={isOpen ? t("closeMenu") : t("openMenu")}
         onClick={isOpen ? close : open}
-        className="flex h-9 w-9 items-center justify-center rounded text-muted transition-colors hover:text-fg"
+        className="text-muted hover:text-fg flex h-9 w-9 items-center justify-center rounded transition-colors"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -136,13 +136,13 @@ export function MobileMenu({ links }: MobileMenuProps) {
           role="dialog"
           aria-modal="true"
           aria-label={t("openMenu")}
-          className="fixed inset-0 z-50 flex flex-col bg-bg/95 backdrop-blur-sm"
+          className="bg-bg/95 fixed inset-0 z-50 flex flex-col backdrop-blur-sm"
         >
-          <div className="flex h-14 shrink-0 items-center justify-end border-b border-border px-6">
+          <div className="border-border flex h-14 shrink-0 items-center justify-end border-b px-6">
             <button
               aria-label={t("closeMenu")}
               onClick={close}
-              className="flex h-9 w-9 items-center justify-center rounded text-muted transition-colors hover:text-fg"
+              className="text-muted hover:text-fg flex h-9 w-9 items-center justify-center rounded transition-colors"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -170,7 +170,7 @@ export function MobileMenu({ links }: MobileMenuProps) {
                   onClick={close}
                   aria-current={active ? "page" : undefined}
                   className={cn(
-                    "block border-b border-border py-4 font-mono text-lg transition-colors",
+                    "border-border block border-b py-4 font-mono text-lg transition-colors",
                     active ? "text-accent" : "text-muted hover:text-fg",
                   )}
                 >

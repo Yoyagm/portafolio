@@ -28,7 +28,10 @@ export type PostMeta = BlogFrontmatter & {
  * Parsea un bloque YAML simple de frontmatter MDX.
  * Soporta string, number, boolean y arrays inline (tag: [a, b, c]).
  */
-function parseFrontmatterRaw(source: string): { data: Record<string, unknown>; body: string } {
+function parseFrontmatterRaw(source: string): {
+  data: Record<string, unknown>;
+  body: string;
+} {
   const match = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
   if (!match) return { data: {}, body: source };
 
@@ -63,7 +66,11 @@ function estimateReadingMinutes(body: string): number {
   return Math.max(1, Math.ceil(body.trim().split(/\s+/).length / 200));
 }
 
-function toPostMeta(data: Record<string, unknown>, body: string, isTranslationFallback: boolean): PostMeta {
+function toPostMeta(
+  data: Record<string, unknown>,
+  body: string,
+  isTranslationFallback: boolean,
+): PostMeta {
   return {
     title: String(data.title ?? ""),
     description: String(data.description ?? ""),
@@ -71,7 +78,10 @@ function toPostMeta(data: Record<string, unknown>, body: string, isTranslationFa
     tags: Array.isArray(data.tags) ? (data.tags as string[]) : [],
     locale: (data.locale as Locale) ?? "en",
     slug: String(data.slug ?? ""),
-    readingMinutes: typeof data.readingMinutes === "number" ? data.readingMinutes : estimateReadingMinutes(body),
+    readingMinutes:
+      typeof data.readingMinutes === "number"
+        ? data.readingMinutes
+        : estimateReadingMinutes(body),
     draft: data.draft === true,
     isTranslationFallback,
     originalLocale: (data.locale as Locale) ?? "en",
@@ -80,7 +90,10 @@ function toPostMeta(data: Record<string, unknown>, body: string, isTranslationFa
 
 // ── Lectura de archivos ────────────────────────────────────────────────────────
 
-async function readPostsFromDir(localeDir: string, isFallback: boolean): Promise<PostMeta[]> {
+async function readPostsFromDir(
+  localeDir: string,
+  isFallback: boolean,
+): Promise<PostMeta[]> {
   let entries: string[];
   try {
     entries = await fs.readdir(localeDir);
@@ -132,11 +145,18 @@ export function paginatePosts(
   const totalPages = Math.max(1, Math.ceil(posts.length / PAGE_SIZE));
   const currentPage = Math.min(Math.max(1, page), totalPages);
   const start = (currentPage - 1) * PAGE_SIZE;
-  return { posts: posts.slice(start, start + PAGE_SIZE), totalPages, currentPage };
+  return {
+    posts: posts.slice(start, start + PAGE_SIZE),
+    totalPages,
+    currentPage,
+  };
 }
 
 /** Devuelve los posts filtrados por tag. */
-export async function getPostsByTag(tag: string, locale: Locale): Promise<PostMeta[]> {
+export async function getPostsByTag(
+  tag: string,
+  locale: Locale,
+): Promise<PostMeta[]> {
   const all = await getAllPosts(locale);
   return all.filter((p) => p.tags.includes(tag));
 }

@@ -41,7 +41,7 @@ export function ThemeToggle() {
     <button
       onClick={toggle}
       aria-label={t("toggleTheme")}
-      className="flex h-9 w-9 items-center justify-center rounded text-muted transition-colors hover:text-fg"
+      className="text-muted hover:text-fg flex h-9 w-9 items-center justify-center rounded transition-colors"
     >
       {isDark ? (
         // Icono sol (modo oscuro activo → cambiar a claro)

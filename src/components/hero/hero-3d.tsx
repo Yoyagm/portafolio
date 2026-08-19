@@ -24,9 +24,7 @@ type NavigatorWithCapabilities = Navigator & {
 function supportsWebGL(): boolean {
   try {
     const canvas = document.createElement("canvas");
-    return Boolean(
-      canvas.getContext("webgl2") ?? canvas.getContext("webgl"),
-    );
+    return Boolean(canvas.getContext("webgl2") ?? canvas.getContext("webgl"));
   } catch {
     return false;
   }
@@ -38,8 +36,7 @@ function isLowEndDevice(): boolean {
   const nav = navigator as NavigatorWithCapabilities;
   const weakCpu =
     typeof nav.hardwareConcurrency === "number" && nav.hardwareConcurrency < 4;
-  const weakMem =
-    typeof nav.deviceMemory === "number" && nav.deviceMemory <= 4;
+  const weakMem = typeof nav.deviceMemory === "number" && nav.deviceMemory <= 4;
   return weakCpu || weakMem;
 }
 
@@ -81,8 +78,7 @@ export function Hero3D() {
         setVisible(entry.isIntersecting);
         if (entry.isIntersecting && !decidedRef.current) {
           decidedRef.current = true;
-          const canRender3D =
-            !reduced && supportsWebGL() && !isLowEndDevice();
+          const canRender3D = !reduced && supportsWebGL() && !isLowEndDevice();
           setMode(canRender3D ? "canvas" : "poster");
         }
       },

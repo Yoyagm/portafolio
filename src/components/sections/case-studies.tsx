@@ -36,51 +36,76 @@ export async function CaseStudies({
     <Section id="work">
       {!hideHeading && (
         <Reveal>
-          <h2 className="font-mono text-sm uppercase tracking-widest text-accent">
+          <h2 className="text-accent font-mono text-sm tracking-widest uppercase">
             {t("workTitle")}
           </h2>
-          <p className="mt-2 text-muted">{t("workSubtitle")}</p>
+          <p className="text-muted mt-2">{t("workSubtitle")}</p>
         </Reveal>
       )}
 
       <div className="mt-16 flex flex-col gap-20">
         {sorted.map((cs) => (
-          <article key={cs.slug} className="rounded-xl border border-border bg-surface p-6 sm:p-8">
+          <article
+            key={cs.slug}
+            className="border-border bg-surface rounded-xl border p-6 sm:p-8"
+          >
             <Reveal>
               <header>
-                <h3 className="text-2xl font-bold text-fg">{cs.name}</h3>
-                <p className="mt-1 text-pretty text-muted">{pick(cs.tagline, locale)}</p>
+                <h3 className="text-fg text-2xl font-bold">{cs.name}</h3>
+                <p className="text-muted mt-1 text-pretty">
+                  {pick(cs.tagline, locale)}
+                </p>
               </header>
             </Reveal>
 
             <Reveal delay={0.05}>
               <dl className="mt-4 grid gap-4 text-sm sm:grid-cols-2">
                 <div>
-                  <dt className="font-mono uppercase tracking-wider text-muted text-xs">{t("role")}</dt>
-                  <dd className="mt-1 text-fg">{pick(cs.role, locale)}</dd>
+                  <dt className="text-muted font-mono text-xs tracking-wider uppercase">
+                    {t("role")}
+                  </dt>
+                  <dd className="text-fg mt-1">{pick(cs.role, locale)}</dd>
                 </div>
                 <div>
-                  <dt className="font-mono uppercase tracking-wider text-muted text-xs">Context</dt>
-                  <dd className="mt-1 text-muted">{pick(cs.context, locale)}</dd>
+                  <dt className="text-muted font-mono text-xs tracking-wider uppercase">
+                    Context
+                  </dt>
+                  <dd className="text-muted mt-1">
+                    {pick(cs.context, locale)}
+                  </dd>
                 </div>
               </dl>
             </Reveal>
 
             <Reveal delay={0.08}>
               <div className="mt-6">
-                <h4 className="font-mono text-xs uppercase tracking-wider text-muted">{t("problem")}</h4>
-                <p className="mt-2 text-pretty text-sm text-muted">{pick(cs.problem, locale)}</p>
+                <h4 className="text-muted font-mono text-xs tracking-wider uppercase">
+                  {t("problem")}
+                </h4>
+                <p className="text-muted mt-2 text-sm text-pretty">
+                  {pick(cs.problem, locale)}
+                </p>
               </div>
             </Reveal>
 
             <Reveal delay={0.1}>
               <div className="mt-6 grid gap-6 sm:grid-cols-2">
                 <div>
-                  <h4 className="font-mono text-xs uppercase tracking-wider text-muted">{t("approach")}</h4>
-                  <ul className="mt-2 space-y-1.5 text-sm text-muted" role="list">
+                  <h4 className="text-muted font-mono text-xs tracking-wider uppercase">
+                    {t("approach")}
+                  </h4>
+                  <ul
+                    className="text-muted mt-2 space-y-1.5 text-sm"
+                    role="list"
+                  >
                     {cs.approach.map((bullet, i) => (
                       <li key={i} className="flex gap-2">
-                        <span aria-hidden="true" className="mt-0.5 shrink-0 text-accent">›</span>
+                        <span
+                          aria-hidden="true"
+                          className="text-accent mt-0.5 shrink-0"
+                        >
+                          ›
+                        </span>
                         {pick(bullet, locale)}
                       </li>
                     ))}
@@ -88,11 +113,21 @@ export async function CaseStudies({
                 </div>
 
                 <div>
-                  <h4 className="font-mono text-xs uppercase tracking-wider text-muted">{t("impact")}</h4>
-                  <ul className="mt-2 space-y-1.5 text-sm text-muted" role="list">
+                  <h4 className="text-muted font-mono text-xs tracking-wider uppercase">
+                    {t("impact")}
+                  </h4>
+                  <ul
+                    className="text-muted mt-2 space-y-1.5 text-sm"
+                    role="list"
+                  >
                     {cs.impact.map((bullet, i) => (
                       <li key={i} className="flex gap-2">
-                        <span aria-hidden="true" className="mt-0.5 shrink-0 text-accent">›</span>
+                        <span
+                          aria-hidden="true"
+                          className="text-accent mt-0.5 shrink-0"
+                        >
+                          ›
+                        </span>
                         {pick(bullet, locale)}
                       </li>
                     ))}
@@ -112,7 +147,7 @@ export async function CaseStudies({
                   {cs.media.map((m) => (
                     <li
                       key={m.src}
-                      className="overflow-hidden rounded-lg border border-border bg-surface-2"
+                      className="border-border bg-surface-2 overflow-hidden rounded-lg border"
                     >
                       {m.type === "video" ? (
                         <video
@@ -143,7 +178,7 @@ export async function CaseStudies({
             {/* Métricas */}
             <Reveal delay={0.12}>
               <div
-                className="mt-8 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-6 border-t border-border pt-6"
+                className="border-border mt-8 grid grid-cols-2 gap-6 border-t pt-6 sm:grid-cols-3 lg:grid-cols-6"
                 role="list"
                 aria-label="Metrics"
               >
@@ -161,11 +196,16 @@ export async function CaseStudies({
 
             {/* Features */}
             <Reveal delay={0.14}>
-              <div className="mt-6 border-t border-border pt-6">
+              <div className="border-border mt-6 border-t pt-6">
                 <ul className="flex flex-col gap-2" role="list">
                   {cs.features.map((feat, i) => (
-                    <li key={i} className="flex flex-wrap items-start gap-2 text-sm">
-                      <span className="flex-1 text-muted">{pick(feat.text, locale)}</span>
+                    <li
+                      key={i}
+                      className="flex flex-wrap items-start gap-2 text-sm"
+                    >
+                      <span className="text-muted flex-1">
+                        {pick(feat.text, locale)}
+                      </span>
                       <span className="flex shrink-0 gap-1.5">
                         <Badge variant={feat.status}>
                           {statusLabel[feat.status]}
@@ -182,13 +222,19 @@ export async function CaseStudies({
 
             {/* Stack */}
             <Reveal delay={0.16}>
-              <div className="mt-6 border-t border-border pt-6">
-                <h4 className="font-mono text-xs uppercase tracking-wider text-muted">{t("stack")}</h4>
-                <ul className="mt-2 flex flex-wrap gap-1.5" role="list" aria-label="Tech stack">
+              <div className="border-border mt-6 border-t pt-6">
+                <h4 className="text-muted font-mono text-xs tracking-wider uppercase">
+                  {t("stack")}
+                </h4>
+                <ul
+                  className="mt-2 flex flex-wrap gap-1.5"
+                  role="list"
+                  aria-label="Tech stack"
+                >
                   {cs.stack.map((tech) => (
                     <li
                       key={tech}
-                      className="rounded border border-border bg-surface-2 px-2 py-0.5 font-mono text-xs text-fg"
+                      className="border-border bg-surface-2 text-fg rounded border px-2 py-0.5 font-mono text-xs"
                     >
                       {tech}
                     </li>
@@ -207,7 +253,7 @@ export async function CaseStudies({
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-md border border-border px-4 py-2 text-sm font-medium text-fg transition-colors hover:bg-surface-2"
+                      className="border-border text-fg hover:bg-surface-2 inline-flex items-center gap-1.5 rounded-md border px-4 py-2 text-sm font-medium transition-colors"
                     >
                       {link.id === "repo" ? t("viewRepo") : t("viewProject")}
                       <span className="sr-only"> — {cs.name}</span>

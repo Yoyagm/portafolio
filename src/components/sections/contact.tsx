@@ -20,10 +20,10 @@ export async function Contact({
     <Section id="contact">
       {!hideHeading && (
         <Reveal>
-          <h2 className="font-mono text-sm uppercase tracking-widest text-accent">
+          <h2 className="text-accent font-mono text-sm tracking-widest uppercase">
             {t("title")}
           </h2>
-          <p className="mt-2 text-muted">{t("subtitle")}</p>
+          <p className="text-muted mt-2">{t("subtitle")}</p>
         </Reveal>
       )}
 
@@ -40,7 +40,7 @@ export async function Contact({
           <li>
             <a
               href={`mailto:${profile.email}`}
-              className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-5 py-3 font-medium text-fg transition-colors hover:bg-surface-2"
+              className="border-border bg-surface text-fg hover:bg-surface-2 inline-flex items-center gap-2 rounded-lg border px-5 py-3 font-medium transition-colors"
             >
               <span aria-hidden="true">✉</span>
               {profile.email}
@@ -52,7 +52,7 @@ export async function Contact({
               href={profile.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-5 py-3 font-medium text-fg transition-colors hover:bg-surface-2"
+              className="border-border bg-surface text-fg hover:bg-surface-2 inline-flex items-center gap-2 rounded-lg border px-5 py-3 font-medium transition-colors"
             >
               <span aria-hidden="true">⌥</span>
               GitHub
@@ -63,7 +63,7 @@ export async function Contact({
             <a
               href={profile.cvHref}
               download
-              className="inline-flex items-center gap-2 rounded-lg border border-accent/30 bg-accent/10 px-5 py-3 font-medium text-accent transition-colors hover:bg-accent/20"
+              className="border-accent/30 bg-accent/10 text-accent hover:bg-accent/20 inline-flex items-center gap-2 rounded-lg border px-5 py-3 font-medium transition-colors"
             >
               <span aria-hidden="true">↓</span>
               {t("downloadCv")}
@@ -73,7 +73,7 @@ export async function Contact({
       </Reveal>
 
       <Reveal delay={0.14}>
-        <p className="mt-10 text-sm text-muted">
+        <p className="text-muted mt-10 text-sm">
           {t("privacyNote")}{" "}
           <Link
             href="/privacy"

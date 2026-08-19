@@ -24,10 +24,10 @@ import {
 export function ContactForm() {
   const t = useTranslations("Contact");
   const locale = useLocale();
-  const [state, formAction, isPending] = useActionState<ContactActionState, FormData>(
-    submitContact,
-    null,
-  );
+  const [state, formAction, isPending] = useActionState<
+    ContactActionState,
+    FormData
+  >(submitContact, null);
   // Referencia al primer campo con error para enfocar (SC 2.4.3)
   const firstErrorRef = useRef<HTMLElement | null>(null);
 
@@ -45,7 +45,7 @@ export function ContactForm() {
       {/* Honeypot: oculto visualmente; accesible para asistentes solo como "no leer" */}
       <div
         aria-hidden="true"
-        className="absolute left-[-9999px] top-[-9999px] overflow-hidden"
+        className="absolute top-[-9999px] left-[-9999px] overflow-hidden"
       >
         <label htmlFor="website">Website</label>
         <input
@@ -65,10 +65,11 @@ export function ContactForm() {
         {state && !state.ok && (
           <p
             ref={(el) => {
-              if (el && state.error !== "validation") firstErrorRef.current = el;
+              if (el && state.error !== "validation")
+                firstErrorRef.current = el;
             }}
             tabIndex={-1}
-            className="rounded-lg border border-alert/40 bg-alert/5 px-4 py-3 text-sm text-alert"
+            className="border-alert/40 bg-alert/5 text-alert rounded-lg border px-4 py-3 text-sm"
           >
             {state.error === "rate_limit" ? (
               t("errorRateLimited")
@@ -89,9 +90,9 @@ export function ContactForm() {
 
       {/* Nombre */}
       <div className="space-y-1.5">
-        <label htmlFor="cf-name" className="block text-sm font-medium text-fg">
+        <label htmlFor="cf-name" className="text-fg block text-sm font-medium">
           {t("name")}
-          <span aria-hidden="true" className="ml-0.5 text-alert">
+          <span aria-hidden="true" className="text-alert ml-0.5">
             *
           </span>
         </label>
@@ -108,10 +109,10 @@ export function ContactForm() {
           ref={(el) => {
             if (el && fieldError("name")) firstErrorRef.current = el;
           }}
-          className="w-full rounded-lg border border-border bg-surface px-4 py-2.5 text-fg placeholder-muted focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30 disabled:opacity-50"
+          className="border-border bg-surface text-fg placeholder-muted focus:border-accent focus:ring-accent/30 w-full rounded-lg border px-4 py-2.5 focus:ring-2 focus:outline-none disabled:opacity-50"
         />
         {fieldError("name") && (
-          <p id="cf-name-err" role="alert" className="text-xs text-alert">
+          <p id="cf-name-err" role="alert" className="text-alert text-xs">
             {t("errorName")}
           </p>
         )}
@@ -119,9 +120,9 @@ export function ContactForm() {
 
       {/* Email */}
       <div className="space-y-1.5">
-        <label htmlFor="cf-email" className="block text-sm font-medium text-fg">
+        <label htmlFor="cf-email" className="text-fg block text-sm font-medium">
           {t("email")}
-          <span aria-hidden="true" className="ml-0.5 text-alert">
+          <span aria-hidden="true" className="text-alert ml-0.5">
             *
           </span>
         </label>
@@ -138,10 +139,10 @@ export function ContactForm() {
             if (el && fieldError("email") && !fieldError("name"))
               firstErrorRef.current = el;
           }}
-          className="w-full rounded-lg border border-border bg-surface px-4 py-2.5 text-fg placeholder-muted focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30 disabled:opacity-50"
+          className="border-border bg-surface text-fg placeholder-muted focus:border-accent focus:ring-accent/30 w-full rounded-lg border px-4 py-2.5 focus:ring-2 focus:outline-none disabled:opacity-50"
         />
         {fieldError("email") && (
-          <p id="cf-email-err" role="alert" className="text-xs text-alert">
+          <p id="cf-email-err" role="alert" className="text-alert text-xs">
             {t("errorEmail")}
           </p>
         )}
@@ -151,10 +152,10 @@ export function ContactForm() {
       <div className="space-y-1.5">
         <label
           htmlFor="cf-message"
-          className="block text-sm font-medium text-fg"
+          className="text-fg block text-sm font-medium"
         >
           {t("message")}
-          <span aria-hidden="true" className="ml-0.5 text-alert">
+          <span aria-hidden="true" className="text-alert ml-0.5">
             *
           </span>
         </label>
@@ -167,7 +168,9 @@ export function ContactForm() {
           maxLength={2000}
           aria-required="true"
           aria-invalid={fieldError("message") ? "true" : undefined}
-          aria-describedby={fieldError("message") ? "cf-message-err" : undefined}
+          aria-describedby={
+            fieldError("message") ? "cf-message-err" : undefined
+          }
           ref={(el) => {
             if (
               el &&
@@ -177,10 +180,10 @@ export function ContactForm() {
             )
               firstErrorRef.current = el;
           }}
-          className="w-full resize-y rounded-lg border border-border bg-surface px-4 py-2.5 text-fg placeholder-muted focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30 disabled:opacity-50"
+          className="border-border bg-surface text-fg placeholder-muted focus:border-accent focus:ring-accent/30 w-full resize-y rounded-lg border px-4 py-2.5 focus:ring-2 focus:outline-none disabled:opacity-50"
         />
         {fieldError("message") && (
-          <p id="cf-message-err" role="alert" className="text-xs text-alert">
+          <p id="cf-message-err" role="alert" className="text-alert text-xs">
             {t("errorMessage")}
           </p>
         )}
@@ -190,7 +193,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={isPending}
-        className="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 font-medium text-accent-fg transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+        className="bg-accent text-accent-fg inline-flex items-center gap-2 rounded-lg px-6 py-3 font-medium transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
       >
         {isPending ? t("sending") : t("send")}
       </button>

@@ -3,7 +3,8 @@
 import { track } from "@vercel/analytics";
 
 // Eventos del KPI de conversión (RF16), sin cookies ni PII.
-export type AnalyticsEvent = "contact_submit" | "cv_download" | "outbound_click";
+export type AnalyticsEvent =
+  "contact_submit" | "cv_download" | "outbound_click";
 
 export function trackEvent(
   name: AnalyticsEvent,

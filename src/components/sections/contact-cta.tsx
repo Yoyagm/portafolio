@@ -11,16 +11,16 @@ export async function ContactCta({ locale }: { locale: Locale }) {
   return (
     <Section>
       <Reveal>
-        <div className="rounded-2xl border border-border bg-surface p-8 text-center sm:p-12">
-          <h2 className="text-2xl font-bold text-fg sm:text-3xl">
+        <div className="border-border bg-surface rounded-2xl border p-8 text-center sm:p-12">
+          <h2 className="text-fg text-2xl font-bold sm:text-3xl">
             {t("contactCtaTitle")}
           </h2>
-          <p className="mx-auto mt-3 max-w-xl text-pretty text-muted">
+          <p className="text-muted mx-auto mt-3 max-w-xl text-pretty">
             {t("contactCtaBody")}
           </p>
           <Link
             href="/contact"
-            className="mt-6 inline-flex items-center gap-2 rounded-md bg-accent px-6 py-3 font-medium text-accent-fg transition-opacity hover:opacity-90"
+            className="bg-accent text-accent-fg mt-6 inline-flex items-center gap-2 rounded-md px-6 py-3 font-medium transition-opacity hover:opacity-90"
           >
             {t("contactCtaButton")} →
           </Link>

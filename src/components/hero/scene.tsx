@@ -1,6 +1,12 @@
 "use client";
 
-import { useCallback, useEffect, useLayoutEffect, useMemo, useRef } from "react";
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+} from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { AdaptiveDpr, PerformanceMonitor } from "@react-three/drei";
 import * as THREE from "three";
@@ -294,8 +300,10 @@ function Field({ onError }: { onError: () => void }) {
       const ny = ((e.clientY - rect.top) / rect.height) * 2 - 1;
       // Ignora punteros muy lejos del hero (no reaccionar a toda la página).
       if (nx < -1.6 || nx > 1.6 || ny < -1.6 || ny > 1.6) return;
-      parallaxTarget.current.x = THREE.MathUtils.clamp(nx, -1, 1) * PARALLAX_MAX;
-      parallaxTarget.current.y = THREE.MathUtils.clamp(ny, -1, 1) * PARALLAX_MAX;
+      parallaxTarget.current.x =
+        THREE.MathUtils.clamp(nx, -1, 1) * PARALLAX_MAX;
+      parallaxTarget.current.y =
+        THREE.MathUtils.clamp(ny, -1, 1) * PARALLAX_MAX;
       invalidate();
     };
     window.addEventListener("pointermove", onPointerMove, { passive: true });

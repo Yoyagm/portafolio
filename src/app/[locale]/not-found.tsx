@@ -13,14 +13,14 @@ export default function NotFound() {
       className="flex flex-1 flex-col items-center justify-center p-8"
     >
       <div className="max-w-md space-y-4 text-center font-mono">
-        <p className="text-7xl font-bold text-surface-2" aria-hidden="true">
+        <p className="text-surface-2 text-7xl font-bold" aria-hidden="true">
           404
         </p>
-        <h1 className="text-2xl font-bold text-fg">{t("title")}</h1>
+        <h1 className="text-fg text-2xl font-bold">{t("title")}</h1>
         <p className="text-muted">{t("description")}</p>
         <Link
           href="/"
-          className="mt-2 inline-block rounded border border-border px-4 py-2 text-sm text-muted transition-colors hover:border-accent hover:text-fg"
+          className="border-border text-muted hover:border-accent hover:text-fg mt-2 inline-block rounded border px-4 py-2 text-sm transition-colors"
         >
           {t("back")}
         </Link>

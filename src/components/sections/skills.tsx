@@ -11,7 +11,7 @@ export async function Skills({ locale }: { locale: Locale }) {
   return (
     <Section id="skills">
       <Reveal>
-        <h2 className="font-mono text-sm uppercase tracking-widest text-accent">
+        <h2 className="text-accent font-mono text-sm tracking-widest uppercase">
           {t("skillsTitle")}
         </h2>
       </Reveal>
@@ -19,8 +19,10 @@ export async function Skills({ locale }: { locale: Locale }) {
       <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {skillGroups.map((group, gi) => (
           <Reveal key={group.id} delay={gi * 0.06}>
-            <div className="rounded-lg border border-border bg-surface p-5">
-              <h3 className="font-semibold text-fg">{pick(group.title, locale)}</h3>
+            <div className="border-border bg-surface rounded-lg border p-5">
+              <h3 className="text-fg font-semibold">
+                {pick(group.title, locale)}
+              </h3>
               <ul className="mt-3 space-y-1.5" role="list">
                 {group.skills.map((skill, si) => {
                   const name =
@@ -30,9 +32,12 @@ export async function Skills({ locale }: { locale: Locale }) {
                   return (
                     <li
                       key={si}
-                      className="flex items-start gap-2 text-sm text-muted"
+                      className="text-muted flex items-start gap-2 text-sm"
                     >
-                      <span aria-hidden="true" className="mt-0.5 shrink-0 text-accent">
+                      <span
+                        aria-hidden="true"
+                        className="text-accent mt-0.5 shrink-0"
+                      >
                         ›
                       </span>
                       {name}

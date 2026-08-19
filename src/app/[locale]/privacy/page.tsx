@@ -47,17 +47,17 @@ export default async function PrivacyPage({
 
 function PrivacyEn() {
   return (
-    <article className="space-y-8 text-fg">
+    <article className="text-fg space-y-8">
       <header>
         <h1 className="text-3xl font-bold tracking-tight">Privacy Policy</h1>
-        <p className="mt-2 text-sm text-muted">Last updated: January 2026</p>
+        <p className="text-muted mt-2 text-sm">Last updated: January 2026</p>
       </header>
 
       <section aria-labelledby="privacy-overview">
         <h2 id="privacy-overview" className="mb-3 text-xl font-semibold">
           Overview
         </h2>
-        <p className="leading-7 text-muted">
+        <p className="text-muted leading-7">
           This portfolio site ({siteConfig.url}) collects minimal data. No
           advertising trackers, no third-party cookies, and no persistent user
           profiles are created.
@@ -68,7 +68,7 @@ function PrivacyEn() {
         <h2 id="privacy-contact" className="mb-3 text-xl font-semibold">
           Contact Form
         </h2>
-        <ul className="space-y-3 text-muted">
+        <ul className="text-muted space-y-3">
           <li>
             <strong className="text-fg">Data collected:</strong> name, email
             address, and message content submitted via the contact form.
@@ -102,9 +102,9 @@ function PrivacyEn() {
             in a database by this site.
           </li>
           <li>
-            <strong className="text-fg">IP address:</strong> used ephemerally
-            to enforce the rate-limit (5 requests per 10 minutes). It is not
-            stored or logged after the request completes.
+            <strong className="text-fg">IP address:</strong> used ephemerally to
+            enforce the rate-limit (5 requests per 10 minutes). It is not stored
+            or logged after the request completes.
           </li>
         </ul>
       </section>
@@ -113,7 +113,7 @@ function PrivacyEn() {
         <h2 id="privacy-analytics" className="mb-3 text-xl font-semibold">
           Analytics
         </h2>
-        <p className="leading-7 text-muted">
+        <p className="text-muted leading-7">
           This site uses{" "}
           <a
             href="https://vercel.com/docs/analytics/privacy-policy"
@@ -133,8 +133,8 @@ function PrivacyEn() {
             Speed Insights
           </a>
           . These tools collect anonymised performance metrics and page-view
-          counts. <strong className="text-fg">No cookies are set</strong> and
-          no personal data is linked to page views.
+          counts. <strong className="text-fg">No cookies are set</strong> and no
+          personal data is linked to page views.
         </p>
       </section>
 
@@ -142,7 +142,7 @@ function PrivacyEn() {
         <h2 id="privacy-rights" className="mb-3 text-xl font-semibold">
           Your Rights
         </h2>
-        <p className="leading-7 text-muted">
+        <p className="text-muted leading-7">
           To exercise any data rights (access, erasure, portability), contact{" "}
           <a
             href={`mailto:${siteConfig.email}`}
@@ -161,19 +161,19 @@ function PrivacyEn() {
 
 function PrivacyEs() {
   return (
-    <article className="space-y-8 text-fg">
+    <article className="text-fg space-y-8">
       <header>
         <h1 className="text-3xl font-bold tracking-tight">
           Política de Privacidad
         </h1>
-        <p className="mt-2 text-sm text-muted">Actualizado: enero de 2026</p>
+        <p className="text-muted mt-2 text-sm">Actualizado: enero de 2026</p>
       </header>
 
       <section aria-labelledby="privacy-overview-es">
         <h2 id="privacy-overview-es" className="mb-3 text-xl font-semibold">
           Resumen
         </h2>
-        <p className="leading-7 text-muted">
+        <p className="text-muted leading-7">
           Este portafolio ({siteConfig.url}) recopila datos mínimos. No hay
           rastreadores publicitarios, cookies de terceros ni perfiles de usuario
           persistentes.
@@ -184,7 +184,7 @@ function PrivacyEs() {
         <h2 id="privacy-contact-es" className="mb-3 text-xl font-semibold">
           Formulario de Contacto
         </h2>
-        <ul className="space-y-3 text-muted">
+        <ul className="text-muted space-y-3">
           <li>
             <strong className="text-fg">Datos recopilados:</strong> nombre,
             correo electrónico y mensaje enviado mediante el formulario de
@@ -208,8 +208,8 @@ function PrivacyEs() {
             para entregar tu mensaje.
           </li>
           <li>
-            <strong className="text-fg">Transferencia internacional:</strong>{" "}
-            La infraestructura de Resend puede procesar datos en Estados Unidos.
+            <strong className="text-fg">Transferencia internacional:</strong> La
+            infraestructura de Resend puede procesar datos en Estados Unidos.
             Las transferencias se rigen por las Cláusulas Contractuales Estándar
             de Resend.
           </li>
@@ -230,7 +230,7 @@ function PrivacyEs() {
         <h2 id="privacy-analytics-es" className="mb-3 text-xl font-semibold">
           Analítica
         </h2>
-        <p className="leading-7 text-muted">
+        <p className="text-muted leading-7">
           Este sitio utiliza{" "}
           <a
             href="https://vercel.com/docs/analytics/privacy-policy"
@@ -251,8 +251,8 @@ function PrivacyEs() {
           </a>
           . Estas herramientas recopilan métricas de rendimiento anonimizadas y
           recuentos de páginas vistas.{" "}
-          <strong className="text-fg">No se establecen cookies</strong> y
-          ningún dato personal se vincula a las visitas de página.
+          <strong className="text-fg">No se establecen cookies</strong> y ningún
+          dato personal se vincula a las visitas de página.
         </p>
       </section>
 
@@ -260,7 +260,7 @@ function PrivacyEs() {
         <h2 id="privacy-rights-es" className="mb-3 text-xl font-semibold">
           Tus Derechos
         </h2>
-        <p className="leading-7 text-muted">
+        <p className="text-muted leading-7">
           Para ejercer cualquier derecho sobre tus datos (acceso, supresión,
           portabilidad), contáctame en{" "}
           <a

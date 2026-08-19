@@ -16,7 +16,9 @@ export const PUBLIC_SITE_URL: string =
 function requireServerVar(key: string): string {
   // typeof window === "undefined" garantiza que este path solo se alcanza en Node.
   if (typeof window !== "undefined") {
-    throw new Error(`[env] "${key}" is a server-only variable — do not read it on the client.`);
+    throw new Error(
+      `[env] "${key}" is a server-only variable — do not read it on the client.`,
+    );
   }
   const value = process.env[key];
   if (!value) {
