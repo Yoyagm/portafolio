@@ -56,3 +56,8 @@ specs/
 /cv/*.aux
 /cv/*.log
 /cv/*.out
+
+# CV dirigidos a una vacante concreta. Fuera de git a propósito: este repo es
+# público, y ni el nombre de la empresa ni una carta que reconoce un requisito
+# no cumplido deberían poder leerlos otros reclutadores.
+/cv/dirigidos/

@@ -204,7 +204,11 @@ export async function About({
               )}
 
               <li>
-                <a href={profile.cvHref} download className={CHIP}>
+                <a
+                  href={pick(profile.cvHref, locale)}
+                  download
+                  className={CHIP}
+                >
                   <DownloadIcon />
                   CV
                 </a>

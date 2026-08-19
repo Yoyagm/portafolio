@@ -1,0 +1,294 @@
+% =====================================================================
+%  CV general en ESPAÑOL. Cuerpo; el preámbulo está en cv-preamble.tex.
+%
+%  No compilar este archivo directamente. Usar:
+%    johan-rodriguez-cv-es-onepage.tex → 1 página, para postular
+%    johan-rodriguez-cv-es.tex         → 2 páginas, versión detallada
+%
+%  Su gemelo en inglés es cv-body.tex. Al cambiar contenido aquí, hay que
+%  cambiarlo allí: no se traducen solos.
+% =====================================================================
+\input{cv-preamble.tex}
+
+% =====================================================================
+\begin{center}
+  {\sffamily\bfseries\color{accent}\fontsize{18}{21}\selectfont
+   JOHAN DAVID RODRIGUEZ CASTRO}\\[0.5ex]
+  {\footnotesize\color{subtle}
+   Bucaramanga, Santander, Colombia
+   \ $\vert$ \ +57 313 878 4948
+   \ $\vert$ \ \href{mailto:johan.rc2020@gmail.com}{johan.rc2020@gmail.com}}\\[0.4ex]
+  {\footnotesize
+   \href{https://github.com/Yoyagm}{github.com/Yoyagm}
+   \ {\color{subtle}$\vert$} \
+   \href{https://www.linkedin.com/in/johan-rodriguez-97bb29323/}{linkedin.com/in/johan-rodriguez-97bb29323}
+   \ {\color{subtle}$\vert$} \
+   \href{https://johanrodriguez.is-a.dev/es}{johanrodriguez.is-a.dev}}
+\end{center}
+\vspace{0.2ex}
+
+% =====================================================================
+\section{Perfil Profesional}
+\justifying
+\ifonepage
+Estudiante de último semestre de Ingeniería de Sistemas y Software (UPB Bucaramanga), en la
+intersección entre ingeniería de seguridad y machine learning aplicado. Entrego herramientas, no
+informes: un escáner de cadena de suministro de código abierto, un clasificador de phishing que
+auditó su propio benchmark y publicó la cifra honesta en lugar de la que favorecía, y un dashboard
+de priorización de vulnerabilidades que desmontó midiendo la ventaja que venía a demostrar.
+Inglés C2 verificado (EF SET 80/100).
+\else
+Estudiante de último semestre de Ingeniería de Sistemas y Software (UPB Bucaramanga), en la
+intersección entre ingeniería de seguridad y machine learning aplicado. Entrego herramientas, no
+informes: un escáner de cadena de suministro de código abierto, un clasificador de phishing que
+auditó su propio benchmark y publicó la cifra honesta en lugar de la que favorecía, y un dashboard
+de priorización de vulnerabilidades que desmontó midiendo la ventaja que venía a demostrar. Me
+muevo con igual soltura en infraestructura cloud —AWS, Terraform, CI/CD— y en desarrollo
+full-stack, con experiencia liderando bajo Scrum e inglés C2 verificado (EF SET 80/100). Busco un
+rol de Seguridad, Detection Engineering o Datos e IA.
+\fi
+
+% =====================================================================
+\section{Competencias Técnicas}
+\vspace{0.2ex}
+\skill{Seguridad y Detección}{Seguridad de la cadena de suministro de software (slopsquatting),
+  detection-as-code, mapeo a MITRE ATT\&CK, priorización de vulnerabilidades basada en riesgo
+  (CISA KEV / EPSS / CVSS), análisis de phishing y URLs, 2FA TOTP, SDLC seguro y gates de
+  seguridad en CI}
+\skill{Datos, ML e IA}{LightGBM, XGBoost, scikit-learn; detección de fugas de datos y diseño de
+  evaluaciones honestas; explicabilidad con SHAP; validación agrupada, temporal y walk-forward;
+  calibración de probabilidades; NLP con FinBERT; orquestación multiagente con CrewAI; RAG con
+  ChromaDB; pandas / NumPy}
+\skill{Cloud y DevOps}{AWS (IAM, VPC, EC2, Auto Scaling, ALB, RDS Multi-AZ, ECR, CloudWatch),
+  Terraform (IaC), Docker, CI/CD con GitHub Actions, pruebas de carga con k6, Google Cloud
+  (BigQuery ML, Cloud Storage, DLP)}
+\skill{Programación}{Python, TypeScript / JavaScript, C\#, SQL, VBA, Dart, HCL, LaTeX}
+\skill{Bases de Datos}{PostgreSQL, MySQL, SQLite, DuckDB, ChromaDB; arquitecturas híbridas
+  SQL / NoSQL}
+\skill{Métodos y Herramientas}{Ágil / Scrum, desarrollo dirigido por especificación, pytest,
+  Playwright, mypy strict, modelado UML, Git}
+
+% =====================================================================
+\section{Experiencia}
+
+\project{Desarrollador / Soporte Técnico}{}%
+  {GOATGuard: \href{https://github.com/Yoyagm/goatguard-app}{github.com/Yoyagm/goatguard-app}}%
+  {Ene 2026 -- Actualidad \ $\vert$ \ Pontificia Universidad Bolivariana}
+\begin{itemize}
+  \item Diseñé y construí GOATGuard, una plataforma full-stack de monitoreo de seguridad de red
+        (FastAPI + PostgreSQL + Flutter), para cerrar la brecha de movilidad de los administradores
+        que gestionan activos tecnológicos distribuidos.
+  \item Construí un motor de clasificación automática de activos de red (routers, impresoras,
+        cámaras) con monitoreo en tiempo real y dashboards de KPIs, y detección proactiva de port
+        scans e intentos de intrusión, aplicando principios de Blue Team y detection engineering.
+  \ifonepage\else
+  \item Endurecí el cliente móvil con un flujo completo de 2FA TOTP (enrolamiento por QR, códigos
+        de respaldo y de recuperación) y JWT en el almacenamiento seguro del sistema operativo,
+        tras un interceptor global de errores 401.
+  \item Brindo soporte técnico a los usuarios finales de la institución.
+  \fi
+\end{itemize}
+
+\entry{Scrum Master}{}{Jun 2025 -- Nov 2025 \ $\vert$ \ Pontificia Universidad Bolivariana}
+\begin{itemize}
+  \item Gestioné el ciclo de vida de desarrollo bajo Scrum, facilitando las ceremonias y
+        optimizando el Product Backlog para asegurar entrega incremental de valor.
+  \item Contribuí al diseño de una infraestructura de alta disponibilidad orientada a 100.000
+        usuarios concurrentes con objetivo de latencia por debajo de 500\,ms, sobre arquitecturas
+        de datos híbridas SQL / NoSQL / en memoria.
+\end{itemize}
+
+\ifonepage\else
+\entry{Auxiliar de Eventos Deportivos}{}{May 2025 -- Actualidad \ $\vert$ \ EM Torneos y Competencias}
+\begin{itemize}
+  \item Apoyo la organización y ejecución de torneos deportivos y eventos competitivos.
+\end{itemize}
+\fi
+
+% =====================================================================
+\section{Proyectos Técnicos Destacados}
+
+\project{SlopGuard}{Escáner de Cadena de Suministro de Código Abierto}%
+  {\href{https://github.com/Yoyagm/slopguard}{github.com/Yoyagm/slopguard}}%
+  {2026 \ $\vert$ \ Independiente}
+\begin{itemize}
+  \item Construí un guardián de pre-instalación que puntúa dependencias de PyPI y npm frente a
+        nombres alucinados, typosquatted y maliciosos \emph{antes} de que se ejecute código alguno,
+        con un motor de detección de cinco capas y cero dependencias en tiempo de ejecución.
+  \ifonepage\else
+  \item Diseñé un invariante anti-falso-positivo demostrable: la capa opcional de alucinación por
+        LLM es estructuralmente incapaz de bloquear un paquete legítimo por sí sola.
+  \fi
+  \item Aseguré la corrección con un gate de CI al $\geq$90\,\% de cobertura global ($\geq$95\,\%
+        en rutas críticas) y ocho contratos de arquitectura con import-linter, y entregué cuatro
+        puntos de integración desde un solo núcleo: CLI, hook de pre-commit, GitHub Action y SaaS
+        auto-hospedable.
+\end{itemize}
+
+\ifonepage
+\project{Detector de Phishing por URL}{Detección Explicable y Auditoría de Fugas}%
+  {\href{https://yoyagm.github.io/phishing-url-detector/}{yoyagm.github.io/phishing-url-detector}}%
+  {2026 \ $\vert$ \ Independiente}
+\else
+\project{Detector de Phishing por URL}{Detección Explicable y Auditoría de Fugas del Dataset}%
+  {\href{https://yoyagm.github.io/phishing-url-detector/}{yoyagm.github.io/phishing-url-detector}
+   \ $\vert$ \ \href{https://github.com/Yoyagm/phishing-url-detector}{github.com/Yoyagm/phishing-url-detector}}%
+  {2026 \ $\vert$ \ Independiente}
+\fi
+\begin{itemize}
+  \item Audité PhiUSIIL (UCI id 967, 235.795 URLs) antes de entrenar y medí dos fugas de etiqueta
+        independientes: una regla de una línea alcanza 99,67\,\% de exactitud, y features léxicas
+        hechas a mano sobre la URL cruda —el arreglo obvio— siguen dando 99,51\,\% sin medir nada.
+  \item Reentrené solo sobre nombres de host canonicalizados y publiqué el resultado honesto:
+        ROC-AUC 0,937 y 70,5\,\% de recall con 1\,\% de falsos positivos, contra phishing enviado
+        dos años después de recolectar los datos de entrenamiento.
+  \ifonepage
+  \item Lo entregué: TreeSHAP exacto reimplementado en JavaScript sin dependencias (paridad
+        verificada a 1e-12 contra la referencia de Python), 113 tests incluyendo guardianes de
+        fugas con controles negativos, y un servicio FastAPI containerizado.
+  \else
+  \item Reimplementé TreeSHAP exacto dependiente del camino en JavaScript sin dependencias, con
+        paridad verificada a 1e-12 contra la referencia de Python sobre 28.917 atribuciones, para
+        que la demo explique cada veredicto sin backend.
+  \item Entregué 113 tests —incluidos guardianes de fugas que vienen con controles negativos de
+        fuga plantada—, un servicio FastAPI containerizado y un informe técnico de nueve páginas
+        en LaTeX.
+  \fi
+\end{itemize}
+
+\project{Dashboard de Priorización de Vulnerabilidades}{CISA KEV + EPSS + NVD}%
+  {\href{https://github.com/Yoyagm/vuln-prioritization-dashboard}{github.com/Yoyagm/vuln-prioritization-dashboard}}%
+  {2026 \ $\vert$ \ Independiente}
+\begin{itemize}
+  \item Construí una tubería de ingesta reproducible sobre tres feeds públicos que ordena 359.399
+        CVEs vivos, con contratos de datos versionados y tests de esquema que rompen la build
+        cuando un feed cambia de forma.
+  \ifonepage
+  \item Reproduje la afirmación de la industria de que EPSS es 6,1$\times$ más eficiente que CVSS,
+        y luego demostré con puntuaciones congeladas en cinco cortes que la mayor parte es
+        artefacto de evaluación: EPSS gana la cabeza de la cola (1,2--1,8$\times$) y pierde la cola
+        larga (0,5--0,7$\times$).
+  \else
+  \item Reproduje la afirmación de la industria de que EPSS es 6,1$\times$ más eficiente que CVSS,
+        y luego demostré —congelando las puntuaciones en cinco fechas pasadas y contando solo la
+        explotación confirmada después— que la mayor parte es artefacto de evaluación: EPSS gana la
+        cabeza de la cola (1,2--1,8$\times$) y pierde la cola larga (0,5--0,7$\times$).
+  \item Calculé intervalos de confianza del 95\,\% por bootstrap sobre los positivos y protegí el
+        promediado de empates de la métrica central con un test que viene con control negativo;
+        76 tests y cinco ADRs.
+  \fi
+\end{itemize}
+
+\ifonepage
+\vspace{0.6ex}
+{\footnotesize\noindent\textbf{Además:} infraestructura AWS de tres capas en alta disponibilidad con
+Terraform + GitHub Actions
+(\href{https://github.com/Yoyagm/eval-final-dgiti}{eval-final-dgiti}) \ $\vert$ \ tubería autónoma
+de ML y agentes para mercados, 505 tests \ $\vert$ \ GreenPulse, plataforma agronómica offline-first.
+Casos de estudio completos:
+\href{https://johanrodriguez.is-a.dev/es/proyectos}{johanrodriguez.is-a.dev/proyectos}.\par}
+\else
+
+\project{Infraestructura AWS de Alta Disponibilidad}{Terraform, FastAPI y CI/CD}%
+  {\href{https://github.com/Yoyagm/eval-final-dgiti}{github.com/Yoyagm/eval-final-dgiti}}%
+  {2026 \ $\vert$ \ UPB}
+\begin{itemize}
+  \item Codifiqué íntegramente en Terraform una arquitectura de tres capas repartida en dos zonas
+        de disponibilidad: VPC, ALB, Auto Scaling Group, RDS PostgreSQL Multi-AZ, ECR y CloudWatch.
+  \item Apliqué mínimo privilegio con una cadena estricta de security groups: la base de datos no
+        tiene acceso público ni egress, y solo es alcanzable desde la capa de aplicación.
+  \item Automaticé el despliegue con GitHub Actions (linters, tests, build, push a ECR e instance
+        refresh del ASG), manteniendo Terraform fuera de la ruta caliente, y validé el balanceo
+        bajo carga con k6 contra métricas de CloudWatch.
+\end{itemize}
+
+\project{Sistema Autónomo de Inteligencia de Mercado}{ML Aplicado e IA Multiagente}%
+  {Repositorio privado --- recorrido disponible a petición}%
+  {2025 -- Actualidad \ $\vert$ \ Independiente}
+\begin{itemize}
+  \item Construí una tubería dirigida por eventos que integra APIs de datos de mercado, cálculo de
+        indicadores técnicos y un modelo de sentimiento FinBERT, orquestando cuatro agentes CrewAI
+        en informes automáticos diarios.
+  \item Diseñé una capa de gobernanza con siete comprobaciones de riesgo más un cortacircuitos por
+        drawdown de cartera; las señales de confianza media escalan a aprobación humana por
+        Telegram y expiran sin respuesta.
+  \item Entrené un ensemble XGBoost / RandomForest / LogisticRegression con validación
+        walk-forward, hueco purgado de 21 días y calibración de Platt; validado por 505 tests
+        automatizados en 17 suites.
+  \item Opera en paper trading de Alpaca y se queda ahí deliberadamente: una puerta GO/NO-GO
+        bloquea el capital real hasta que el modelo supere el 55\,\% de exactitud (hoy 52,9\,\%).
+\end{itemize}
+
+\entry{GreenPulse}{Plataforma Agronómica de Monitoreo Offline-First}{2025 \ $\vert$ \ Proyecto de Grado}
+\begin{itemize}
+  \item Migré y rediseñé el backend a FastAPI con una capa de sincronización offline-first sobre
+        SQLite y un catálogo de 35 especies con escaneo por código QR; documentado en formato IEEE.
+\end{itemize}
+\fi
+
+% =====================================================================
+\section{Formación}
+
+\entry{Ingeniería de Sistemas y Software}{}{Feb 2023 -- Actualidad \ $\vert$ \ Pontificia Universidad Bolivariana}
+\begin{itemize}
+  \ifonepage
+  \item Último semestre. Cursos avanzados de arquitectura de software y diseño de sistemas; labs
+        1--6 de AWS Academy Cloud Foundations (IAM, VPC, EC2, EBS, Auto Scaling, balanceo).
+  \else
+  \item Último semestre. Cursos avanzados de arquitectura de software, diseño de sistemas y buenas
+        prácticas de la industria.
+  \item Formación AWS Academy Cloud Foundations --- labs 1--6 completados: IAM, VPC, EC2, EBS,
+        Auto Scaling y balanceo de carga, con implementaciones de IaC en Terraform (2026).
+  \fi
+\end{itemize}
+
+% =====================================================================
+\section{Certificaciones}
+
+\ifonepage
+{\footnotesize\noindent
+\textbf{Google Cloud} (2026) --- 7 skill badges: Secure Lakehouse Data \textbullet\ Protect Sensitive
+Data with Data Loss Prevention \textbullet\ Create ML Models with BigQuery ML \textbullet\ Use APIs to
+Work with Cloud Storage \textbullet\ Gemini Enterprise (flujos multiagente, primera aplicación)
+\textbullet\ Vibe Coding and MCP. \ \textbf{Google} (2026) --- DeepMind: Train A Small Language Model.\par
+\vspace{0.2ex}\noindent
+\textbf{Cisco Networking Academy} (2026) --- Introduction to Cybersecurity. \
+\textbf{Hugging Face} (2026) --- AI Agents Course. \
+\textbf{freeCodeCamp} (2026) --- Machine Learning with Python \textbullet\ Data Analysis with Python
+\textbullet\ Scientific Computing with Python \textbullet\ Data Visualization \textbullet\ JavaScript
+Algorithms and Data Structures.\par
+\vspace{0.2ex}\noindent
+\textbf{Idiomas:} Español --- Nativo \textbullet\ Inglés --- C2 Competente
+(\href{https://cert.efset.org/es/qpqdd3}{EF SET 80/100, verificado}).
+{\color{subtle}Todas verificables públicamente en
+\href{https://www.linkedin.com/in/johan-rodriguez-97bb29323/details/certifications/}{linkedin.com/in/johan-rodriguez-97bb29323}.}\par}
+\else
+{\footnotesize\color{subtle}Todas las credenciales son verificables públicamente; lista completa con
+enlaces en
+\href{https://www.linkedin.com/in/johan-rodriguez-97bb29323/details/certifications/}{linkedin.com/in/johan-rodriguez-97bb29323}.}
+\vspace{0.4ex}
+\begin{itemize}
+  \item \textbf{Google Cloud} (2026) --- Secure Lakehouse Data \textbullet\ Protect Sensitive Data
+        with Data Loss Prevention \textbullet\ Create ML Models with BigQuery ML \textbullet\ Use
+        APIs to Work with Cloud Storage \textbullet\ Orchestrate Multi-agent Workflows with Gemini
+        Enterprise \textbullet\ Create Your First Gemini Enterprise Application \textbullet\ Build a
+        Smart Cloud Application with Vibe Coding and MCP \textbullet\ Google DeepMind: Train A Small
+        Language Model
+  \item \textbf{Cisco Networking Academy} (2026) --- Introduction to Cybersecurity
+  \item \textbf{Hugging Face} (2026) --- AI Agents Course
+  \item \textbf{freeCodeCamp} (2026) --- Machine Learning with Python \textbullet\ Data Analysis
+        with Python \textbullet\ Scientific Computing with Python \textbullet\ Data Visualization
+        \textbullet\ JavaScript Algorithms and Data Structures
+  \item \textbf{EF SET} (2026) --- Certificado de inglés, MCER C2 (Competente), 80/100 global
+        (lectura 84, comprensión oral 89)
+\end{itemize}
+\fi
+
+% =====================================================================
+\ifonepage\else
+\section{Idiomas}
+Español --- Nativo \ \ {\color{subtle}$\vert$} \ \ Inglés --- C2 Competente
+(\href{https://cert.efset.org/es/qpqdd3}{EF SET 80/100, verificado})
+\fi
+
+\end{document}

@@ -4,6 +4,7 @@ import { Reveal } from "@/components/motion/reveal";
 import { Link } from "@/i18n/navigation";
 import { profile } from "@/content/profile";
 import { ContactForm } from "@/components/contact/contact-form";
+import { pick } from "@/content/types";
 import type { Locale } from "@/content/types";
 
 export async function Contact({
@@ -61,7 +62,7 @@ export async function Contact({
 
           <li>
             <a
-              href={profile.cvHref}
+              href={pick(profile.cvHref, locale)}
               download
               className="border-accent/30 bg-accent/10 text-accent hover:bg-accent/20 inline-flex items-center gap-2 rounded-lg border px-5 py-3 font-medium transition-colors"
             >

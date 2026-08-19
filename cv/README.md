@@ -1,16 +1,30 @@
 # CV
 
-Dos PDF salen del mismo cuerpo (`cv-body.tex`); los wrappers solo fijan la variante.
-**Para editar contenido, edita `cv-body.tex`.**
+Cuatro PDF generales salen de dos cuerpos y un preámbulo compartido. Los wrappers solo
+fijan variante (`onepage` / `full`) e idioma (`en` / `es`).
 
-| Archivo | Páginas | Para qué |
+| Archivo | Editar aquí |
+|---|---|
+| `cv-preamble.tex` | Estilo, tipografías, márgenes, comandos `\entry` / `\project` / `\skill` |
+| `cv-body.tex` | Contenido en **inglés** |
+| `cv-body-es.tex` | Contenido en **español** |
+
+**EN y ES no se traducen solos.** Al cambiar contenido en uno, hay que cambiarlo en el otro.
+
+| Salida | Páginas | Para qué |
 |---|---|---|
-| `johan-rodriguez-cv-onepage.tex` | 1 | Postular. Es el que sirve el sitio en `/cv/Johan-Rodriguez-Security-Engineer.pdf`. |
-| `johan-rodriguez-cv.tex` | 2 | Versión detallada, con los seis proyectos completos. |
+| `johan-rodriguez-cv-es-onepage.tex` | 1 | **Por defecto en Colombia y LatAm.** Lo sirve el sitio en `/es`. |
+| `johan-rodriguez-cv-es.tex` | 2 | Español, detallado. |
+| `johan-rodriguez-cv-onepage.tex` | 1 | Inglés, para postular. Lo sirve el sitio en `/en`. |
+| `johan-rodriguez-cv.tex` | 2 | Inglés, detallado, con los seis proyectos. |
+
+`cv/dirigidos/` contiene un CV por vacante y **está fuera de git a propósito**; ver
+`dirigidos/LEEME.md`.
 
 ```bash
 brew install tectonic     # una vez
-make -C cv                # compila, comprueba y copia los dos a public/cv/
+make -C cv                # compila los cuatro, comprueba y copia a public/cv/
+make -C cv dirigidos      # compila los dirigidos a una vacante
 ```
 
 `tectonic` descarga bajo demanda los paquetes que faltan, así que no hace falta

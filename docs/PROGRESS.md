@@ -11,6 +11,22 @@ necesita que Johan inicie sesión en share.streamlit.io.
 
 ## Registro
 
+### 2026-08-19 (tarde)
+
+- **Hecho:** CV en español, en las mismas dos variantes que el inglés. Cuatro PDF generales
+  salen ahora de dos cuerpos (`cv-body.tex`, `cv-body-es.tex`) y un preámbulo compartido
+  (`cv-preamble.tex`), con babel por idioma para que la justificación parta bien las palabras.
+- **Hecho:** el botón de descarga del CV es sensible al idioma. `profile.cvHref` pasó de
+  `string` a `Localized<string>`: en `/es` se descarga el CV en español y en `/en` el inglés.
+- **Decisión:** `cv/dirigidos/` —un CV por vacante— queda **fuera de git**. El repositorio es
+  público y ni el nombre de la empresa a la que se postula ni una carta que reconoce un
+  requisito no cumplido deberían poder leerlos otros reclutadores. Se descartó versionarlos.
+- **Decisión:** el CV dirigido no afirma la experiencia en RPA que la vacante pide y Johan no
+  tiene, ni menciona VB.Net. Se reordena y se reescribe lo que ya es cierto para que hable el
+  idioma de la oferta —triggers por tiempo y por cola, transacciones abandonadas, caídas por
+  desconexión, trazar el punto de falla— y el hueco se aborda en la carta. Un CV que no se
+  puede defender en la entrevista no sirve de nada.
+
 ### 2026-08-19
 
 - **Hecho:** cuatro casos de estudio nuevos — detector de phishing por URL,

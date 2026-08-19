@@ -39,7 +39,8 @@ export type Profile = {
   github: string;
   /** Opcional: solo se renderiza si está presente (RF4.5). */
   linkedin?: string;
-  cvHref: string;
+  /** Un PDF por idioma: el CV en español existe desde 2026-08-19. */
+  cvHref: Localized<string>;
   /**
    * Retrato del autor (RF4). Ruta a un archivo en /public; se sirve vía
    * next/image (img-src 'self' lo permite). Reemplaza public/me.jpg por tu foto
