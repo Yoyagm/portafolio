@@ -121,8 +121,10 @@ export type Skill = {
 
 export type SkillGroupId =
   | "security-appsec"
+  | "ml-ai"
   | "languages"
   | "backend-data"
+  | "cloud-infra"
   | "tooling-devsecops"
   | "frontend"
   | "soft";
@@ -149,10 +151,18 @@ export type Education = {
   detail?: Localized;
 };
 
+/**
+ * Agrupación de certificaciones. Sin ella la lista se lee como relleno: 16
+ * entradas planas esconden que cubren cuatro áreas distintas.
+ */
+export type CertificationGroupId =
+  "security-cloud" | "ai-data" | "engineering" | "language";
+
 export type Certification = {
   name: Localized;
   issuer: string;
   year: string;
+  group: CertificationGroupId;
   verifyUrl?: string;
 };
 

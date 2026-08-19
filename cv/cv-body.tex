@@ -1,0 +1,362 @@
+% =====================================================================
+%  Johan David Rodriguez Castro — Curriculum Vitae (cuerpo compartido)
+%
+%  No compilar este archivo directamente. Usar:
+%    johan-rodriguez-cv-onepage.tex   → 1 página, para postular (ATS)
+%    johan-rodriguez-cv.tex           → 2 páginas, versión detallada
+%
+%  Reglas de formato, tomadas de la práctica estándar para perfiles sin
+%  experiencia laboral larga y verificadas con `pdftotext` sobre este PDF:
+%    · Una sola columna. Nada de cajas de texto ni columnas laterales.
+%    · Ninguna tabla de dos columnas para las skills: al extraer el texto,
+%      un ATS lee todas las etiquetas primero y después todos los valores,
+%      y la asociación etiqueta→keywords se pierde. Se usan líneas simples.
+%    · Todo es texto real. Nada dentro de una imagen.
+%    · Los proyectos se escriben con la misma estructura que un empleo:
+%      título, entidad, fechas y bullets con cifras.
+% =====================================================================
+\providecommand{\cvvariant}{full}
+\def\cvonepagename{onepage}
+\ifx\cvvariant\cvonepagename \def\cvfontsize{9pt}\else \def\cvfontsize{10pt}\fi
+
+% extarticle (paquete extsizes) admite 9pt; la clase article estándar no.
+\documentclass[\cvfontsize,a4paper]{extarticle}
+
+\newif\ifonepage
+\ifx\cvvariant\cvonepagename \onepagetrue \else \onepagefalse \fi
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{tgtermes}                 % cuerpo: compatible con Times
+\usepackage{tgheros}                  % títulos: compatible con Helvetica
+\usepackage{microtype}
+
+\ifonepage
+  \usepackage[a4paper, top=0.85cm, bottom=0.85cm, left=1.2cm, right=1.2cm]{geometry}
+\else
+  \usepackage[a4paper, top=1.2cm, bottom=1.2cm, left=1.4cm, right=1.4cm]{geometry}
+\fi
+
+\usepackage{xcolor}
+\definecolor{accent}{HTML}{1F4E79}
+\definecolor{subtle}{HTML}{555555}
+
+\usepackage[
+  colorlinks=true, urlcolor=accent, linkcolor=accent,
+  pdftitle={Johan David Rodriguez Castro — CV},
+  pdfauthor={Johan David Rodriguez Castro},
+  pdfsubject={Security \& AI Engineer},
+  pdfkeywords={security engineering, detection engineering, supply-chain security,
+               vulnerability management, applied machine learning, Python, AWS, Terraform}
+]{hyperref}
+
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{ragged2e}
+
+\titleformat{\section}[block]
+  {\sffamily\bfseries\color{accent}\fontsize{10.5}{12}\selectfont}
+  {}{0em}{\MakeUppercase}[\vspace{-0.9ex}{\color{accent}\rule{\linewidth}{0.7pt}}]
+\titlespacing*{\section}{0pt}{0.9ex plus 0.2ex}{0.6ex}
+
+\setlist[itemize]{
+  leftmargin=1.1em, topsep=0.15ex, itemsep=0.05ex, parsep=0pt,
+  label=\textcolor{accent}{\textbullet}
+}
+
+\setlength{\parindent}{0pt}
+\pagestyle{empty}
+
+% ── Entrada de empleo o proyecto ─────────────────────────────────────
+% \entry{título}{subtítulo}{fechas · entidad}
+% Se usa \hfill dentro de un solo párrafo (no una tabla) para que la
+% extracción de texto devuelva título y fecha en la MISMA línea.
+\newcommand{\entry}[3]{%
+  \vspace{0.5ex}\par\noindent
+  \textbf{#1}\ifx\relax#2\relax\else{\,---\,\itshape #2}\fi
+  \hfill{\footnotesize\color{subtle}#3}\par\nobreak\vspace{-0.1ex}%
+}
+
+% Línea de enlaces bajo una entrada.
+\newcommand{\evidence}[1]{{\footnotesize\color{subtle}#1}\par\nobreak}
+
+% Entrada con evidencia: \project{título}{subtítulo}{enlaces}{fechas · entidad}
+% En 1 página los enlaces se pliegan en la línea del título para no gastar
+% una línea por proyecto.
+\newcommand{\project}[4]{%
+  \ifonepage
+    \entry{#1}{#2}{#3 \ {\color{subtle}$\vert$} \ #4}%
+  \else
+    \entry{#1}{#2}{#4}\evidence{#3}%
+  \fi
+}
+
+% Fila de skills: una línea de texto corrido, no una celda de tabla.
+\newcommand{\skill}[2]{%
+  \par\vspace{0.35ex}\noindent\textbf{#1:}\ #2\par
+}
+
+\begin{document}
+
+% =====================================================================
+\begin{center}
+  {\sffamily\bfseries\color{accent}\fontsize{18}{21}\selectfont
+   JOHAN DAVID RODRIGUEZ CASTRO}\\[0.5ex]
+  {\footnotesize\color{subtle}
+   Bucaramanga, Santander, Colombia
+   \ $\vert$ \ +57 313 878 4948
+   \ $\vert$ \ \href{mailto:johan.rc2020@gmail.com}{johan.rc2020@gmail.com}}\\[0.4ex]
+  {\footnotesize
+   \href{https://github.com/Yoyagm}{github.com/Yoyagm}
+   \ {\color{subtle}$\vert$} \
+   \href{https://www.linkedin.com/in/johan-rodriguez-97bb29323/}{linkedin.com/in/johan-rodriguez-97bb29323}
+   \ {\color{subtle}$\vert$} \
+   \href{https://johan-rodriguez.vercel.app}{johan-rodriguez.vercel.app}}
+\end{center}
+\vspace{0.2ex}
+
+% =====================================================================
+\section{Professional Profile}
+\justifying
+\ifonepage
+Final-semester Systems and Software Engineering student (UPB Bucaramanga) working at the intersection of
+security engineering and applied machine learning. I ship tools rather than findings: an open-source
+supply-chain scanner, a phishing classifier that audited its own benchmark and reported the honest number
+instead of the flattering one, and a vulnerability prioritisation dashboard that measured away the
+advantage it was built to show. Verified C2 English (EF SET 80/100).
+\else
+Final-semester Systems and Software Engineering student (UPB Bucaramanga) working at the intersection
+of security engineering and applied machine learning. I ship tools rather than findings: an open-source
+supply-chain scanner, a phishing classifier that audited its own benchmark and published the honest
+number instead of the flattering one, and a vulnerability prioritisation dashboard that measured away
+the advantage it was built to demonstrate. Equally comfortable in cloud infrastructure --- AWS,
+Terraform, CI/CD --- and full-stack delivery, with Scrum leadership experience and verified C2 English
+(EF SET 80/100). Seeking a Security, Detection Engineering or Data \& AI role.
+\fi
+
+% =====================================================================
+\section{Technical Skills}
+\vspace{0.2ex}
+\skill{Security \& Detection}{Software supply-chain security (slopsquatting), detection-as-code,
+  MITRE ATT\&CK mapping, risk-based vulnerability prioritisation (CISA KEV / EPSS / CVSS),
+  phishing and URL analysis, TOTP 2FA, secure SDLC and CI security gates}
+\skill{Data, ML \& AI}{LightGBM, XGBoost, scikit-learn; data-leakage detection and honest evaluation
+  design; SHAP explainability; grouped, temporal and walk-forward validation; probability calibration;
+  FinBERT NLP; CrewAI multi-agent orchestration; RAG with ChromaDB; pandas / NumPy}
+\skill{Cloud \& DevOps}{AWS (IAM, VPC, EC2, Auto Scaling, ALB, RDS Multi-AZ, ECR, CloudWatch),
+  Terraform (IaC), Docker, GitHub Actions CI/CD, k6, Google Cloud (BigQuery ML, Cloud Storage, DLP)}
+\skill{Programming}{Python, TypeScript / JavaScript, SQL, Dart, HCL, LaTeX}
+\skill{Databases}{PostgreSQL, MySQL, SQLite, DuckDB, ChromaDB; hybrid SQL / NoSQL architectures}
+\skill{Methods \& Tools}{Agile / Scrum, spec-driven development, pytest, Playwright, mypy strict,
+  UML modelling, Git}
+
+% =====================================================================
+\section{Experience}
+
+\project{Developer / Technical Support}{}%
+  {GOATGuard: \href{https://github.com/Yoyagm/goatguard-app}{github.com/Yoyagm/goatguard-app}}%
+  {Jan 2026 -- Present \ $\vert$ \ Pontificia Universidad Bolivariana}
+\begin{itemize}
+  \item Designed and built GOATGuard, a full-stack network security monitoring platform
+        (FastAPI + PostgreSQL + Flutter), to close mobility gaps for administrators managing
+        distributed institutional assets.
+  \item Built an automatic classification engine for network assets (routers, printers, cameras) with
+        real-time monitoring and KPI dashboards, and proactive detection of port scans and intrusion
+        attempts, applying Blue Team and detection engineering principles.
+  \ifonepage\else
+  \item Hardened the mobile client with a full TOTP 2FA flow (QR enrolment, backup and recovery codes)
+        and JWT held in OS-level secure storage behind a global 401 interceptor.
+  \item Provide technical support to end users across the institution.
+  \fi
+\end{itemize}
+
+\entry{Scrum Master}{}{Jun 2025 -- Nov 2025 \ $\vert$ \ Pontificia Universidad Bolivariana}
+\begin{itemize}
+  \item Managed the software development lifecycle under Scrum, facilitating ceremonies and optimising
+        the Product Backlog to ensure incremental value delivery.
+  \item Contributed to the design of a high-availability infrastructure targeting 100{,}000 concurrent
+        users with a sub-500\,ms latency objective, on hybrid SQL / NoSQL / in-memory data architectures.
+\end{itemize}
+
+\ifonepage\else
+\entry{Assistant, Sports Events}{}{May 2025 -- Present \ $\vert$ \ EM Tournaments and Competitions}
+\begin{itemize}
+  \item Support the organisation and execution of sports tournaments and competitive events.
+\end{itemize}
+\fi
+
+% =====================================================================
+\section{Key Technical Projects}
+
+\project{SlopGuard}{Open-Source Supply-Chain Security Scanner}%
+  {\href{https://github.com/Yoyagm/slopguard}{github.com/Yoyagm/slopguard}}%
+  {2026 \ $\vert$ \ Independent}
+\begin{itemize}
+  \item Built a pre-install guard that scores PyPI and npm dependencies against hallucinated,
+        typosquatted and malicious names \emph{before} any code executes, using a five-layer detection
+        engine with zero runtime dependencies.
+  \ifonepage\else
+  \item Designed a provable anti-false-positive invariant: the opt-in LLM hallucination layer is
+        structurally unable to block a legitimate package on its own.
+  \fi
+  \item Enforced correctness with a CI gate at $\geq$90\,\% global coverage ($\geq$95\,\% on critical
+        paths) and eight import-linter architecture contracts, and shipped four integration points from
+        one core: CLI, pre-commit hook, GitHub Action and self-hostable SaaS.
+\end{itemize}
+
+\ifonepage
+\project{Phishing URL Detector}{Explainable Detection \& Leakage Audit}%
+  {\href{https://yoyagm.github.io/phishing-url-detector/}{yoyagm.github.io/phishing-url-detector}}%
+  {2026 \ $\vert$ \ Independent}
+\else
+\project{Phishing URL Detector}{Explainable Detection \& Dataset Leakage Audit}%
+  {\href{https://yoyagm.github.io/phishing-url-detector/}{yoyagm.github.io/phishing-url-detector}
+   \ $\vert$ \ \href{https://github.com/Yoyagm/phishing-url-detector}{github.com/Yoyagm/phishing-url-detector}}%
+  {2026 \ $\vert$ \ Independent}
+\fi
+\begin{itemize}
+  \item Audited PhiUSIIL (UCI id 967, 235{,}795 URLs) before training and measured two independent
+        label leaks: a one-line rule scores 99.67\,\% accuracy, and hand-rolled lexical features on the
+        raw URL --- the obvious fix --- still score 99.51\,\% while measuring nothing.
+  \item Retrained on canonicalised host names only and published the honest result: ROC-AUC 0.937 and
+        70.5\,\% recall at a 1\,\% false-positive rate, against phishing submitted two years after the
+        training data was collected.
+  \ifonepage
+  \item Shipped it: exact TreeSHAP reimplemented in dependency-free JavaScript (parity-tested at 1e-12
+        against the Python reference), 113 tests including leakage guards with negative controls, and a
+        containerised FastAPI service.
+  \else
+  \item Reimplemented exact path-dependent TreeSHAP in dependency-free JavaScript, parity-tested at
+        1e-12 against the Python reference over 28{,}917 attributions, so the live demo explains every
+        verdict with no backend.
+  \item Delivered 113 tests --- including leakage guards that ship with planted-leak negative controls
+        --- a containerised FastAPI service and a nine-page technical report in LaTeX.
+  \fi
+\end{itemize}
+
+\project{Vulnerability Prioritisation Dashboard}{CISA KEV + EPSS + NVD}%
+  {\href{https://github.com/Yoyagm/vuln-prioritization-dashboard}{github.com/Yoyagm/vuln-prioritization-dashboard}}%
+  {2026 \ $\vert$ \ Independent}
+\begin{itemize}
+  \item Built a reproducible ingestion pipeline over three public feeds ranking 359{,}399 live CVEs,
+        with committed data contracts and schema tests that fail the build when a feed changes shape.
+  \ifonepage
+  \item Reproduced the industry claim that EPSS is 6.1$\times$ more efficient than CVSS, then showed
+        with frozen scores over five cutoffs that most of it is evaluation artefact: EPSS wins the head
+        of the queue (1.2--1.8$\times$) and loses the long tail (0.5--0.7$\times$).
+  \else
+  \item Reproduced the industry claim that EPSS is 6.1$\times$ more efficient than CVSS, then showed ---
+        with scores frozen at five past cutoffs and only later-confirmed exploitation counted --- that
+        most of it is evaluation artefact: EPSS wins the head of the queue (1.2--1.8$\times$) and loses
+        the long tail (0.5--0.7$\times$).
+  \fi
+  \ifonepage\else
+  \item Bootstrapped 95\,\% confidence intervals over the positives and guarded the tie-averaging in the
+        core metric with a test that ships with a negative control; 76 tests and five ADRs.
+  \fi
+\end{itemize}
+
+\ifonepage
+\vspace{0.6ex}
+{\footnotesize\noindent\textbf{Also:} AWS three-tier HA infrastructure in Terraform + GitHub Actions
+(\href{https://github.com/Yoyagm/eval-final-dgiti}{eval-final-dgiti}) \ $\vert$ \ autonomous ML and
+multi-agent market pipeline, 505 tests \ $\vert$ \ GreenPulse offline-first platform. Case studies:
+\href{https://johan-rodriguez.vercel.app/en/projects}{johan-rodriguez.vercel.app/projects}.\par}
+\else
+
+\entry{AWS High-Availability Infrastructure}{Terraform, FastAPI \& CI/CD}{2026 \ $\vert$ \ UPB}
+\evidence{\href{https://github.com/Yoyagm/eval-final-dgiti}{github.com/Yoyagm/eval-final-dgiti}}
+\begin{itemize}
+  \item Codified a three-tier architecture across two availability zones entirely in Terraform:
+        VPC, ALB, Auto Scaling Group, RDS PostgreSQL Multi-AZ, ECR and CloudWatch.
+  \item Enforced least privilege with a strict security-group chain --- the database has no public
+        access and no egress, and is reachable only from the application tier.
+  \item Automated deployment with GitHub Actions (lint, test, build, push to ECR, ASG instance refresh),
+        keeping Terraform out of the hot path, and validated load balancing under k6 load against
+        CloudWatch metrics.
+\end{itemize}
+
+\entry{Autonomous Market Intelligence System}{Applied ML \& Multi-Agent AI}{2025 -- Present \ $\vert$ \ Independent}
+\evidence{Private repository --- walkthrough available on request}
+\begin{itemize}
+  \item Built an event-driven pipeline integrating market-data APIs, technical-indicator computation and
+        a FinBERT sentiment model, orchestrating four CrewAI agents into daily automated briefings.
+  \item Engineered a governance layer of seven risk checks plus a portfolio drawdown circuit breaker;
+        medium-confidence signals escalate to human approval over Telegram and expire unanswered.
+  \item Trained an XGBoost / RandomForest / LogisticRegression ensemble with walk-forward validation, a
+        purged 21-day gap and Platt calibration; validated by 505 automated tests across 17 suites.
+  \item Runs on Alpaca paper trading and deliberately stays there: a GO/NO-GO gate blocks live capital
+        until the model clears 55\,\% accuracy (currently 52.9\,\%).
+\end{itemize}
+
+\entry{GreenPulse}{Offline-First Agronomic Monitoring Platform}{2025 \ $\vert$ \ Academic Capstone}
+\begin{itemize}
+  \item Migrated and redesigned the backend to FastAPI with an offline-first SQLite sync layer and a
+        35-species plant catalogue including QR-code based scanning; documented in IEEE format.
+\end{itemize}
+\fi
+
+% =====================================================================
+\section{Education}
+
+\entry{B.S. in Systems and Software Engineering}{}{Feb 2023 -- Present \ $\vert$ \ Pontificia Universidad Bolivariana}
+\begin{itemize}
+  \ifonepage
+  \item Final semester. Coursework in software architecture and system design; AWS Academy Cloud
+        Foundations labs 1--6 (IAM, VPC, EC2, EBS, Auto Scaling, Load Balancing).
+  \else
+  \item Final-semester student. Advanced coursework in software architecture, system design and
+        industry best practices.
+  \item AWS Academy Cloud Foundations coursework --- labs 1--6 completed: IAM, VPC, EC2, EBS,
+        Auto Scaling and Load Balancing, with Terraform IaC implementations (2026).
+  \fi
+\end{itemize}
+
+% =====================================================================
+\section{Certifications}
+
+\ifonepage
+{\footnotesize\noindent
+\textbf{Google Cloud} (2026) --- 7 skill badges: Secure Lakehouse Data \textbullet\ Protect Sensitive
+Data with Data Loss Prevention \textbullet\ Create ML Models with BigQuery ML \textbullet\ Use APIs to
+Work with Cloud Storage \textbullet\ Gemini Enterprise (multi-agent workflows, first application)
+\textbullet\ Vibe Coding and MCP. \ \textbf{Google} (2026) --- DeepMind: Train A Small Language Model.\par
+\vspace{0.2ex}\noindent
+\textbf{Cisco Networking Academy} (2026) --- Introduction to Cybersecurity. \
+\textbf{Hugging Face} (2026) --- AI Agents Course. \
+\textbf{freeCodeCamp} (2026) --- Machine Learning with Python \textbullet\ Data Analysis with Python
+\textbullet\ Scientific Computing with Python \textbullet\ Data Visualization \textbullet\ JavaScript
+Algorithms and Data Structures.\par
+\vspace{0.2ex}\noindent
+\textbf{Languages:} Spanish --- Native \textbullet\ English --- C2 Proficient
+(\href{https://cert.efset.org/es/qpqdd3}{EF SET 80/100, verified}).
+{\color{subtle}All credentials publicly verifiable at
+\href{https://www.linkedin.com/in/johan-rodriguez-97bb29323/details/certifications/}{linkedin.com/in/johan-rodriguez-97bb29323}.}\par}
+\else
+{\footnotesize\color{subtle}All credentials are publicly verifiable; full list with links at
+\href{https://www.linkedin.com/in/johan-rodriguez-97bb29323/details/certifications/}{linkedin.com/in/johan-rodriguez-97bb29323}.}
+\vspace{0.4ex}
+\begin{itemize}
+  \item \textbf{Google Cloud} (2026) --- Secure Lakehouse Data \textbullet\ Protect Sensitive Data with
+        Data Loss Prevention \textbullet\ Create ML Models with BigQuery ML \textbullet\ Use APIs to Work
+        with Cloud Storage \textbullet\ Orchestrate Multi-agent Workflows with Gemini Enterprise
+        \textbullet\ Create Your First Gemini Enterprise Application \textbullet\ Build a Smart Cloud
+        Application with Vibe Coding and MCP \textbullet\ Google DeepMind: Train A Small Language Model
+  \item \textbf{Cisco Networking Academy} (2026) --- Introduction to Cybersecurity
+  \item \textbf{Hugging Face} (2026) --- AI Agents Course
+  \item \textbf{freeCodeCamp} (2026) --- Machine Learning with Python \textbullet\ Data Analysis with
+        Python \textbullet\ Scientific Computing with Python \textbullet\ Data Visualization
+        \textbullet\ JavaScript Algorithms and Data Structures
+  \item \textbf{EF SET} (2026) --- English Certificate, CEFR C2 (Proficient), overall 80/100
+        (reading 84, listening 89)
+\end{itemize}
+\fi
+
+% =====================================================================
+\ifonepage\else
+\section{Languages}
+Spanish --- Native \ \ {\color{subtle}$\vert$} \ \ English --- C2 Proficient
+(\href{https://cert.efset.org/es/qpqdd3}{EF SET 80/100, verified})
+\fi
+
+\end{document}

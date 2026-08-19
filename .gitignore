@@ -49,3 +49,10 @@ specs/
 /test-results
 /.lighthouseci
 .swc
+
+# CV: los PDF se generan con `make -C cv`. La copia que sirve el sitio vive en
+# public/cv/ y esa sí se versiona.
+/cv/*.pdf
+/cv/*.aux
+/cv/*.log
+/cv/*.out

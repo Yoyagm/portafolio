@@ -20,9 +20,9 @@
     "closeMenu": "Close menu"
   },
   "Hero": {
-    "eyebrow": "Security & AppSec Engineer",
-    "headline": "Securing the software supply chain",
-    "subheadline": "I build real security tooling — from supply-chain defense to threat detection — backed by tests, CI, and strict typing.",
+    "eyebrow": "Security & AI Engineer",
+    "headline": "I build security tools, then try to break my own results",
+    "subheadline": "Supply-chain defence, phishing detection and vulnerability triage — shipped with tests, CI gates and strict typing, and measured honestly enough to report the number that hurts.",
     "ctaWork": "View my work",
     "ctaContact": "Get in touch",
     "sceneLabel": "Decorative 3D visualization of a dependency graph being scanned for malicious packages."
@@ -30,7 +30,7 @@
   "Sections": {
     "aboutTitle": "About",
     "workTitle": "Selected work",
-    "workSubtitle": "Security tooling I designed and shipped end to end.",
+    "workSubtitle": "Security and applied-ML tools I designed, shipped and measured end to end.",
     "skillsTitle": "Skills",
     "experienceTitle": "Experience",
     "educationTitle": "Education",
@@ -47,7 +47,9 @@
     "statusSimulated": "Simulated data",
     "categorySecurity": "Security",
     "categoryResilience": "Resilience",
-    "categoryUx": "UX"
+    "categoryUx": "UX",
+    "certificationsNote": "Every certificate below links to its issuer for verification.",
+    "verify": "Verify"
   },
   "Contact": {
     "title": "Get in touch",
@@ -88,8 +90,8 @@
     "backToBlog": "Back to all writeups"
   },
   "Metadata": {
-    "title": "Johan Rodriguez — Security & AppSec Engineer",
-    "description": "Security & AppSec engineer building supply-chain defense and threat-detection tooling. Python, CI, strict typing. Bilingual EN/ES, remote."
+    "title": "Johan Rodriguez — Security & AI Engineer",
+    "description": "Security & AI Engineer: supply-chain defence, phishing detection, vulnerability prioritisation and detection engineering. Python, CI, strict typing. Bilingual, remote."
   },
   "ThankYou": {
     "title": "Thank you",
@@ -108,9 +110,9 @@
   },
   "Pages": {
     "projectsTitle": "Projects",
-    "projectsIntro": "Security tooling I designed and shipped end to end — from supply-chain defense to mobile hardening.",
+    "projectsIntro": "Security and applied-ML tools I designed, shipped and measured end to end — from supply-chain defence and phishing detection to vulnerability triage, mobile hardening and high-availability cloud infrastructure.",
     "aboutTitle": "About",
-    "aboutIntro": "Security engineer who builds real tools, not just findings — backed by tests, CI, and strict typing.",
+    "aboutIntro": "Security engineer who builds real tools, not just findings — with tests, CI gates and strict typing.",
     "contactTitle": "Get in touch",
     "contactIntro": "Open to security & engineering roles, remote-first.",
     "featuredWork": "Featured work",

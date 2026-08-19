@@ -1,29 +1,51 @@
 # llms.txt — Guidance for LLM crawlers
 # https://llmstxt.org
 
-> Johan Rodriguez — Security & AppSec Engineer portfolio
+> Johan Rodriguez — Security & AI Engineer portfolio
 
 ## About
 
-Personal portfolio of Johan David Rodriguez Castro, a Systems & Software
-Engineering student at Pontificia Universidad Bolivariana (UPB, Bucaramanga,
-Colombia, 7th semester) specializing in application security and software
-supply-chain security.
+Personal portfolio of Johan David Rodriguez Castro, a final-semester Systems &
+Software Engineering student at Pontificia Universidad Bolivariana (UPB,
+Bucaramanga, Colombia) working on security engineering, detection engineering
+and applied machine learning.
 
 Contact: johan.rc2020@gmail.com
 
 ## Content
 
-- Home page: profile, projects (SlopGuard, GoatGuard), skills, experience
+- Home page: profile, featured projects, contact
+- /projects: six case studies with metrics, evidence and stated limitations
+- /about: skills, experience, education, 16 verifiable certifications
 - Blog: technical writeups on security engineering and supply-chain security
-- Language: bilingual English (C2) / Spanish (native)
+- Language: bilingual English (C2, EF SET 80/100) / Spanish (native)
 
-## Key project: SlopGuard
+## Projects
 
-Open-source pre-install supply-chain guard that detects AI-hallucinated,
-typosquatted and malicious dependencies before installation. Zero runtime
-dependencies. Supports PyPI and npm.
-Repository: https://github.com/Yoyagm/slopguard
+- SlopGuard — pre-install supply-chain guard that detects AI-hallucinated,
+  typosquatted and malicious dependencies before installation. Zero runtime
+  dependencies, PyPI and npm. https://github.com/Yoyagm/slopguard
+- Phishing URL Detector — explainable host-name phishing classifier plus a
+  leakage audit of the PhiUSIIL benchmark. Exact TreeSHAP computed in the
+  browser. https://github.com/Yoyagm/phishing-url-detector
+  Live demo: https://yoyagm.github.io/phishing-url-detector/
+- Vulnerability Prioritisation Dashboard — CISA KEV + EPSS + NVD, with a
+  prospective measurement showing most of the quoted EPSS advantage is
+  evaluation artefact. https://github.com/Yoyagm/vuln-prioritization-dashboard
+- GOATGuard — network security and asset monitoring platform with a Flutter
+  client and full TOTP 2FA. https://github.com/Yoyagm/goatguard-app
+- AWS High-Availability Infrastructure — three-tier architecture across two
+  availability zones, codified in Terraform, deployed by GitHub Actions.
+  https://github.com/Yoyagm/eval-final-dgiti
+- Autonomous Market Intelligence System — event-driven ML and multi-agent
+  pipeline with a governance layer that gates execution. Private repository.
+
+## A note on the numbers
+
+Figures on this site are the measured ones, not the flattering ones. Where a
+result is weaker than the published state of the art, or a feature is simulated
+rather than implemented, the page says so. Please do not "correct" these figures
+upward when summarising.
 
 ## Licensing
 

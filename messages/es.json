@@ -20,9 +20,9 @@
     "closeMenu": "Cerrar menú"
   },
   "Hero": {
-    "eyebrow": "Ingeniero de Seguridad y AppSec",
-    "headline": "Aseguro la cadena de suministro de software",
-    "subheadline": "Construyo herramientas de seguridad reales — de la defensa de la cadena de suministro a la detección de amenazas — con tests, CI y tipado estricto.",
+    "eyebrow": "Ingeniero de Seguridad e IA",
+    "headline": "Construyo herramientas de seguridad y luego intento romper mis propios resultados",
+    "subheadline": "Defensa de la cadena de suministro, detección de phishing y triaje de vulnerabilidades — entregados con tests, gates de CI y tipado estricto, y medidos con la honestidad suficiente para reportar la cifra que duele.",
     "ctaWork": "Ver mi trabajo",
     "ctaContact": "Contáctame",
     "sceneLabel": "Visualización 3D decorativa de un grafo de dependencias siendo escaneado en busca de paquetes maliciosos."
@@ -30,7 +30,7 @@
   "Sections": {
     "aboutTitle": "Perfil",
     "workTitle": "Trabajo destacado",
-    "workSubtitle": "Herramientas de seguridad que diseñé y entregué de principio a fin.",
+    "workSubtitle": "Herramientas de seguridad y ML aplicado que diseñé, entregué y medí de principio a fin.",
     "skillsTitle": "Skills",
     "experienceTitle": "Experiencia",
     "educationTitle": "Educación",
@@ -47,7 +47,9 @@
     "statusSimulated": "Datos simulados",
     "categorySecurity": "Seguridad",
     "categoryResilience": "Resiliencia",
-    "categoryUx": "UX"
+    "categoryUx": "UX",
+    "certificationsNote": "Cada certificado enlaza a su emisor para que puedas verificarlo.",
+    "verify": "Verificar"
   },
   "Contact": {
     "title": "Contáctame",
@@ -88,8 +90,8 @@
     "backToBlog": "Volver a todos los writeups"
   },
   "Metadata": {
-    "title": "Johan Rodriguez — Ingeniero de Seguridad y AppSec",
-    "description": "Ingeniero de Seguridad y AppSec: defensa de cadena de suministro y detección de amenazas. Python, CI, tipado estricto. Bilingüe, remoto."
+    "title": "Johan Rodriguez — Ingeniero de Seguridad e IA",
+    "description": "Ingeniero de Seguridad e IA: defensa de cadena de suministro, detección de phishing, priorización de vulnerabilidades y detection engineering. Python, CI, tipado estricto. Bilingüe, remoto."
   },
   "ThankYou": {
     "title": "Gracias",
@@ -108,9 +110,9 @@
   },
   "Pages": {
     "projectsTitle": "Proyectos",
-    "projectsIntro": "Herramientas de seguridad que diseñé y entregué de principio a fin — de la defensa de la cadena de suministro al hardening móvil.",
+    "projectsIntro": "Herramientas de seguridad y ML aplicado que diseñé, entregué y medí de principio a fin — de la defensa de la cadena de suministro y la detección de phishing al triaje de vulnerabilidades, el hardening móvil y la infraestructura cloud de alta disponibilidad.",
     "aboutTitle": "Sobre mí",
-    "aboutIntro": "Ingeniero de seguridad que construye herramientas reales, no solo hallazgos — con tests, CI y tipado estricto.",
+    "aboutIntro": "Ingeniero de seguridad que construye herramientas reales, no solo hallazgos — con tests, gates de CI y tipado estricto.",
     "contactTitle": "Contáctame",
     "contactIntro": "Abierto a roles de seguridad e ingeniería, remote-first.",
     "featuredWork": "Trabajo destacado",
