@@ -63,7 +63,7 @@ publish: build check
 
 # Carpeta privada, fuera de git: un CV por vacante. Ver dirigidos/LEEME.md.
 dirigidos:
-	@for f in dirigidos/johan-rodriguez-cv-*.tex; do \
+	@for f in dirigidos/johan-rodriguez-*.tex; do \
 	  echo "→ $$f"; (cd dirigidos && tectonic $$(basename $$f)); \
 	done
 
