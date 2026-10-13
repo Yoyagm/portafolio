@@ -32,18 +32,18 @@
 \justifying
 \ifonepage
 Estudiante de último semestre de Ingeniería de Sistemas y Software (UPB Bucaramanga; fin de carrera
-previsto en 2026), en la intersección entre ingeniería de seguridad y machine learning aplicado.
+previsto en 2026), en la intersección entre machine learning aplicado e ingeniería de seguridad.
 Entrego herramientas, no informes: un escáner de cadena de suministro de código abierto, un
 clasificador de phishing que auditó su propio benchmark y publicó la cifra honesta en lugar de la que
 favorecía, y un dashboard de priorización de vulnerabilidades que desmontó midiendo la ventaja que
 venía a demostrar. Inglés C2 verificado (EF SET).
 \else
 Estudiante de último semestre de Ingeniería de Sistemas y Software (UPB Bucaramanga; fin de carrera
-previsto en 2026), en la intersección entre ingeniería de seguridad y machine learning aplicado.
+previsto en 2026), en la intersección entre machine learning aplicado e ingeniería de seguridad.
 Entrego herramientas, no informes: un escáner de cadena de suministro de código abierto, un
 clasificador de phishing que auditó su propio benchmark y publicó la cifra honesta en lugar de la que
 favorecía, y un dashboard de priorización de vulnerabilidades que desmontó midiendo la ventaja que
-venía a demostrar. Me muevo con igual soltura en infraestructura cloud —AWS, Terraform, CI/CD— y en
+venía a demostrar. Me muevo con igual soltura en infraestructura cloud ---AWS, Terraform, CI/CD--- y en
 desarrollo full-stack, con experiencia como Scrum Master en un proyecto académico e inglés C2
 verificado (EF SET). Busco un rol de IA/ML (entrenamiento y evaluación de modelos) o de
 Ciberseguridad.
@@ -52,14 +52,14 @@ Ciberseguridad.
 % =====================================================================
 \section{Competencias Técnicas}
 \vspace{0.2ex}
+\skill{Datos, ML e IA}{Entrenamiento y evaluación de modelos; LightGBM, XGBoost, TensorFlow / Keras,
+  scikit-learn; detección de fugas de datos y diseño de evaluaciones honestas; explicabilidad con
+  SHAP; validación agrupada, temporal y walk-forward; calibración de probabilidades; agentes de IA
+  (smolagents, CrewAI) y MCP; NLP con FinBERT; pandas / NumPy}
 \skill{Seguridad y Detección}{Seguridad de la cadena de suministro de software (slopsquatting),
   detection-as-code, mapeo a MITRE ATT\&CK, priorización de vulnerabilidades basada en riesgo
   (CISA KEV / EPSS / CVSS), análisis de phishing y URLs, 2FA TOTP, SDLC seguro y gates de
   seguridad en CI}
-\skill{Datos, ML e IA}{LightGBM, XGBoost, scikit-learn; detección de fugas de datos y diseño de
-  evaluaciones honestas; explicabilidad con SHAP; validación agrupada, temporal y walk-forward;
-  calibración de probabilidades; NLP con FinBERT; orquestación multiagente con CrewAI; RAG con
-  ChromaDB; pandas / NumPy}
 \skill{Cloud y DevOps}{AWS (IAM, VPC, EC2, Auto Scaling, ALB, CloudWatch),
   Terraform (IaC), Docker, CI/CD con GitHub Actions, pruebas de carga con k6, Google Cloud
   (BigQuery ML, Cloud Storage, DLP)}
@@ -124,7 +124,7 @@ Ciberseguridad.
 \begin{itemize}
   \item Audité PhiUSIIL (UCI id 967, 235.795 URLs) antes de entrenar y medí dos fugas de etiqueta
         independientes: una regla de una línea alcanza 99,67\,\% de exactitud, y features léxicas
-        hechas a mano sobre la URL cruda —el arreglo obvio— siguen dando 99,51\,\% sin medir nada.
+        hechas a mano sobre la URL cruda ---el arreglo obvio--- siguen dando 99,51\,\% sin medir nada.
   \item Reentrené solo sobre nombres de host canonicalizados y publiqué el resultado honesto:
         ROC-AUC 0,937 y 70,5\,\% de recall con 1\,\% de falsos positivos, contra phishing enviado
         dos años después de recolectar los datos de entrenamiento.
@@ -136,8 +136,8 @@ Ciberseguridad.
   \item Reimplementé TreeSHAP exacto dependiente del camino en JavaScript sin dependencias, con
         paridad verificada a 1e-12 contra la referencia de Python sobre 28.917 atribuciones, para
         que la demo explique cada veredicto sin backend.
-  \item Entregué 113 tests —incluidos guardianes de fugas que vienen con controles negativos de
-        fuga plantada—, un servicio FastAPI containerizado y un informe técnico de nueve páginas
+  \item Entregué 113 tests ---incluidos guardianes de fugas que vienen con controles negativos de
+        fuga plantada---, un servicio FastAPI containerizado y un informe técnico de nueve páginas
         en LaTeX.
   \fi
 \end{itemize}
@@ -156,12 +156,12 @@ Ciberseguridad.
         larga (0,5--0,7$\times$).
   \else
   \item Reproduje la afirmación de la industria de que EPSS es 6,1$\times$ más eficiente que CVSS,
-        y luego demostré —congelando las puntuaciones en cinco fechas pasadas y contando solo la
-        explotación confirmada después— que la mayor parte es artefacto de evaluación: EPSS gana la
+        y luego demostré ---congelando las puntuaciones en cinco fechas pasadas y contando solo la
+        explotación confirmada después--- que la mayor parte es artefacto de evaluación: EPSS gana la
         cabeza de la cola (1,2--1,8$\times$) y pierde la cola larga (0,5--0,7$\times$).
   \item Calculé intervalos de confianza del 95\,\% por bootstrap sobre los positivos y protegí el
         promediado de empates de la métrica central con un test que viene con control negativo;
-        76 tests y cinco ADRs.
+        75 tests y cinco ADRs.
   \fi
 \end{itemize}
 
