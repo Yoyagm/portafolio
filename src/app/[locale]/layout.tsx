@@ -138,15 +138,9 @@ export default async function LocaleLayout({
               url: siteConfig.url,
               email: profile.email,
               sameAs: [profile.github],
-              jobTitle:
-                locale === "es"
-                  ? "Ingeniero de Seguridad y AppSec"
-                  : "Security & AppSec Engineer",
-              // Postura honesta: estudiante avanzado / early-career (RF4.2).
-              description:
-                locale === "es"
-                  ? "Estudiante avanzado de Ingeniería de Sistemas (UPB), early-career, enfocado en seguridad de la cadena de suministro y detección de amenazas."
-                  : "Advanced Systems Engineering student (UPB), early-career, focused on software supply-chain security and threat detection.",
+              jobTitle: profile.role[locale],
+              // Postura honesta: estudiante de último semestre (RF4.2).
+              description: profile.stage[locale],
               knowsLanguage: ["en", "es"],
               affiliation: {
                 "@type": "CollegeOrUniversity",
