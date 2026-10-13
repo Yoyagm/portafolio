@@ -720,8 +720,8 @@ export const caseStudies: CaseStudy[] = [
     order: 4,
 
     tagline: {
-      en: "Flutter mobile client for network monitoring & security, with full TOTP 2FA.",
-      es: "Cliente móvil Flutter para monitoreo de red y seguridad, con 2FA TOTP completo.",
+      en: "Flutter mobile client for a team-built network-monitoring platform (Integrative Project III, UPB), with full TOTP 2FA.",
+      es: "Cliente móvil Flutter de una plataforma de monitoreo de red hecha en equipo (Proyecto Integrador III, UPB), con 2FA TOTP completo.",
     },
 
     context: {
@@ -787,6 +787,10 @@ export const caseStudies: CaseStudy[] = [
       {
         value: "20+",
         label: { en: "REST endpoints", es: "endpoints REST" },
+        note: {
+          en: "Served by the team's backend, written by a teammate",
+          es: "Los sirve el backend del equipo, escrito por otro integrante",
+        },
       },
       {
         value: "14",
@@ -868,8 +872,8 @@ export const caseStudies: CaseStudy[] = [
     ],
 
     role: {
-      en: "Author — mobile client architecture, auth/2FA flows, state & services.",
-      es: "Único autor — arquitectura del cliente móvil, flujos de auth/2FA, estado y servicios.",
+      en: "Mobile client developer in a team project (Integrative Project III, UPB): author of 19 of the client repository's 25 commits — auth/2FA flows, state & services. The backend and the agent were written by another team member.",
+      es: "Desarrollador del cliente móvil en un proyecto en equipo (Proyecto Integrador III, UPB): autor de 19 de los 25 commits del repositorio del cliente — flujos de auth/2FA, estado y servicios. El backend y el agente los escribió otro integrante.",
     },
 
     media: [
@@ -989,13 +993,13 @@ export const caseStudies: CaseStudy[] = [
     },
 
     context: {
-      en: "Final evaluation for Infrastructure Design & Management (UPB) with a concrete deliverable rather than a diagram: a running service that keeps serving when an availability zone is lost, reproducible from source on an AWS Academy sandbox whose credentials expire every four hours.",
-      es: "Evaluación final de Diseño y Gestión de Infraestructura Tecnológica (UPB) con un entregable concreto en vez de un diagrama: un servicio en marcha que sigue respondiendo cuando se pierde una zona de disponibilidad, reproducible desde el código en un sandbox de AWS Academy cuyas credenciales caducan cada cuatro horas.",
+      en: "Final assessment for the Infrastructure Design & Management course (UPB) with a concrete deliverable rather than a diagram: a running service whose application tier keeps serving when an availability zone is lost, reproducible from source on an AWS Academy sandbox whose credentials expire every four hours.",
+      es: "Evaluación final del curso de Diseño y Gestión de Infraestructura Tecnológica (UPB) con un entregable concreto en vez de un diagrama: un servicio en marcha cuya capa de aplicación sigue respondiendo cuando se pierde una zona de disponibilidad, reproducible desde el código en un sandbox de AWS Academy cuyas credenciales caducan cada cuatro horas.",
     },
 
     problem: {
-      en: "High availability is easy to draw and hard to prove. The architecture had to survive an AZ failure visibly, keep the database unreachable from the internet and from the load balancer alike, and redeploy on every push without a human holding Terraform state — all inside an account that forbids creating IAM roles.",
-      es: "La alta disponibilidad es fácil de dibujar y difícil de demostrar. La arquitectura tenía que sobrevivir de forma visible a la caída de una AZ, mantener la base de datos inalcanzable tanto desde internet como desde el balanceador, y redesplegarse en cada push sin que nadie sostenga el estado de Terraform — todo dentro de una cuenta que prohíbe crear roles IAM.",
+      en: "High availability is easy to draw and hard to prove. The application tier had to survive an AZ failure visibly, the database had to stay unreachable from the internet and from the load balancer alike, and every push had to redeploy without a human holding Terraform state — all inside an account that forbids creating IAM roles and does not allow RDS.",
+      es: "La alta disponibilidad es fácil de dibujar y difícil de demostrar. La capa de aplicación tenía que sobrevivir de forma visible a la caída de una AZ, la base de datos tenía que seguir inalcanzable tanto desde internet como desde el balanceador, y cada push tenía que redesplegarse sin que nadie sostenga el estado de Terraform — todo dentro de una cuenta que prohíbe crear roles IAM y no permite RDS.",
     },
 
     approach: [
@@ -1008,16 +1012,16 @@ export const caseStudies: CaseStudy[] = [
         es: "Auto Scaling Group fijado a un mínimo de dos instancias, una por AZ, con el health check HTTP del ALB — no el status check de EC2 — como fuente de verdad de la salud aplicativa.",
       },
       {
-        en: "Least-privilege security groups in a strict chain: the ALB accepts the internet, the app tier accepts only the ALB, and the database accepts only the app tier and has no egress at all.",
-        es: "Security groups de mínimo privilegio en cadena estricta: el ALB acepta internet, la capa de aplicación acepta solo al ALB, y la base de datos acepta solo a la capa de aplicación y no tiene egress alguno.",
+        en: "Least-privilege security groups in a strict chain: the ALB accepts the internet, the app tier accepts only the ALB, and the database accepts only the app tier (and its replication peer) and has no public IP. Its outbound access is open to 0.0.0.0/0 so it can pull the Docker image and updates.",
+        es: "Security groups de mínimo privilegio en cadena estricta: el ALB acepta internet, la capa de aplicación acepta solo al ALB, y la base de datos acepta solo a la capa de aplicación (y a su par de replicación) y no tiene IP pública. Su salida está abierta a 0.0.0.0/0 para poder descargar la imagen de Docker y las actualizaciones.",
       },
       {
-        en: "RDS PostgreSQL Multi-AZ with encrypted gp3 storage, public access disabled, credentials generated with `random_password` and marked sensitive so they never reach the repository.",
-        es: "RDS PostgreSQL Multi-AZ con almacenamiento gp3 cifrado, acceso público deshabilitado y credenciales generadas con `random_password` y marcadas como sensibles para que nunca lleguen al repositorio.",
+        en: "PostgreSQL 15 primary plus a streaming-replication replica on EC2 instances in separate private subnets, because AWS Academy does not allow RDS. Encrypted gp3 volumes, credentials generated with `random_password` and marked sensitive so they never reach the repository.",
+        es: "PostgreSQL 15 primario más una réplica con streaming replication en instancias EC2 de subredes privadas distintas, porque AWS Academy no permite RDS. Volúmenes gp3 cifrados y credenciales generadas con `random_password` y marcadas como sensibles para que nunca lleguen al repositorio.",
       },
       {
-        en: "Deployment without Terraform in the hot path: GitHub Actions lints, tests, builds the image and pushes it to ECR, then triggers an ASG instance refresh. Terraform provisions; the pipeline only rolls instances.",
-        es: "Despliegue sin Terraform en la ruta caliente: GitHub Actions pasa linters y tests, construye la imagen y la sube a ECR, y luego dispara un instance refresh del ASG. Terraform aprovisiona; el pipeline solo rota instancias.",
+        en: "Deployment without Terraform in the hot path: GitHub Actions lints, tests, builds the image and pushes it to GHCR, then triggers an ASG instance refresh. Terraform provisions; the pipeline only rolls instances.",
+        es: "Despliegue sin Terraform en la ruta caliente: GitHub Actions pasa linters y tests, construye la imagen y la sube a GHCR, y luego dispara un instance refresh del ASG. Terraform aprovisiona; el pipeline solo rota instancias.",
       },
       {
         en: "k6 load tests read against CloudWatch — request count, target response time, healthy host count and 5XX rate — so the balancing claim is measured rather than asserted.",
@@ -1027,16 +1031,20 @@ export const caseStudies: CaseStudy[] = [
 
     impact: [
       {
-        en: "The whole stack — VPC, internet and NAT gateways, ALB, Auto Scaling Group, ECR, RDS Multi-AZ, security groups, CloudWatch dashboard and alarm — reproduces from a single `terraform apply`.",
-        es: "Toda la infraestructura — VPC, internet y NAT gateways, ALB, Auto Scaling Group, ECR, RDS Multi-AZ, security groups, dashboard y alarma de CloudWatch — se reproduce con un solo `terraform apply`.",
+        en: "The whole stack — VPC, internet and NAT gateways, ALB, Auto Scaling Group, PostgreSQL primary and replica on EC2, security groups, CloudWatch dashboard and alarms — reproduces from a single `terraform apply`.",
+        es: "Toda la infraestructura — VPC, internet y NAT gateways, ALB, Auto Scaling Group, PostgreSQL primario y réplica en EC2, security groups, dashboard y alarmas de CloudWatch — se reproduce con un solo `terraform apply`.",
       },
       {
-        en: "Trade-offs documented with their cost rather than presented as best practice: one NAT gateway instead of one per AZ (~$32/month each, with the failure mode written down), EC2 + ASG instead of Fargate because losing an instance is visibly survivable, and Multi-AZ instead of a read replica because failover mattered more than read capacity.",
-        es: "Trade-offs documentados con su coste en vez de presentarse como buenas prácticas: un solo NAT gateway en lugar de uno por AZ (~32 USD/mes cada uno, con el modo de fallo escrito), EC2 + ASG en vez de Fargate porque perder una instancia se sobrevive de forma visible, y Multi-AZ en vez de una réplica de lectura porque el failover importaba más que la capacidad de lectura.",
+        en: "Trade-offs documented with their cost rather than presented as best practice: one NAT gateway instead of one per AZ (~$32/month each, with the failure mode written down), EC2 + ASG instead of Fargate because losing an instance is visibly survivable, and PostgreSQL on EC2 instead of RDS because the sandbox forbids it — replication is configured, but no automatic failover is.",
+        es: "Trade-offs documentados con su coste en vez de presentarse como buenas prácticas: un solo NAT gateway en lugar de uno por AZ (~32 USD/mes cada uno, con el modo de fallo escrito), EC2 + ASG en vez de Fargate porque perder una instancia se sobrevive de forma visible, y PostgreSQL en EC2 en vez de RDS porque el sandbox lo prohíbe — la replicación está configurada, pero no un failover automático.",
       },
       {
-        en: "Three independent workflows keep the repository honest: CI on the application, CD to ECR and the ASG, and a Terraform plan that runs on pull requests.",
-        es: "Tres flujos independientes mantienen honesto el repositorio: CI sobre la aplicación, CD hacia ECR y el ASG, y un plan de Terraform que corre en los pull requests.",
+        en: "Three independent workflows keep the repository honest: CI on the application, CD to GHCR and the ASG, and a Terraform plan that runs on pull requests.",
+        es: "Tres flujos independientes mantienen honesto el repositorio: CI sobre la aplicación, CD hacia GHCR y el ASG, y un plan de Terraform que corre en los pull requests.",
+      },
+      {
+        en: "Note on the diagram below: it shows the target design (RDS Multi-AZ and ECR); the repository deploys PostgreSQL on EC2 and publishes the image to GHCR.",
+        es: "Nota sobre el diagrama de abajo: muestra el diseño objetivo (RDS Multi-AZ y ECR); el repositorio despliega PostgreSQL en EC2 y publica la imagen en GHCR.",
       },
     ],
 
@@ -1076,48 +1084,48 @@ export const caseStudies: CaseStudy[] = [
     features: [
       {
         text: {
-          en: "Least-privilege security-group chain; the database has no egress and no public access",
-          es: "Cadena de security groups de mínimo privilegio; la base de datos no tiene egress ni acceso público",
+          en: "Least-privilege security-group chain; the database accepts only the app tier and has no public IP",
+          es: "Cadena de security groups de mínimo privilegio; la base de datos acepta solo a la capa de aplicación y no tiene IP pública",
         },
         status: "implemented",
         category: "security",
       },
       {
         text: {
-          en: "Encryption at rest on RDS; passwords generated in Terraform and marked sensitive",
-          es: "Cifrado en reposo en RDS; contraseñas generadas en Terraform y marcadas como sensibles",
+          en: "Encrypted gp3 volumes on the database instances; passwords generated in Terraform and marked sensitive",
+          es: "Volúmenes gp3 cifrados en las instancias de base de datos; contraseñas generadas en Terraform y marcadas como sensibles",
         },
         status: "implemented",
         category: "security",
       },
       {
         text: {
-          en: "Multi-AZ failover with the ALB health check as the source of truth",
-          es: "Failover Multi-AZ con el health check del ALB como fuente de verdad",
+          en: "Application tier across two AZs with the ALB health check as the source of truth",
+          es: "Capa de aplicación en dos AZ con el health check del ALB como fuente de verdad",
         },
         status: "implemented",
         category: "resilience",
       },
       {
         text: {
-          en: "Zero-touch redeploy via ECR push + ASG instance refresh",
-          es: "Redespliegue sin intervención vía push a ECR + instance refresh del ASG",
+          en: "Zero-touch redeploy via GHCR push + ASG instance refresh",
+          es: "Redespliegue sin intervención vía push a GHCR + instance refresh del ASG",
         },
         status: "implemented",
         category: "resilience",
       },
       {
         text: {
-          en: "ECR scan-on-push and a lifecycle policy capping stored images",
-          es: "Escaneo al subir en ECR y política de ciclo de vida que limita las imágenes guardadas",
+          en: "PostgreSQL streaming replication to a replica in another AZ (no automatic failover)",
+          es: "Streaming replication de PostgreSQL hacia una réplica en otra AZ (sin failover automático)",
         },
         status: "implemented",
-        category: "security",
+        category: "resilience",
       },
       {
         text: {
-          en: "CloudWatch dashboard and 5XX alarm, exercised under k6 load",
-          es: "Dashboard de CloudWatch y alarma de 5XX, ejercitados bajo carga con k6",
+          en: "CloudWatch dashboard and alarms, exercised under k6 load",
+          es: "Dashboard y alarmas de CloudWatch, ejercitados bajo carga con k6",
         },
         status: "implemented",
         category: "resilience",
@@ -1127,8 +1135,8 @@ export const caseStudies: CaseStudy[] = [
     stack: [
       "Terraform 1.6+",
       "AWS VPC / ALB / ASG / EC2",
-      "RDS PostgreSQL 15 Multi-AZ",
-      "Amazon ECR",
+      "PostgreSQL 15 (primary + replica on EC2)",
+      "GitHub Container Registry (GHCR)",
       "CloudWatch",
       "FastAPI",
       "SQLAlchemy 2.0",
@@ -1155,8 +1163,8 @@ export const caseStudies: CaseStudy[] = [
         type: "image",
         src: "/projects/aws-ha-infra/aws-architecture.png",
         alt: {
-          en: "AWS architecture diagram: an internet-facing ALB in two public subnets forwarding to EC2 instances in private subnets across both availability zones, backed by a Multi-AZ RDS PostgreSQL instance, with ECR and CloudWatch alongside.",
-          es: "Diagrama de arquitectura AWS: un ALB de cara a internet en dos subredes públicas que reenvía a instancias EC2 en subredes privadas de ambas zonas de disponibilidad, respaldadas por una instancia RDS PostgreSQL Multi-AZ, con ECR y CloudWatch al lado.",
+          en: "AWS architecture diagram of the target design: an internet-facing ALB in two public subnets forwarding to EC2 instances in private subnets across both availability zones, backed by a Multi-AZ RDS PostgreSQL pair, with ECR and CloudWatch alongside. The repository deploys PostgreSQL on EC2 and publishes the image to GHCR instead.",
+          es: "Diagrama de arquitectura AWS del diseño objetivo: un ALB de cara a internet en dos subredes públicas que reenvía a instancias EC2 en subredes privadas de ambas zonas de disponibilidad, respaldadas por un par RDS PostgreSQL Multi-AZ, con ECR y CloudWatch al lado. El repositorio despliega PostgreSQL en EC2 y publica la imagen en GHCR.",
         },
         width: 1632,
         height: 1161,

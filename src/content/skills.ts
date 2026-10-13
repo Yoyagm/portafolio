@@ -178,7 +178,7 @@ export const skillGroups: SkillGroup[] = [
         evidence: { source: "project" },
       },
       {
-        name: "AWS — VPC, ALB, Auto Scaling, EC2, RDS Multi-AZ, ECR, CloudWatch",
+        name: "AWS — VPC, ALB, Auto Scaling, EC2, CloudWatch",
         evidence: { source: "project" },
       },
       {
