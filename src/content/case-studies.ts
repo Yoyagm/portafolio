@@ -586,7 +586,7 @@ export const caseStudies: CaseStudy[] = [
         note: { en: "Seed pinned", es: "Semilla fija" },
       },
       {
-        value: "76",
+        value: "75",
         label: { en: "tests · 5 ADRs", es: "tests · 5 ADRs" },
       },
     ],

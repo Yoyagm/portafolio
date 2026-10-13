@@ -105,10 +105,6 @@ export const skillGroups: SkillGroup[] = [
         evidence: { source: "project" },
       },
       {
-        name: "RAG over document corpora (ChromaDB, embeddings)",
-        evidence: { source: "project" },
-      },
-      {
         name: "Model-as-a-service (FastAPI + Docker)",
         evidence: { source: "project" },
       },
