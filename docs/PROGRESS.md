@@ -24,6 +24,23 @@ insignias de Cisco que faltan esperan su URL de Credly.
   sistema de mercado empezó en 2026. EM Torneos y GreenPulse salen del CV.
 - **Hecho:** Educación incluye la Especialización en Seguridad Informática de la
   UPB, en curso y sin fechas.
+- **Hecho:** los títulos de ingeniero («Security & AI Engineer», «Ingeniero de
+  Seguridad y AppSec») salen del Hero, los metadatos, el JSON-LD, la imagen OG, el
+  manifest, `llms.txt` y el preámbulo del CV. En su lugar va el rol de la fuente
+  («AI & Security Engineering · final-semester student»); el JSON-LD y la imagen OG
+  lo leen de `profile.ts`. Los nombres de los PDF no cambian.
+- **Hecho:** se quita RAG de las skills y del CV (la fuente no halló evidencia en un
+  repo legible), el dashboard de vulnerabilidades pasa de 76 a 75 tests (README del
+  repo) y las skills del CV ponen primero Datos, ML e IA.
+- **Decisión:** el posicionamiento vuelve a cambiar: de «Security & AI Engineer»
+  (2026-08-19) a IA y entrenamiento de modelos primero, con la ciberseguridad como
+  segunda línea. Mientras sea estudiante, ningún título dice «Engineer»; se descartó
+  mantenerlo en los metadatos por SEO.
+- **Discrepancia abierta:** el caso GOATGuard marca las notificaciones push como
+  `simulated` («declared, NOT implemented»), mientras `perfil-fuente.yaml` las cuenta
+  entre los requisitos implementados (RF-13 a RF-19). La diferencia viene de una
+  lectura errónea del README al escribir la fuente, que se corrige allí. El
+  portafolio no se toca: sigue siendo lo que está comprobado.
 - **Decisión:** «último semestre» se conserva (Johan lo confirmó) y «7.º semestre»
   se quita. El diagrama de `aws-ha-infra` se queda, con una nota de que muestra el
   diseño objetivo y no lo desplegado: borrarlo habría ocultado de dónde salió el
