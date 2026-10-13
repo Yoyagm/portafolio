@@ -91,8 +91,8 @@ export const education: Education[] = [
     },
     org: "Pontificia Universidad Bolivariana",
     period: {
-      en: "In progress",
-      es: "En curso",
+      en: "Sep 2026 – Nov 2026 (in progress)",
+      es: "Sep 2026 – Nov 2026 (en curso)",
     },
   },
 ];
