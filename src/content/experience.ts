@@ -238,6 +238,72 @@ export const certifications: Certification[] = [
     verifyUrl:
       "https://freecodecamp.org/certification/yoyagm/data-analysis-with-python-v7",
   },
+  {
+    name: {
+      en: "Intro to Machine Learning",
+      es: "Introducción al Machine Learning",
+    },
+    issuer: "Kaggle",
+    year: "2026",
+    group: "ai-data",
+    verifyUrl:
+      "https://www.kaggle.com/learn/certification/johanrodriguezyoyagm/intro-to-machine-learning",
+  },
+  {
+    name: {
+      en: "Intermediate Machine Learning",
+      es: "Machine Learning Intermedio",
+    },
+    issuer: "Kaggle",
+    year: "2026",
+    group: "ai-data",
+    verifyUrl:
+      "https://www.kaggle.com/learn/certification/johanrodriguezyoyagm/intermediate-machine-learning",
+  },
+  {
+    name: {
+      en: "Feature Engineering",
+      es: "Ingeniería de Características",
+    },
+    issuer: "Kaggle",
+    year: "2026",
+    group: "ai-data",
+    verifyUrl:
+      "https://www.kaggle.com/learn/certification/johanrodriguezyoyagm/feature-engineering",
+  },
+  {
+    name: {
+      en: "Intro to Deep Learning",
+      es: "Introducción al Deep Learning",
+    },
+    issuer: "Kaggle",
+    year: "2026",
+    group: "ai-data",
+    verifyUrl:
+      "https://www.kaggle.com/learn/certification/johanrodriguezyoyagm/intro-to-deep-learning",
+  },
+  {
+    name: {
+      en: "Pandas",
+      es: "Pandas",
+    },
+    issuer: "Kaggle",
+    year: "2026",
+    group: "ai-data",
+    verifyUrl:
+      "https://www.kaggle.com/learn/certification/johanrodriguezyoyagm/pandas",
+  },
+  {
+    name: {
+      en: "Intro to SQL",
+      es: "Introducción a SQL",
+    },
+    issuer: "Kaggle",
+    year: "2026",
+    group: "ai-data",
+    verifyUrl:
+      "https://www.kaggle.com/learn/certification/johanrodriguezyoyagm/intro-to-sql",
+  },
 
   // ── Fundamentos de ingeniería ───────────────────────────────────────────
   {
@@ -272,6 +338,17 @@ export const certifications: Certification[] = [
     group: "engineering",
     verifyUrl:
       "https://freecodecamp.org/certification/yoyagm/javascript-algorithms-and-data-structures-v8",
+  },
+  {
+    name: {
+      en: "Intro to Programming",
+      es: "Introducción a la Programación",
+    },
+    issuer: "Kaggle",
+    year: "2026",
+    group: "engineering",
+    verifyUrl:
+      "https://www.kaggle.com/learn/certification/johanrodriguezyoyagm/intro-to-programming",
   },
 
   // ── Idiomas ─────────────────────────────────────────────────────────────
