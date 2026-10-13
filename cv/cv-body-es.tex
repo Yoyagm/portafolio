@@ -31,21 +31,22 @@
 \section{Perfil Profesional}
 \justifying
 \ifonepage
-Estudiante de último semestre de Ingeniería de Sistemas y Software (UPB Bucaramanga), en la
-intersección entre ingeniería de seguridad y machine learning aplicado. Entrego herramientas, no
-informes: un escáner de cadena de suministro de código abierto, un clasificador de phishing que
-auditó su propio benchmark y publicó la cifra honesta en lugar de la que favorecía, y un dashboard
-de priorización de vulnerabilidades que desmontó midiendo la ventaja que venía a demostrar.
-Inglés C2 verificado (EF SET 80/100).
+Estudiante de último semestre de Ingeniería de Sistemas y Software (UPB Bucaramanga; fin de carrera
+previsto en 2026), en la intersección entre ingeniería de seguridad y machine learning aplicado.
+Entrego herramientas, no informes: un escáner de cadena de suministro de código abierto, un
+clasificador de phishing que auditó su propio benchmark y publicó la cifra honesta en lugar de la que
+favorecía, y un dashboard de priorización de vulnerabilidades que desmontó midiendo la ventaja que
+venía a demostrar. Inglés C2 verificado (EF SET).
 \else
-Estudiante de último semestre de Ingeniería de Sistemas y Software (UPB Bucaramanga), en la
-intersección entre ingeniería de seguridad y machine learning aplicado. Entrego herramientas, no
-informes: un escáner de cadena de suministro de código abierto, un clasificador de phishing que
-auditó su propio benchmark y publicó la cifra honesta en lugar de la que favorecía, y un dashboard
-de priorización de vulnerabilidades que desmontó midiendo la ventaja que venía a demostrar. Me
-muevo con igual soltura en infraestructura cloud —AWS, Terraform, CI/CD— y en desarrollo
-full-stack, con experiencia liderando bajo Scrum e inglés C2 verificado (EF SET 80/100). Busco un
-rol de Seguridad, Detection Engineering o Datos e IA.
+Estudiante de último semestre de Ingeniería de Sistemas y Software (UPB Bucaramanga; fin de carrera
+previsto en 2026), en la intersección entre ingeniería de seguridad y machine learning aplicado.
+Entrego herramientas, no informes: un escáner de cadena de suministro de código abierto, un
+clasificador de phishing que auditó su propio benchmark y publicó la cifra honesta en lugar de la que
+favorecía, y un dashboard de priorización de vulnerabilidades que desmontó midiendo la ventaja que
+venía a demostrar. Me muevo con igual soltura en infraestructura cloud —AWS, Terraform, CI/CD— y en
+desarrollo full-stack, con experiencia como Scrum Master en un proyecto académico e inglés C2
+verificado (EF SET). Busco un rol de IA/ML (entrenamiento y evaluación de modelos) o de
+Ciberseguridad.
 \fi
 
 % =====================================================================
@@ -59,7 +60,7 @@ rol de Seguridad, Detection Engineering o Datos e IA.
   evaluaciones honestas; explicabilidad con SHAP; validación agrupada, temporal y walk-forward;
   calibración de probabilidades; NLP con FinBERT; orquestación multiagente con CrewAI; RAG con
   ChromaDB; pandas / NumPy}
-\skill{Cloud y DevOps}{AWS (IAM, VPC, EC2, Auto Scaling, ALB, RDS Multi-AZ, ECR, CloudWatch),
+\skill{Cloud y DevOps}{AWS (IAM, VPC, EC2, Auto Scaling, ALB, CloudWatch),
   Terraform (IaC), Docker, CI/CD con GitHub Actions, pruebas de carga con k6, Google Cloud
   (BigQuery ML, Cloud Storage, DLP)}
 \skill{Programación}{Python, TypeScript / JavaScript, C\#, SQL, VBA, Dart, HCL, LaTeX}
@@ -71,39 +72,24 @@ rol de Seguridad, Detection Engineering o Datos e IA.
 % =====================================================================
 \section{Experiencia}
 
-\project{Desarrollador / Soporte Técnico}{}%
-  {GOATGuard: \href{https://github.com/Yoyagm/goatguard-app}{github.com/Yoyagm/goatguard-app}}%
+\project{Desarrollador / Soporte Técnico (Voluntariado)}{}%
+  {Cliente GOATGuard: \href{https://github.com/Yoyagm/goatguard-app}{github.com/Yoyagm/goatguard-app}}%
   {Ene 2026 -- Actualidad \ $\vert$ \ Pontificia Universidad Bolivariana}
 \begin{itemize}
-  \item Diseñé y construí GOATGuard, una plataforma full-stack de monitoreo de seguridad de red
-        (FastAPI + PostgreSQL + Flutter), para cerrar la brecha de movilidad de los administradores
-        que gestionan activos tecnológicos distribuidos.
-  \item Construí un motor de clasificación automática de activos de red (routers, impresoras,
-        cámaras) con monitoreo en tiempo real y dashboards de KPIs, y detección proactiva de port
-        scans e intentos de intrusión, aplicando principios de Blue Team y detection engineering.
-  \ifonepage\else
-  \item Endurecí el cliente móvil con un flujo completo de 2FA TOTP (enrolamiento por QR, códigos
-        de respaldo y de recuperación) y JWT en el almacenamiento seguro del sistema operativo,
-        tras un interceptor global de errores 401.
-  \item Brindo soporte técnico a los usuarios finales de la institución.
+  \item Soporte técnico a usuarios finales de la institución.
+  \item Detección de amenazas en endpoints: identificación y análisis de escaneos de puertos (port
+        scans) e intentos de intrusión en la red.
+  \item Clasificación automática de activos de red (routers, impresoras, cámaras) con un panel de
+        monitoreo en tiempo real y KPIs.
+  \ifonepage
+  \item Cliente móvil Android de GOATGuard (Flutter), proyecto en equipo de monitoreo de red: panel,
+        inventario, alertas, 2FA TOTP. Autor de 19 de los 25 commits del repositorio del cliente.
+  \else
+  \item Cliente móvil Android de GOATGuard (Flutter), proyecto en equipo de monitoreo de red: panel
+        en tiempo real, inventario, alertas por severidad, 2FA TOTP y token JWT en el almacenamiento
+        seguro del sistema operativo. Autor de 19 de los 25 commits del repositorio del cliente.
   \fi
 \end{itemize}
-
-\entry{Scrum Master}{}{Jun 2025 -- Nov 2025 \ $\vert$ \ Pontificia Universidad Bolivariana}
-\begin{itemize}
-  \item Gestioné el ciclo de vida de desarrollo bajo Scrum, facilitando las ceremonias y
-        optimizando el Product Backlog para asegurar entrega incremental de valor.
-  \item Contribuí al diseño de una infraestructura de alta disponibilidad orientada a 100.000
-        usuarios concurrentes con objetivo de latencia por debajo de 500\,ms, sobre arquitecturas
-        de datos híbridas SQL / NoSQL / en memoria.
-\end{itemize}
-
-\ifonepage\else
-\entry{Auxiliar de Eventos Deportivos}{}{May 2025 -- Actualidad \ $\vert$ \ EM Torneos y Competencias}
-\begin{itemize}
-  \item Apoyo la organización y ejecución de torneos deportivos y eventos competitivos.
-\end{itemize}
-\fi
 
 % =====================================================================
 \section{Proyectos Técnicos Destacados}
@@ -184,27 +170,30 @@ rol de Seguridad, Detection Engineering o Datos e IA.
 {\footnotesize\noindent\textbf{Además:} infraestructura AWS de tres capas en alta disponibilidad con
 Terraform + GitHub Actions
 (\href{https://github.com/Yoyagm/eval-final-dgiti}{eval-final-dgiti}) \ $\vert$ \ tubería autónoma
-de ML y agentes para mercados, 505 tests \ $\vert$ \ GreenPulse, plataforma agronómica offline-first.
-Casos de estudio completos:
+de ML y agentes para mercados, 505 tests. Casos de estudio completos:
 \href{https://johanrodriguez.is-a.dev/es/proyectos}{johanrodriguez.is-a.dev/proyectos}.\par}
 \else
 
 \project{Infraestructura AWS de Alta Disponibilidad}{Terraform, FastAPI y CI/CD}%
   {\href{https://github.com/Yoyagm/eval-final-dgiti}{github.com/Yoyagm/eval-final-dgiti}}%
-  {2026 \ $\vert$ \ UPB}
+  {2026 \ $\vert$ \ UPB (evaluación final de curso)}
 \begin{itemize}
-  \item Codifiqué íntegramente en Terraform una arquitectura de tres capas repartida en dos zonas
-        de disponibilidad: VPC, ALB, Auto Scaling Group, RDS PostgreSQL Multi-AZ, ECR y CloudWatch.
-  \item Apliqué mínimo privilegio con una cadena estricta de security groups: la base de datos no
-        tiene acceso público ni egress, y solo es alcanzable desde la capa de aplicación.
-  \item Automaticé el despliegue con GitHub Actions (linters, tests, build, push a ECR e instance
-        refresh del ASG), manteniendo Terraform fuera de la ruta caliente, y validé el balanceo
-        bajo carga con k6 contra métricas de CloudWatch.
+  \item Codifiqué en Terraform una arquitectura de tres capas repartida en dos zonas de
+        disponibilidad: VPC, ALB, Auto Scaling Group (mínimo 2 instancias), PostgreSQL 15 primario y
+        réplica con streaming replication en EC2 de subredes privadas (AWS Academy no permite RDS) y
+        alarmas de CloudWatch.
+  \item Apliqué mínimo privilegio con una cadena de security groups: la base de datos no tiene IP
+        pública y solo acepta conexiones de la capa de aplicación; su salida está abierta para
+        descargar la imagen.
+  \item Automaticé el despliegue con tres workflows de GitHub Actions (CI; CD con push de la imagen a
+        GHCR e instance refresh del ASG; plan de Terraform en los pull requests), manteniendo
+        Terraform fuera de la ruta caliente, y validé el balanceo bajo carga con k6 contra métricas
+        de CloudWatch.
 \end{itemize}
 
 \project{Sistema Autónomo de Inteligencia de Mercado}{ML Aplicado e IA Multiagente}%
   {Repositorio privado --- recorrido disponible a petición}%
-  {2025 -- Actualidad \ $\vert$ \ Independiente}
+  {2026 \ $\vert$ \ Independiente}
 \begin{itemize}
   \item Construí una tubería dirigida por eventos que integra APIs de datos de mercado, cálculo de
         indicadores técnicos y un modelo de sentimiento FinBERT, orquestando cuatro agentes CrewAI
@@ -219,11 +208,6 @@ Casos de estudio completos:
         bloquea el capital real hasta que el modelo supere el 55\,\% de exactitud (hoy 52,9\,\%).
 \end{itemize}
 
-\entry{GreenPulse}{Plataforma Agronómica de Monitoreo Offline-First}{2025 \ $\vert$ \ Proyecto de Grado}
-\begin{itemize}
-  \item Migré y rediseñé el backend a FastAPI con una capa de sincronización offline-first sobre
-        SQLite y un catálogo de 35 especies con escaneo por código QR; documentado en formato IEEE.
-\end{itemize}
 \fi
 
 % =====================================================================
@@ -234,6 +218,10 @@ Casos de estudio completos:
   \ifonepage
   \item Último semestre. Cursos avanzados de arquitectura de software y diseño de sistemas; labs
         1--6 de AWS Academy Cloud Foundations (IAM, VPC, EC2, EBS, Auto Scaling, balanceo).
+  \item Scrum Master de un proyecto académico de infraestructura de alta disponibilidad (jun--nov
+        2025): conduje el ciclo Scrum y participé en el diseño de un sistema dimensionado para
+        100.000 usuarios concurrentes con objetivo de latencia por debajo de 500\,ms (objetivos de diseño, no
+        resultados medidos).
   \else
   \item Último semestre. Cursos avanzados de arquitectura de software, diseño de sistemas y buenas
         prácticas de la industria.
@@ -241,6 +229,16 @@ Casos de estudio completos:
         Auto Scaling y balanceo de carga, con implementaciones de IaC en Terraform (2026).
   \fi
 \end{itemize}
+\ifonepage\else
+\entry{Scrum Master (proyecto académico)}{Infraestructura de Alta Disponibilidad}{Jun 2025 -- Nov 2025 \ $\vert$ \ Pontificia Universidad Bolivariana}
+\begin{itemize}
+  \item Conduje el ciclo Scrum completo: planificación de sprints, reuniones diarias, retrospectivas
+        y demostraciones con los interesados.
+  \item Participé en el diseño de una infraestructura de alta disponibilidad dimensionada para unos
+        100.000 usuarios concurrentes con un objetivo de latencia por debajo de 500\,ms (objetivos de
+        diseño, no resultados medidos), con datos híbridos SQL / NoSQL / en memoria.
+\end{itemize}
+\fi
 
 % =====================================================================
 \section{Certificaciones}
@@ -259,7 +257,7 @@ Work with Cloud Storage \textbullet\ Gemini Enterprise (flujos multiagente, prim
 Algorithms and Data Structures.\par
 \vspace{0.2ex}\noindent
 \textbf{Idiomas:} Español --- Nativo \textbullet\ Inglés --- C2 Competente
-(\href{https://cert.efset.org/es/qpqdd3}{EF SET 80/100, verificado}).
+(\href{https://cert.efset.org/es/qpqdd3}{EF SET 74/100, verificado}).
 {\color{subtle}Todas verificables públicamente en
 \href{https://www.linkedin.com/in/johan-rodriguez-97bb29323/details/certifications/}{linkedin.com/in/johan-rodriguez-97bb29323}.}\par}
 \else
@@ -279,8 +277,7 @@ enlaces en
   \item \textbf{freeCodeCamp} (2026) --- Machine Learning with Python \textbullet\ Data Analysis
         with Python \textbullet\ Scientific Computing with Python \textbullet\ Data Visualization
         \textbullet\ JavaScript Algorithms and Data Structures
-  \item \textbf{EF SET} (2026) --- Certificado de inglés, MCER C2 (Competente), 80/100 global
-        (lectura 84, comprensión oral 89)
+  \item \textbf{EF SET} (2026) --- Certificado de inglés, MCER C2 (Competente), 74/100
 \end{itemize}
 \fi
 
@@ -288,7 +285,7 @@ enlaces en
 \ifonepage\else
 \section{Idiomas}
 Español --- Nativo \ \ {\color{subtle}$\vert$} \ \ Inglés --- C2 Competente
-(\href{https://cert.efset.org/es/qpqdd3}{EF SET 80/100, verificado})
+(\href{https://cert.efset.org/es/qpqdd3}{EF SET, verificado})
 \fi
 
 \end{document}
