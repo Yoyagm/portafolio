@@ -20,7 +20,7 @@
     "closeMenu": "Close menu"
   },
   "Hero": {
-    "eyebrow": "Security & AI Engineer",
+    "eyebrow": "AI & Security Engineering · final-semester student",
     "headline": "I build security tools, then try to break my own results",
     "subheadline": "Supply-chain defence, phishing detection and vulnerability triage — shipped with tests, CI gates and strict typing, and measured honestly enough to report the number that hurts.",
     "ctaWork": "View my work",
@@ -53,7 +53,7 @@
   },
   "Contact": {
     "title": "Get in touch",
-    "subtitle": "Open to security & engineering roles, remote-first.",
+    "subtitle": "Open to AI/ML and cybersecurity roles, remote-first.",
     "name": "Name",
     "email": "Email",
     "message": "Message",
@@ -90,8 +90,8 @@
     "backToBlog": "Back to all writeups"
   },
   "Metadata": {
-    "title": "Johan Rodriguez — Security & AI Engineer",
-    "description": "Security & AI Engineer: supply-chain defence, phishing detection, vulnerability prioritisation and detection engineering. Python, CI, strict typing. Bilingual, remote."
+    "title": "Johan Rodriguez — AI & Security Engineering · final-semester student",
+    "description": "AI & Machine Learning (model training and evaluation) · Cybersecurity · Final-semester Systems & Software Engineering student (UPB) · Python · C2 English · Remote"
   },
   "ThankYou": {
     "title": "Thank you",
@@ -112,14 +112,14 @@
     "projectsTitle": "Projects",
     "projectsIntro": "Security and applied-ML tools I designed, shipped and measured end to end — from supply-chain defence and phishing detection to vulnerability triage, mobile hardening and high-availability cloud infrastructure.",
     "aboutTitle": "About",
-    "aboutIntro": "Security engineer who builds real tools, not just findings — with tests, CI gates and strict typing.",
+    "aboutIntro": "Final-semester student who builds real tools, not just findings — with tests, CI gates and strict typing.",
     "contactTitle": "Get in touch",
-    "contactIntro": "Open to security & engineering roles, remote-first.",
+    "contactIntro": "Open to AI/ML and cybersecurity roles, remote-first.",
     "featuredWork": "Featured work",
     "viewAllProjects": "View all projects",
     "aboutCta": "More about me",
     "contactCtaTitle": "Let's work together",
-    "contactCtaBody": "I'm open to security & engineering roles, remote-first. Tell me what you're building.",
+    "contactCtaBody": "I'm open to AI/ML and cybersecurity roles, remote-first. Tell me what you're building.",
     "contactCtaButton": "Get in touch"
   }
 }

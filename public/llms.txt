@@ -1,14 +1,14 @@
 # llms.txt — Guidance for LLM crawlers
 # https://llmstxt.org
 
-> Johan Rodriguez — Security & AI Engineer portfolio
+> Johan Rodriguez — AI & Security Engineering · final-semester student (portfolio)
 
 ## About
 
 Personal portfolio of Johan David Rodriguez Castro, a final-semester Systems &
 Software Engineering student at Pontificia Universidad Bolivariana (UPB,
-Bucaramanga, Colombia) working on security engineering, detection engineering
-and applied machine learning.
+Bucaramanga, Colombia) working on AI and machine learning (model training and
+evaluation), cybersecurity and detection engineering.
 
 Contact: johan.rc2020@gmail.com
 
@@ -18,7 +18,7 @@ Contact: johan.rc2020@gmail.com
 - /projects: six case studies with metrics, evidence and stated limitations
 - /about: skills, experience, education, 16 verifiable certifications
 - Blog: technical writeups on security engineering and supply-chain security
-- Language: bilingual English (C2, EF SET 80/100) / Spanish (native)
+- Language: bilingual English (C2, verified with EF SET) / Spanish (native)
 
 ## Projects
 

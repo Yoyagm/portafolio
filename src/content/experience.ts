@@ -9,8 +9,8 @@ import type {
 export const experience: Experience[] = [
   {
     role: {
-      en: "Developer / Technical Support",
-      es: "Desarrollador / Soporte Técnico",
+      en: "Developer / Technical Support (Volunteer)",
+      es: "Desarrollador / Soporte Técnico (Voluntariado)",
     },
     org: "Pontificia Universidad Bolivariana (UPB)",
     period: {
@@ -23,24 +23,28 @@ export const experience: Experience[] = [
     },
     bullets: [
       {
-        en: "Endpoint threat detection: identification and analysis of port scans and network intrusion attempts.",
-        es: "Detección de amenazas en endpoints: identificación y análisis de port scans e intentos de intrusión en red.",
-      },
-      {
-        en: "Automated asset classification system (routers, printers, cameras) with real-time monitoring dashboard and KPIs.",
-        es: "Sistema de clasificación automática de activos (routers, impresoras, cámaras) con dashboard de monitoreo en tiempo real y KPIs.",
-      },
-      {
-        en: "Technical support to end users across the institution.",
+        en: "Technical support for the institution's end users.",
         es: "Soporte técnico a usuarios finales de la institución.",
+      },
+      {
+        en: "Endpoint threat detection: identifying and analysing port scans and network intrusion attempts.",
+        es: "Detección de amenazas en endpoints: identificación y análisis de escaneos de puertos (port scans) e intentos de intrusión en la red.",
+      },
+      {
+        en: "Automatic classification of network assets (routers, printers, cameras) with a real-time monitoring dashboard and KPIs.",
+        es: "Clasificación automática de activos de red (routers, impresoras, cámaras) con un panel de monitoreo en tiempo real y KPIs.",
+      },
+      {
+        en: "GOATGuard Android client (Flutter), a team network-monitoring project: real-time dashboard, inventory, severity-filtered alerts, TOTP 2FA and the JWT kept in OS-backed secure storage. Author of 19 of the client repository's 25 commits.",
+        es: "Cliente móvil Android de GOATGuard (Flutter), proyecto en equipo de monitoreo de red: panel en tiempo real, inventario, alertas por severidad, 2FA TOTP y token JWT en el almacenamiento seguro del sistema operativo. Autor de 19 de los 25 commits del repositorio del cliente.",
       },
     ],
   },
 
   {
     role: {
-      en: "Scrum Master",
-      es: "Scrum Master",
+      en: "Scrum Master (academic project)",
+      es: "Scrum Master (proyecto académico)",
     },
     org: "Pontificia Universidad Bolivariana (UPB)",
     period: {
@@ -53,16 +57,12 @@ export const experience: Experience[] = [
     },
     bullets: [
       {
-        en: "Contributed to the design of a high-availability infrastructure targeting ~100k concurrent users with a <500ms latency objective (design target, not a measured outcome).",
-        es: "Contribución al diseño de infraestructura de alta disponibilidad orientada a ~100k usuarios concurrentes con objetivo de latencia <500ms (objetivo de diseño, no resultado medido).",
+        en: "Ran the full Scrum cycle: sprint planning, daily stand-ups, retrospectives and stakeholder demos.",
+        es: "Conduje el ciclo Scrum completo: planificación de sprints, reuniones diarias, retrospectivas y demostraciones con los interesados.",
       },
       {
-        en: "Collaborated on hybrid SQL / NoSQL / in-memory architecture decisions and AI-based analytics integration.",
-        es: "Colaboración en decisiones de arquitectura híbrida SQL / NoSQL / in-memory e integración de analítica basada en IA.",
-      },
-      {
-        en: "Led full Scrum cycle: sprint planning, daily stand-ups, retrospectives and stakeholder demos.",
-        es: "Liderazgo del ciclo Scrum completo: planificación de sprints, daily stand-ups, retrospectivas y demos con stakeholders.",
+        en: "Contributed to the design of a high-availability infrastructure sized for about 100,000 concurrent users with a <500 ms latency objective (design targets, not measured outcomes), with hybrid SQL / NoSQL / in-memory data.",
+        es: "Participé en el diseño de una infraestructura de alta disponibilidad dimensionada para unos 100.000 usuarios concurrentes con un objetivo de latencia <500 ms (objetivos de diseño, no resultados medidos), con datos híbridos SQL / NoSQL / en memoria.",
       },
     ],
   },
@@ -76,12 +76,23 @@ export const education: Education[] = [
     },
     org: "Pontificia Universidad Bolivariana",
     period: {
-      en: "Feb 2023 – Present (7th sem.)",
-      es: "Feb 2023 – Presente (7º sem.)",
+      en: "Feb 2023 – Present (final semester)",
+      es: "Feb 2023 – Presente (último semestre)",
     },
     detail: {
       en: "Advanced coursework in software architecture and systems design.",
       es: "Cursos avanzados de arquitectura de software y diseño de sistemas.",
+    },
+  },
+  {
+    degree: {
+      en: "Postgraduate Specialisation in Information Security",
+      es: "Especialización en Seguridad Informática",
+    },
+    org: "Pontificia Universidad Bolivariana",
+    period: {
+      en: "In progress",
+      es: "En curso",
     },
   },
 ];
@@ -89,7 +100,7 @@ export const education: Education[] = [
 /**
  * Certificaciones verificables. Todas tienen `verifyUrl` público: la lista se
  * mantiene contra el perfil de LinkedIn y cada entrada enlaza a su emisor, no
- * a una captura. Última verificación: 2026-08-19.
+ * a una captura. Última verificación: 2026-10-13.
  */
 export const certifications: Certification[] = [
   // ── Seguridad y cloud ───────────────────────────────────────────────────
@@ -266,8 +277,8 @@ export const certifications: Certification[] = [
   // ── Idiomas ─────────────────────────────────────────────────────────────
   {
     name: {
-      en: "EF SET English Certificate — CEFR C2 (Proficient), 80/100",
-      es: "Certificado EF SET de inglés — CEFR C2 (Competente), 80/100",
+      en: "EF SET English Certificate — CEFR C2 (Proficient), 74/100",
+      es: "Certificado EF SET de inglés — CEFR C2 (Competente), 74/100",
     },
     issuer: "EF SET",
     year: "2026",

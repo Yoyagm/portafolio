@@ -30,31 +30,33 @@
 \section{Professional Profile}
 \justifying
 \ifonepage
-Final-semester Systems and Software Engineering student (UPB Bucaramanga) working at the intersection of
-security engineering and applied machine learning. I ship tools rather than findings: an open-source
-supply-chain scanner, a phishing classifier that audited its own benchmark and reported the honest number
-instead of the flattering one, and a vulnerability prioritisation dashboard that measured away the
-advantage it was built to show. Verified C2 English (EF SET 80/100).
+Final-semester Systems and Software Engineering student (UPB Bucaramanga; expected to graduate in 2026)
+working at the intersection of applied machine learning and security engineering. I ship tools rather
+than findings: an open-source supply-chain scanner, a phishing classifier that audited its own
+benchmark and reported the honest number instead of the flattering one, and a vulnerability
+prioritisation dashboard that measured away the advantage it was built to show. Verified C2 English
+(EF SET).
 \else
-Final-semester Systems and Software Engineering student (UPB Bucaramanga) working at the intersection
-of security engineering and applied machine learning. I ship tools rather than findings: an open-source
-supply-chain scanner, a phishing classifier that audited its own benchmark and published the honest
-number instead of the flattering one, and a vulnerability prioritisation dashboard that measured away
-the advantage it was built to demonstrate. Equally comfortable in cloud infrastructure --- AWS,
-Terraform, CI/CD --- and full-stack delivery, with Scrum leadership experience and verified C2 English
-(EF SET 80/100). Seeking a Security, Detection Engineering or Data \& AI role.
+Final-semester Systems and Software Engineering student (UPB Bucaramanga; expected to graduate in 2026)
+working at the intersection of applied machine learning and security engineering. I ship tools rather
+than findings: an open-source supply-chain scanner, a phishing classifier that audited its own
+benchmark and published the honest number instead of the flattering one, and a vulnerability
+prioritisation dashboard that measured away the advantage it was built to demonstrate. Equally comfortable in cloud infrastructure --- AWS,
+Terraform, CI/CD --- and full-stack delivery, with Scrum Master experience on an academic project and
+verified C2 English (EF SET). Seeking an AI/ML (model training and evaluation) or Cybersecurity role.
 \fi
 
 % =====================================================================
 \section{Technical Skills}
 \vspace{0.2ex}
+\skill{Data, ML \& AI}{Model training and evaluation; LightGBM, XGBoost, TensorFlow / Keras,
+  scikit-learn; data-leakage detection and honest evaluation design; SHAP explainability; grouped,
+  temporal and walk-forward validation; probability calibration; AI agents (smolagents, CrewAI)
+  and MCP; FinBERT NLP; pandas / NumPy}
 \skill{Security \& Detection}{Software supply-chain security (slopsquatting), detection-as-code,
   MITRE ATT\&CK mapping, risk-based vulnerability prioritisation (CISA KEV / EPSS / CVSS),
   phishing and URL analysis, TOTP 2FA, secure SDLC and CI security gates}
-\skill{Data, ML \& AI}{LightGBM, XGBoost, scikit-learn; data-leakage detection and honest evaluation
-  design; SHAP explainability; grouped, temporal and walk-forward validation; probability calibration;
-  FinBERT NLP; CrewAI multi-agent orchestration; RAG with ChromaDB; pandas / NumPy}
-\skill{Cloud \& DevOps}{AWS (IAM, VPC, EC2, Auto Scaling, ALB, RDS Multi-AZ, ECR, CloudWatch),
+\skill{Cloud \& DevOps}{AWS (IAM, VPC, EC2, Auto Scaling, ALB, CloudWatch),
   Terraform (IaC), Docker, GitHub Actions CI/CD, k6, Google Cloud (BigQuery ML, Cloud Storage, DLP)}
 \skill{Programming}{Python, TypeScript / JavaScript, SQL, Dart, HCL, LaTeX}
 \skill{Databases}{PostgreSQL, MySQL, SQLite, DuckDB, ChromaDB; hybrid SQL / NoSQL architectures}
@@ -64,37 +66,23 @@ Terraform, CI/CD --- and full-stack delivery, with Scrum leadership experience a
 % =====================================================================
 \section{Experience}
 
-\project{Developer / Technical Support}{}%
-  {GOATGuard: \href{https://github.com/Yoyagm/goatguard-app}{github.com/Yoyagm/goatguard-app}}%
+\project{Developer / Technical Support (Volunteer)}{}%
+  {GOATGuard client: \href{https://github.com/Yoyagm/goatguard-app}{github.com/Yoyagm/goatguard-app}}%
   {Jan 2026 -- Present \ $\vert$ \ Pontificia Universidad Bolivariana}
 \begin{itemize}
-  \item Designed and built GOATGuard, a full-stack network security monitoring platform
-        (FastAPI + PostgreSQL + Flutter), to close mobility gaps for administrators managing
-        distributed institutional assets.
-  \item Built an automatic classification engine for network assets (routers, printers, cameras) with
-        real-time monitoring and KPI dashboards, and proactive detection of port scans and intrusion
-        attempts, applying Blue Team and detection engineering principles.
-  \ifonepage\else
-  \item Hardened the mobile client with a full TOTP 2FA flow (QR enrolment, backup and recovery codes)
-        and JWT held in OS-level secure storage behind a global 401 interceptor.
-  \item Provide technical support to end users across the institution.
+  \item Technical support for the institution's end users.
+  \item Endpoint threat detection: identifying and analysing port scans and network intrusion attempts.
+  \item Automatic classification of network assets (routers, printers, cameras) with a real-time
+        monitoring dashboard and KPIs.
+  \ifonepage
+  \item GOATGuard Android client (Flutter), a team network-monitoring project: dashboard, inventory,
+        alerts, TOTP 2FA. Author of 19 of the client repository's 25 commits.
+  \else
+  \item GOATGuard Android client (Flutter), a team network-monitoring project: real-time dashboard,
+        inventory, severity-filtered alerts, TOTP 2FA and the JWT kept in OS-backed secure storage.
+        Author of 19 of the client repository's 25 commits.
   \fi
 \end{itemize}
-
-\entry{Scrum Master}{}{Jun 2025 -- Nov 2025 \ $\vert$ \ Pontificia Universidad Bolivariana}
-\begin{itemize}
-  \item Managed the software development lifecycle under Scrum, facilitating ceremonies and optimising
-        the Product Backlog to ensure incremental value delivery.
-  \item Contributed to the design of a high-availability infrastructure targeting 100{,}000 concurrent
-        users with a sub-500\,ms latency objective, on hybrid SQL / NoSQL / in-memory data architectures.
-\end{itemize}
-
-\ifonepage\else
-\entry{Assistant, Sports Events}{}{May 2025 -- Present \ $\vert$ \ EM Tournaments and Competitions}
-\begin{itemize}
-  \item Support the organisation and execution of sports tournaments and competitive events.
-\end{itemize}
-\fi
 
 % =====================================================================
 \section{Key Technical Projects}
@@ -163,7 +151,7 @@ Terraform, CI/CD --- and full-stack delivery, with Scrum leadership experience a
   \fi
   \ifonepage\else
   \item Bootstrapped 95\,\% confidence intervals over the positives and guarded the tie-averaging in the
-        core metric with a test that ships with a negative control; 76 tests and five ADRs.
+        core metric with a test that ships with a negative control; 75 tests and five ADRs.
   \fi
 \end{itemize}
 
@@ -171,23 +159,24 @@ Terraform, CI/CD --- and full-stack delivery, with Scrum leadership experience a
 \vspace{0.6ex}
 {\footnotesize\noindent\textbf{Also:} AWS three-tier HA infrastructure in Terraform + GitHub Actions
 (\href{https://github.com/Yoyagm/eval-final-dgiti}{eval-final-dgiti}) \ $\vert$ \ autonomous ML and
-multi-agent market pipeline, 505 tests \ $\vert$ \ GreenPulse offline-first platform. Case studies:
+multi-agent market pipeline, 505 tests. Case studies:
 \href{https://johanrodriguez.is-a.dev/en/projects}{johanrodriguez.is-a.dev/projects}.\par}
 \else
 
-\entry{AWS High-Availability Infrastructure}{Terraform, FastAPI \& CI/CD}{2026 \ $\vert$ \ UPB}
+\entry{AWS High-Availability Infrastructure}{Terraform, FastAPI \& CI/CD}{2026 \ $\vert$ \ UPB (course final assessment)}
 \evidence{\href{https://github.com/Yoyagm/eval-final-dgiti}{github.com/Yoyagm/eval-final-dgiti}}
 \begin{itemize}
-  \item Codified a three-tier architecture across two availability zones entirely in Terraform:
-        VPC, ALB, Auto Scaling Group, RDS PostgreSQL Multi-AZ, ECR and CloudWatch.
-  \item Enforced least privilege with a strict security-group chain --- the database has no public
-        access and no egress, and is reachable only from the application tier.
-  \item Automated deployment with GitHub Actions (lint, test, build, push to ECR, ASG instance refresh),
-        keeping Terraform out of the hot path, and validated load balancing under k6 load against
-        CloudWatch metrics.
+  \item Codified a three-tier architecture across two availability zones in Terraform: VPC, ALB, Auto
+        Scaling Group (minimum 2 instances), PostgreSQL 15 primary plus streaming-replication replica
+        on EC2 in private subnets (AWS Academy does not allow RDS), and CloudWatch alarms.
+  \item Enforced least privilege with a security-group chain --- the database has no public IP and
+        accepts connections only from the application tier; its outbound access is open for image pulls.
+  \item Automated deployment with three GitHub Actions workflows (CI; CD with image push to GHCR and
+        ASG instance refresh; Terraform plan on pull requests), keeping Terraform out of the hot path,
+        and validated load balancing under k6 load against CloudWatch metrics.
 \end{itemize}
 
-\entry{Autonomous Market Intelligence System}{Applied ML \& Multi-Agent AI}{2025 -- Present \ $\vert$ \ Independent}
+\entry{Autonomous Market Intelligence System}{Applied ML \& Multi-Agent AI}{2026 \ $\vert$ \ Independent}
 \evidence{Private repository --- walkthrough available on request}
 \begin{itemize}
   \item Built an event-driven pipeline integrating market-data APIs, technical-indicator computation and
@@ -200,11 +189,6 @@ multi-agent market pipeline, 505 tests \ $\vert$ \ GreenPulse offline-first plat
         until the model clears 55\,\% accuracy (currently 52.9\,\%).
 \end{itemize}
 
-\entry{GreenPulse}{Offline-First Agronomic Monitoring Platform}{2025 \ $\vert$ \ Academic Capstone}
-\begin{itemize}
-  \item Migrated and redesigned the backend to FastAPI with an offline-first SQLite sync layer and a
-        35-species plant catalogue including QR-code based scanning; documented in IEEE format.
-\end{itemize}
 \fi
 
 % =====================================================================
@@ -215,6 +199,9 @@ multi-agent market pipeline, 505 tests \ $\vert$ \ GreenPulse offline-first plat
   \ifonepage
   \item Final semester. Coursework in software architecture and system design; AWS Academy Cloud
         Foundations labs 1--6 (IAM, VPC, EC2, EBS, Auto Scaling, Load Balancing).
+  \item Scrum Master of an academic high-availability infrastructure project (Jun--Nov 2025): ran the
+        Scrum cycle and contributed to the design of a system sized for 100{,}000 concurrent users with
+        a sub-500\,ms latency objective (design targets, not measured outcomes).
   \else
   \item Final-semester student. Advanced coursework in software architecture, system design and
         industry best practices.
@@ -222,6 +209,16 @@ multi-agent market pipeline, 505 tests \ $\vert$ \ GreenPulse offline-first plat
         Auto Scaling and Load Balancing, with Terraform IaC implementations (2026).
   \fi
 \end{itemize}
+\entry{Postgraduate Specialisation in Information Security}{}{In progress \ $\vert$ \ Pontificia Universidad Bolivariana}
+\ifonepage\else
+\entry{Scrum Master (academic project)}{High-Availability Infrastructure}{Jun 2025 -- Nov 2025 \ $\vert$ \ Pontificia Universidad Bolivariana}
+\begin{itemize}
+  \item Ran the full Scrum cycle: sprint planning, daily stand-ups, retrospectives and stakeholder demos.
+  \item Contributed to the design of a high-availability infrastructure sized for about 100{,}000
+        concurrent users with a sub-500\,ms latency objective (design targets, not measured outcomes),
+        with hybrid SQL / NoSQL / in-memory data.
+\end{itemize}
+\fi
 
 % =====================================================================
 \section{Certifications}
@@ -240,7 +237,7 @@ Work with Cloud Storage \textbullet\ Gemini Enterprise (multi-agent workflows, f
 Algorithms and Data Structures.\par
 \vspace{0.2ex}\noindent
 \textbf{Languages:} Spanish --- Native \textbullet\ English --- C2 Proficient
-(\href{https://cert.efset.org/es/qpqdd3}{EF SET 80/100, verified}).
+(\href{https://cert.efset.org/es/qpqdd3}{EF SET 74/100, verified}).
 {\color{subtle}All credentials publicly verifiable at
 \href{https://www.linkedin.com/in/johan-rodriguez-97bb29323/details/certifications/}{linkedin.com/in/johan-rodriguez-97bb29323}.}\par}
 \else
@@ -258,8 +255,7 @@ Algorithms and Data Structures.\par
   \item \textbf{freeCodeCamp} (2026) --- Machine Learning with Python \textbullet\ Data Analysis with
         Python \textbullet\ Scientific Computing with Python \textbullet\ Data Visualization
         \textbullet\ JavaScript Algorithms and Data Structures
-  \item \textbf{EF SET} (2026) --- English Certificate, CEFR C2 (Proficient), overall 80/100
-        (reading 84, listening 89)
+  \item \textbf{EF SET} (2026) --- English Certificate, CEFR C2 (Proficient), 74/100
 \end{itemize}
 \fi
 
@@ -267,7 +263,7 @@ Algorithms and Data Structures.\par
 \ifonepage\else
 \section{Languages}
 Spanish --- Native \ \ {\color{subtle}$\vert$} \ \ English --- C2 Proficient
-(\href{https://cert.efset.org/es/qpqdd3}{EF SET 80/100, verified})
+(\href{https://cert.efset.org/es/qpqdd3}{EF SET, verified})
 \fi
 
 \end{document}

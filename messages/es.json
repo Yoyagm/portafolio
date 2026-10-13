@@ -20,7 +20,7 @@
     "closeMenu": "Cerrar menú"
   },
   "Hero": {
-    "eyebrow": "Ingeniero de Seguridad e IA",
+    "eyebrow": "Ingeniería de IA y Seguridad · estudiante de último semestre",
     "headline": "Construyo herramientas de seguridad y luego intento romper mis propios resultados",
     "subheadline": "Defensa de la cadena de suministro, detección de phishing y triaje de vulnerabilidades — entregados con tests, gates de CI y tipado estricto, y medidos con la honestidad suficiente para reportar la cifra que duele.",
     "ctaWork": "Ver mi trabajo",
@@ -53,7 +53,7 @@
   },
   "Contact": {
     "title": "Contáctame",
-    "subtitle": "Abierto a roles de seguridad e ingeniería, remote-first.",
+    "subtitle": "Abierto a roles de IA/ML y ciberseguridad, remote-first.",
     "name": "Nombre",
     "email": "Email",
     "message": "Mensaje",
@@ -90,8 +90,8 @@
     "backToBlog": "Volver a todos los writeups"
   },
   "Metadata": {
-    "title": "Johan Rodriguez — Ingeniero de Seguridad e IA",
-    "description": "Ingeniero de Seguridad e IA: defensa de cadena de suministro, detección de phishing, priorización de vulnerabilidades y detection engineering. Python, CI, tipado estricto. Bilingüe, remoto."
+    "title": "Johan Rodriguez — Ingeniería de IA y Seguridad · estudiante de último semestre",
+    "description": "IA y Machine Learning (entrenamiento y evaluación de modelos) · Ciberseguridad · Estudiante de último semestre de Ing. de Sistemas y Software (UPB) · Python · Inglés C2 · Remoto"
   },
   "ThankYou": {
     "title": "Gracias",
@@ -112,14 +112,14 @@
     "projectsTitle": "Proyectos",
     "projectsIntro": "Herramientas de seguridad y ML aplicado que diseñé, entregué y medí de principio a fin — de la defensa de la cadena de suministro y la detección de phishing al triaje de vulnerabilidades, el hardening móvil y la infraestructura cloud de alta disponibilidad.",
     "aboutTitle": "Sobre mí",
-    "aboutIntro": "Ingeniero de seguridad que construye herramientas reales, no solo hallazgos — con tests, gates de CI y tipado estricto.",
+    "aboutIntro": "Estudiante de último semestre que construye herramientas reales, no solo hallazgos — con tests, gates de CI y tipado estricto.",
     "contactTitle": "Contáctame",
-    "contactIntro": "Abierto a roles de seguridad e ingeniería, remote-first.",
+    "contactIntro": "Abierto a roles de IA/ML y ciberseguridad, remote-first.",
     "featuredWork": "Trabajo destacado",
     "viewAllProjects": "Ver todos los proyectos",
     "aboutCta": "Más sobre mí",
     "contactCtaTitle": "Trabajemos juntos",
-    "contactCtaBody": "Estoy abierto a roles de seguridad e ingeniería, remote-first. Cuéntame qué estás construyendo.",
+    "contactCtaBody": "Estoy abierto a roles de IA/ML y ciberseguridad, remote-first. Cuéntame qué estás construyendo.",
     "contactCtaButton": "Contáctame"
   }
 }

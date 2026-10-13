@@ -6,6 +6,7 @@
  */
 import { ImageResponse } from "@vercel/og";
 import { siteConfig } from "@/lib/site";
+import { profile } from "@/content/profile";
 
 export const runtime = "edge";
 
@@ -18,14 +19,8 @@ export function GET(request: Request): ImageResponse {
   const customTitle = searchParams.get("title");
 
   const name = "Johan Rodriguez";
-  const role =
-    locale === "es"
-      ? "Ingeniero de Seguridad y AppSec"
-      : "Security & AppSec Engineer";
-  const tagline =
-    locale === "es"
-      ? "Cadena de suministro · Detección de amenazas · Python · CI"
-      : "Supply-chain · Threat detection · Python · CI";
+  // `profile.role` es «título | áreas»: el título va grande, las áreas debajo.
+  const [role = "", tagline = ""] = profile.role[locale].split(" | ");
   // `||` (no `??`): un ?title= vacío también cae al rol, no a un heading vacío.
   const displayTitle = customTitle || role;
 
