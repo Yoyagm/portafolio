@@ -84,6 +84,17 @@ export const education: Education[] = [
       es: "Cursos avanzados de arquitectura de software y diseño de sistemas.",
     },
   },
+  {
+    degree: {
+      en: "Postgraduate Specialisation in Information Security",
+      es: "Especialización en Seguridad Informática",
+    },
+    org: "Pontificia Universidad Bolivariana",
+    period: {
+      en: "In progress",
+      es: "En curso",
+    },
+  },
 ];
 
 /**
