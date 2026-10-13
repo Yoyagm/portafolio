@@ -18,7 +18,7 @@ Contact: johan.rc2020@gmail.com
 - /projects: six case studies with metrics, evidence and stated limitations
 - /about: skills, experience, education, 16 verifiable certifications
 - Blog: technical writeups on security engineering and supply-chain security
-- Language: bilingual English (C2, EF SET 80/100) / Spanish (native)
+- Language: bilingual English (C2, verified with EF SET) / Spanish (native)
 
 ## Projects
 
