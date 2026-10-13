@@ -4,12 +4,34 @@
 
 El portafolio está publicado en <https://johanrodriguez.is-a.dev> con seis casos
 de estudio, 16 certificaciones verificables y el CV en LaTeX versionado en `cv/`.
-Siguiente paso: desplegar el dashboard de vulnerabilidades en Streamlit Community
-Cloud y enlazar la demo viva desde su caso de estudio — es el único de los seis que
-tiene repositorio público pero no demo. Sin bloqueos técnicos; el despliegue
-necesita que Johan inicie sesión en share.streamlit.io.
+Siguiente paso: que Johan revise y apruebe el PR `perfil/sincronizar-fuente`
+(correcciones de honestidad); después, desplegar el dashboard de vulnerabilidades
+en Streamlit Community Cloud y enlazar la demo viva desde su caso de estudio — es
+el único de los seis que tiene repositorio público pero no demo. Bloqueos: el
+despliegue necesita que Johan inicie sesión en share.streamlit.io, y las dos
+insignias de Cisco que faltan esperan su URL de Credly.
 
 ## Registro
+
+### 2026-10-13
+
+- **Hecho:** contenido y CV sincronizados con la fuente de verdad del perfil
+  (`perfil-fuente.yaml`). Se corrigió lo que no tenía evidencia: EF SET muestra
+  74/100, no 80/100; el rol de la UPB es voluntariado; el Scrum Master fue un
+  proyecto académico; GOATGuard fue un proyecto en equipo (Johan escribió el cliente
+  móvil, 19 de 25 commits); el caso `aws-ha-infra` describe lo que despliega el
+  Terraform (PostgreSQL en EC2 con réplica, imagen en GHCR, sin RDS ni ECR); el
+  sistema de mercado empezó en 2026. EM Torneos y GreenPulse salen del CV.
+- **Hecho:** Educación incluye la Especialización en Seguridad Informática de la
+  UPB, en curso y sin fechas.
+- **Decisión:** «último semestre» se conserva (Johan lo confirmó) y «7.º semestre»
+  se quita. El diagrama de `aws-ha-infra` se queda, con una nota de que muestra el
+  diseño objetivo y no lo desplegado: borrarlo habría ocultado de dónde salió el
+  error. Se descartó añadir un campo de pie de imagen, porque obliga a tocar un
+  componente.
+- **Bloqueo:** la documentación del propio repo `eval-final-dgiti` (README y
+  `docs/ARQUITECTURA.md`) sigue diciendo RDS Multi-AZ y ECR; hasta corregirla,
+  quien la lea verá lo contrario que el portafolio.
 
 ### 2026-08-19 (tarde)
 
@@ -55,7 +77,7 @@ necesita que Johan inicie sesión en share.streamlit.io.
 - **Decisión:** el posicionamiento pasa de "Security & AppSec Engineer" a
   "Security & AI Engineer". Con phishing, priorización de vulnerabilidades y el
   sistema multiagente en cartera, AppSec se había quedado corto como etiqueta.
-- **Corregido:** la certificación *Responsive Web Design* de freeCodeCamp que
+- **Corregido:** la certificación _Responsive Web Design_ de freeCodeCamp que
   figuraba en el CV y en el portafolio no existe. El perfil público de
   freeCodeCamp de Johan tiene cinco certificaciones y esa no está entre ellas.
   Retirada de ambos sitios.
